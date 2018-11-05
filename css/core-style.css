@@ -306,6 +306,7 @@ img {
 
 /* Essence Button */
 .amado-btn {
+  margin-top: 50%;
   display: inline-block;
   min-width: 160px;
   height: 55px;
