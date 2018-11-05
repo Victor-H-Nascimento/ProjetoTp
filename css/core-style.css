@@ -375,6 +375,9 @@ img {
       background-color: #131212; }
 
 /* :: 5.0 Welcome Area CSS */
+
+
+
 .main-content-wrapper {
   position: relative;
   z-index: 1;
@@ -1398,3 +1401,7 @@ img {
 /* ##### The End ##### */
 
 /*# sourceMappingURL=core-style.css.map */
+
+.header-area{
+  position: fixed;
+}
