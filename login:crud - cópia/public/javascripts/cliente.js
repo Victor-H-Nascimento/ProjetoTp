@@ -39,10 +39,20 @@ function deletaCliente(id) {
 function salvaCliente() {
     var form = document.formCliente;
     var input = {
+        usuario: form.nome.value,
+        senha: form.senha.value,
         nome: form.nome.value,
-        endereco: form.endereco.value,
+        celular: form.celular.value,
+        CPF: form.CPF.value,
+        rua: form.rua.value,
+        numero: form.numero.value,
+        complemento: form.complemento.value,
+        CEP: form.CEP.value,
+        bairro: form.bairro.value,
+        cidade: form.cidade.value,
+        estado: form.estado.value,
         email: form.email.value,
-        telefone: form.telefone.value
+        dataNascimento: form.dataNascimento.value
     };
 
     var param = new URLSearchParams
@@ -93,76 +103,24 @@ function alterarCliente(id) {
                     else {
                         var form = document.formCliente;
                         console.log(dados.data[0]);
+                        form.usuario.value = dados.data[0].usuario;
+                        form.senha.value = dados.data[0].senha;
                         form.nome.value = dados.data[0].nome;
-                        form.endereco.value = dados.data[0].endereco;
-                        form.telefone.value = dados.data[0].telefone;
+                        form.celular.value = dados.data[0].celular;
+                        form.CPF.value = dados.data[0].CPF;
+                        form.rua.value = dados.data[0].rua;
+                        form.numero.value = dados.data[0].numero;
+                        form.complemento.value = dados.data[0].complemento;
+                        form.CEP.value = dados.data[0].CEP;
+                        form.bairro.value = dados.data[0].bairro;
+                        form.cidade.value = dados.data[0].cidade;
+                        form.estado.value = dados.data[0].estado;
                         form.email.value = dados.data[0].email;
+                        form.dataNascimento.value = dados.data[0].dataNascimento;
                     }
                 }
             });
         });
 
     }
-    /*$(document).ready(function () {
-        //console.log(document);
-        $.ajax({
-            url: '/cliente/altera?id=' + id,
-            dataType: 'json',
-            error: function (dados) {
-                alert('Erro: ' + dados.data);
-            },
-            success: function (dados) {
-                if (dados.status === 'ERRO')
-                    alert('Erro: ' + dados.data);
-                else {
-                    //console.log(id);
-                   // window.location.href = '/alteraCliente.html';
-                    var dadosCliente = '<div id ="' + dados.data[0].id + '">' +
-                        '<form name="formCliente" method="post" action="">'+
-                        'ID:' + dados.data[0].id +
-                        '<br>Nome: <br><input type="text" name="nome" value="' + dados.data[0].nome + '" required></br> ' +
-                        '<br>Endereço: <br><textarea name="endereco"   required cols="30" rows="5" >'+dados.data[0].endereco+'</textarea></br>' +
-                        '<br>Telefone: <br><input type="text" name="email" value='+ dados.data[0].telefone +' required><br>' +                         '<br>Email: <br><input type="text" name="telefone" value='+ dados.data[0].email+' required><br><br>' +                         '<br><a href="#"  onClick="salvaAlteracao(' + dados.data[0].id + ')">Salvar / </a>' +
-                        '<a href="#" value="cancela"> Cancelar<\a>' +
-                        '</form>'+
-                        '</div>';
-                    document.getElementById(dados.data[0].id).innerHTML = dadosCliente + '<br><br>';
-
-                }
-            }
-        });
-    });*/
 }
-
-/*function salvaAlteracao(id) {
-    var form = document.formCliente;
-    var input = {
-        id: id,
-        name: form.nome.value,
-        endereco: form.endereco.value,
-        email: form.email.value,
-        telefone: form.telefone.value
-    };
-
-    console.log(input);
-
-    $.ajax({
-        url: '/cliente/salvar',
-        dataType: 'json',
-        type: 'post',
-        data: input,
-        error: function (dados) {
-            alert('Erro: em salvar ' + dados.data);
-        },
-        success: function (dados) {
-            if (dados.status === 'ERRO')
-                alert('Erro:' + dados.data);
-            else {
-                alert(dados.data);
-
-            }
-        }
-    });
-
-    //location.href ='/listaCliente.html';
-}*/
