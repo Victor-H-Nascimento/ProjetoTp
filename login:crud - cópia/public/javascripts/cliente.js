@@ -42,6 +42,7 @@ function salvaCliente() {
         usuario: form.nome.value,
         senha: form.senha.value,
         nome: form.nome.value,
+        endereco: form.endereco.value,
         celular: form.celular.value,
         CPF: form.CPF.value,
         rua: form.rua.value,
@@ -52,6 +53,7 @@ function salvaCliente() {
         cidade: form.cidade.value,
         estado: form.estado.value,
         email: form.email.value,
+        telefone: form.telefone.value,
         dataNascimento: form.dataNascimento.value
     };
 
@@ -106,6 +108,8 @@ function alterarCliente(id) {
                         form.usuario.value = dados.data[0].usuario;
                         form.senha.value = dados.data[0].senha;
                         form.nome.value = dados.data[0].nome;
+                        form.endereco.value = dados.data[0].endereco;
+                        form.telefone.value = dados.data[0].telefone;
                         form.celular.value = dados.data[0].celular;
                         form.CPF.value = dados.data[0].CPF;
                         form.rua.value = dados.data[0].rua;
@@ -117,10 +121,13 @@ function alterarCliente(id) {
                         form.estado.value = dados.data[0].estado;
                         form.email.value = dados.data[0].email;
                         form.dataNascimento.value = dados.data[0].dataNascimento;
+                    
                     }
                 }
             });
         });
 
     }
+   
 }
+
