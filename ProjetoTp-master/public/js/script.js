@@ -68,3 +68,11 @@ $(document).ready(function() {
             });
         });
 
+
+
+//Verifica nível da senha        
+$(function () {
+    $("#senha").complexify({}, function (valid, complexity) {
+        //exibir o nível da senha
+    });
+});
