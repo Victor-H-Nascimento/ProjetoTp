@@ -83,7 +83,7 @@ $(function() {
     $('input').on('keyup', function() {
       
       // Obtém a quantidade de caracteres do valor inserido no input.
-      var length = $(this).val().length;
+      var length = $(senha).val().length;
   
       // Por padrão, o texto será 'Força da senha', caso a quantidade
       // de caracteres seja menor que 1.
@@ -103,4 +103,56 @@ $(function() {
       $('.password-strength').attr('title', title);
     });
     
+  });
+
+
+  //Botao pra mostrar/esconder senha
+
+  $(document).ready(function(){
+ 
+    // Click event of the showPassword button
+    $('#mostrarSenha').on('click', function(){
+       
+      // Get the password field
+      var passwordField = $('#senha');
+      var confirmPasswordField = $('#confirmaSenha');
+      
+   
+      // Get the current type of the password field will be password or text
+      var passwordFieldType = passwordField.attr('type');
+      var confirmPasswordFieldType = confirmPasswordField.attr('type');
+   
+      // Check to see if the type is a password field
+      if(passwordFieldType == 'password')
+      {
+          // Change the password field to text
+          passwordField.attr('type', 'text');
+   
+          // Change the Text on the show password button to Hide
+          $(this).val('Esconder senha');
+      } else {
+          // If the password field type is not a password field then set it to password
+          passwordField.attr('type', 'password');
+   
+          // Change the value of the show password button to Show
+          $(this).val('Mostrar senha');
+      }
+
+      if(confirmPasswordFieldType == 'password')
+      {
+          // Change the password field to text
+          confirmPasswordField.attr('type', 'text');
+   
+          // Change the Text on the show password button to Hide
+          $(this).val('Esconder senha');
+      } else {
+          // If the password field type is not a password field then set it to password
+          confirmPasswordField.attr('type', 'password');
+   
+          // Change the value of the show password button to Show
+          $(this).val('Mostrar senha');
+      }
+
+
+    });
   });
