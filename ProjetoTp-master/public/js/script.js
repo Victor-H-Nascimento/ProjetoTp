@@ -107,6 +107,12 @@ $(function() {
 
 
   //Botao pra mostrar/esconder senha
+/*
+Retirado de:
+http://www.kadunew.com/blog/html/botao-mostrar-ou-ocultar-senha
+*/
+
+
 
   $(document).ready(function(){
  
