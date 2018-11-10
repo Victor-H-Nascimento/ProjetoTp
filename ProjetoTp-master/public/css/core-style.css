@@ -1450,3 +1450,32 @@ img {
 }
 
 input, span { margin: 4px }
+
+/* botões do form*/
+
+.button{
+  background-color:#eeac11;
+  border:1px solid #d19809;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  padding:16px 31px;
+  text-decoration:none;
+}
+
+.button:hover {
+  background-color:#d19809;
+}
+
+.button:visited{
+  background-color:#eeac11;
+}
+
+.button:active{
+  background-color:#eeac11;
+}
+
+.botoesfinal{
+  margin-left:65%;
+
+}
