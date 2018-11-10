@@ -1414,7 +1414,7 @@ img {
 .password-strength {
   display: block;
   height: 16px;
-  position: relative
+  position: relative;
 }
 
 .password-strength::after {
@@ -1476,6 +1476,25 @@ input, span { margin: 4px }
 }
 
 .botoesfinal{
-  margin-left:65%;
+  margin-left:60%;
+}
 
+#senha{
+  float:right;
+}
+.showpassword{
+  max-width: 10%;
+  float: right;
+  position: absolute;
+  margin-left: 90%;
+}
+
+#mostrarSenha{
+  position: relative;
+  margin-left: 110%;
+}
+
+.password-strength{
+  margin-top: 20%;
+  
 }
