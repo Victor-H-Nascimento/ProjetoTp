@@ -89,10 +89,10 @@ $(function() {
       // de caracteres seja menor que 1.
       var title = '';
       if (length > 0) {
-        if (length <= 2)
+        if (length <= 4)
           title = 'Senha Fraca';
         
-        else if (length > 2 && length < 8)
+        else if (length > 4 && length < 10)
           title = 'Senha Média';
         
         else 
