@@ -21,12 +21,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">  </script>
     <script type="text/javascript" src="js/script.js"> </script>
 
-    <!--Verifica força da senha, não está funcionando =/ -->
-    <script src="http://code.jquery.com/jquery-1.9.0.min.js" type="text/javascript"></script>
-    <script src="https://raw.github.com/danpalmer/jquery.complexify.js/master/jquery.complexify.js"></script>
-
-
-
+    <!--Barra de força-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
 
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -35,7 +32,7 @@
     <title>Cadastro</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/formulario.jpg">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css">
@@ -125,7 +122,7 @@
                                     <div class="col-md-6 mb-3">
                                         <input type="password" name="senha" class="form-control" id="senha" value=""
                                             placeholder="senha" required >
-                                            <meter value="0" id="mtSenha" max="100"></meter>
+                                        <span title='Força da senha' class='password-strength'></span>   
                                     </div>
                                     
 
@@ -195,10 +192,6 @@
                                         <input type="email" name="email" class="form-control" id="email" placeholder="Email"
                                             value="">
                                     </div>
-
-
-
-
 
                                     </div>
                             </form>

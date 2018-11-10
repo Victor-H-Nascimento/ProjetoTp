@@ -71,8 +71,36 @@ $(document).ready(function() {
 
 
 //Verifica nível da senha        
-$(function () {
-    $("#senha").complexify({}, function (valid, complexity) {
-        //exibir o nível da senha
+
+/* 
+Retirado de:
+https://pt.stackoverflow.com/questions/105637/como-criar-uma-progressbar-animada-para-informar-a-for%C3%A7a-da-senha
+
+*/
+
+$(function() {
+  
+    $('input').on('keyup', function() {
+      
+      // Obtém a quantidade de caracteres do valor inserido no input.
+      var length = $(this).val().length;
+  
+      // Por padrão, o texto será 'Força da senha', caso a quantidade
+      // de caracteres seja menor que 1.
+      var title = '';
+      if (length > 0) {
+        if (length <= 2)
+          title = 'Senha Fraca';
+        
+        else if (length > 2 && length < 8)
+          title = 'Senha Média';
+        
+        else 
+          title = 'Senha Forte';
+      }
+      
+      // Altera o atributo título com a palavra que identifica força da senha.
+      $('.password-strength').attr('title', title);
     });
-});
+    
+  });

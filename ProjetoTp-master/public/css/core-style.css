@@ -1405,3 +1405,48 @@ img {
 .header-area{
   position: fixed;
 }
+
+
+
+/*Barra de Força*/
+
+
+.password-strength {
+  display: block;
+  height: 16px;
+  position: relative
+}
+
+.password-strength::after {
+  content: attr(title);
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  transition: width 200ms ease-in-out;
+  text-align: center
+}
+
+.password-strength[title='']::after {
+  background-color: white;
+  width: 100%
+}
+
+.password-strength[title='Senha Fraca']::after {
+  background-color: #e74c3c;
+  width: 33%
+}
+
+.password-strength[title='Senha Média']::after {
+  background-color: #f1c40f;
+  width: 66%
+}
+
+.password-strength[title='Senha Forte']::after {
+  background-color: #2ecc71;
+  width: 100%
+}
+
+input, span { margin: 4px }
