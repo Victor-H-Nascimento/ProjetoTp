@@ -88,6 +88,10 @@ function salvaCliente() {
     });
 }
 
+function resetaCliente(){
+	
+}
+
 function alterarCliente(id) {
 
     var param = new URLSearchParams
