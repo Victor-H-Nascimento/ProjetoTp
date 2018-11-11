@@ -2,19 +2,36 @@
 <html>
 
 <head>
-    <title>Cliente</title>
+    <title>Login</title>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="javascripts/acesso.js"></script>
+    <link rel="stylesheet" href="css/core-style.css">
+
+    <script type="text/javascript">
+        function closewindow() {
+         window.close("login.html","Login","menubar=no,top=100,left=500,resizable=no,width=350,height=350");
+         opener.location.href="checkout.html";
+        }
+        </script>
+
+
 </head>
 
 <body>
-    <h2>Login</h2>
-    <form name="formLogin" method="post">
-        Login: <br><input type="text" name="login" required><br>
+    <br>
+    <h2 class="centralizar">Login</h2>
+    <form name="formLogin" class="centralizar" method="post">
+        Usuário: <br><input type="text" name="login" required><br>
         Senha: <br><input type="password" name="senha" required><br>
         <br>
-        <input type="button" name="enviar" value="Login" onClick="loginUsuario();">
+
+        <div>   
+            <input class="button"  type="button" name="enviar" value="Login" onClick="loginUsuario();">
+        </div>
+        <br><p>Ainda não tem conta?<a href="#" onclick="javascript:closewindow(); return false;">Cadastre-se</a></p> 
+            
     </form>
+
 </body>
 
 </html>

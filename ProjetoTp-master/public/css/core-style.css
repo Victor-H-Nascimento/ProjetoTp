@@ -1479,6 +1479,12 @@ input, span { margin: 4px }
   margin-left:60%;
 }
 
+.centralizar{
+  text-align: center;
+}
+
+
+
 #senha{
   float:right;
 }
