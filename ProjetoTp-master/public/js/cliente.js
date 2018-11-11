@@ -130,3 +130,12 @@ function alterarCliente(id) {
 
     }
 }
+
+function resetaCliente(){
+
+    var opcao = confirm("Deseja realmente limpar o formulario?");
+    if(opcao === true){
+        document.getElementById("formCliente").reset();
+
+    }
+}
