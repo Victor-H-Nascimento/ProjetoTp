@@ -41,8 +41,8 @@ function salvaCliente() {
     var input = {
         usuario: form.usuario.value,
         senha: form.senha.value,
-        //nome: form.nome.value,
-        nome: "batata",
+        nome: form.nome.value,
+        //nome: "batata",
         celular: form.celular.value,
         CPF: form.CPF.value,
         rua: form.rua.value,
@@ -53,8 +53,8 @@ function salvaCliente() {
         cidade: form.cidade.value,
         estado: form.uf.value,
         email: form.email.value,
-        dataNascimento: "08/03/1997"
-        //dataNascimento: form.dataNascimento.value
+        //dataNascimento: "08/03/1997"
+        dataNascimento: form.dataNascimento.value
     };
 
     var param = new URLSearchParams
@@ -65,6 +65,7 @@ function salvaCliente() {
     }
     else{
         alert("Entrou aqui!");
+        console.log(input);
         urlAcao = '/cliente/insere';
     }
 
