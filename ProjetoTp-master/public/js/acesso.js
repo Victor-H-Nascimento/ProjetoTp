@@ -17,7 +17,7 @@ function loginUsuario() {
                 alert('Erro: ' + dados.data);
             else {
                 alert(dados.data);
-                window.location.href = '/listaCliente.html';
+                window.location.href = '/index.html';
             }
         }
     });

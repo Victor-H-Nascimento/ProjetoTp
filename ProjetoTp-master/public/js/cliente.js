@@ -88,6 +88,27 @@ function salvaCliente() {
     });
 }
 
+function confirmaSenhas() {
+    var senha = document.formCliente.senha.value;
+    var senhaConfirmacao = document.formCliente.confirmaSenha.value;
+
+    if(senha != senhaConfirmacao){
+        bordaVermelha();
+    }
+}
+
+function bordaVermelha(){
+    document.getElementById("confirmaSenha").style.borderColor == "red";
+}
+
+function validaFormularioVazio(){
+    document.formCliente.usuario
+}
+
+function validaCampoVazio(){
+
+}
+
 function resetaCliente(){
 	
 }

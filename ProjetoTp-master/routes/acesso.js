@@ -2,11 +2,12 @@ var express = require('express');
 var router = express.Router();
 
 router.post('/login', function (req, res, next) {
+
     var input = req.body;
+
     req.getConnection(function (err, connection) {
-        var query = "SELECT * FROM usuario " +
-            "WHERE login = '" + input.login + "' AND" + " senha = '" + input.senha + "'";
-            //console.log(query);
+        var query = "SELECT * FROM Usuarios " +
+            "WHERE usuario = '" + input.login + "' AND" + " senha = '" + input.senha + "'";
         connection.query(query, function (err, rows) {
             if (err)
                 res.json({ status: 'ERRO', data: + err });
