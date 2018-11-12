@@ -161,10 +161,7 @@ $(document).ready(function () {
     });
 });
 
-//login antigo
-function openwindow() {
-    window.open("login.html", "Login", "menubar=no,top=100,left=500,resizable=no,width=350,height=350");
-}
+
 
 //Login novo
 function abrePopUp() {
