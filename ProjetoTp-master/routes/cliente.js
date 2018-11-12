@@ -2,9 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/lista', function (req, res, next) {
-    if (req.session.logado) {
         req.getConnection(function (err, connection) {
-            connection.query("SELECT * FROM cliente", function (err, rows) {
+            connection.query("SELECT * FROM ImagensProdutos", function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: + err });
                 else
@@ -13,10 +12,6 @@ router.get('/lista', function (req, res, next) {
             if (err)
                 res.json({ status: 'ERRO', data: + err });
         });
-    }
-    else {
-        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
-    }
 });
 
 

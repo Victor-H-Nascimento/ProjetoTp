@@ -2,16 +2,18 @@
 function exibeClientes(clientes) {
     for (var i = 0; i < clientes.length; i++) {
         var cliente = clientes[i];
-        var dadosCliente = '<div id ="' + cliente.id + ' ">' +
-            'ID:' + cliente.id +
-            '<br>Nome: ' + cliente.nome +
-            '<br>Endereço: ' + cliente.endereco +
-            '<br>Telefone: ' + cliente.telefone +
-            '<br>Email: ' + cliente.email +
-            '<br><a href="#" onClick="deletaCliente(' + cliente.id + ')">Excluir / </a>' +
-            '<a href="insereCliente.html?id=' + cliente.id + ' ">Alterar </a>' +
-            '</div>';
-        document.getElementById('result').innerHTML += dadosCliente + '<br><br>';
+        var dadosCliente = 
+                '<div class="single-products-catagory clearfix">'+
+                    '<a href="shop.html">'+
+                        '<img src="'+ cliente.caminhoImagem +'" alt="">'+
+                        '<div class="hover-content">'+
+                            '<div class="line"></div>'+
+                            //'<p>From $180</p>'+
+                            //'<h4>Modern Chair</h4>'+
+                        '</div>'+
+                    '</a>'+
+                '</div>';
+        document.getElementById('result').innerHTML += dadosCliente ;
     }
 }
 
