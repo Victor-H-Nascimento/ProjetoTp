@@ -1575,3 +1575,10 @@ p{
 .callCheckout.hover{
   color: orange;
 }
+
+#titulo-produto{
+  font-size: 24px;
+  color: black;
+  text-decoration: bolder;
+  display: block;
+}
