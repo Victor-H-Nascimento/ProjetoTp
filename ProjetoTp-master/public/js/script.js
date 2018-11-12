@@ -175,9 +175,5 @@ function teste() {
     window.open("checkout.html", "_self");
 }
 
-//máscaras
-$("#celular").mask("(00) 0-0000-0000");
-$("#CPF").mask("000-000-000-00");
-$("#cep").mask("00000-000");
 
 
