@@ -19,8 +19,17 @@
     <link rel="stylesheet" href="style.css">
 
     <!-- Referencia javascript -->
-    <script type="text/javascript" src="js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
+    <script type="text/javascript" src="js/script.js"></script>
+    <script type="text/javascript" src="js/cliente.js"></script>
+
+
+    <script>
+        $(document).ready(function(){
+            lerProduto();
+        })
+    </script>
 </head>
 
 <body>
@@ -132,14 +141,12 @@
                         <div class="single_product_desc">
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
-                                <div class="line"></div>
-                                <p id="preco-produto" class="product-price"></p> <!-- pegar do BD -->                                
-                                <p id="titulo-produto"></p> <!-- pegar do BD -->
-                                <p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p> <!-- pegar do BD -->
+                                <div class="line" id="dados"></div>
+                               
                             </div>
 
-                            <div class="short_overview my-5">
-                                <p id="descricao-produtos"></p>
+                            <div id="descricao-produtos" class="short_overview my-5">
+                                
                             </div>
 
                             <!-- Add to Cart Form -->

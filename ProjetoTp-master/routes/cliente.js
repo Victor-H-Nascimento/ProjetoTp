@@ -15,13 +15,14 @@ router.get('/lista', function (req, res, next) {
 });
 
 
-router.get('/listaCliente', function (req, res, next) {
+router.get('/lerProduto', function (req, res, next) {
     var id = req.query.id; 
+    console.log(id);
     req.getConnection(function (err, connection) {
-        connection.query('SELECT * FROM cliente WHERE id=' + id, function (err, rows) {
+        connection.query('SELECT * FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos WHERE p.idProdutos=' + id, function (err, rows) {
             if (err)
                 res.json({ status: 'ERRO', data: err });
-            console.log("PUDIM@");    
+            //console.log("PUDIM@");    
             res.json({ status: 'OK', data: rows });
         });
         if (err)
