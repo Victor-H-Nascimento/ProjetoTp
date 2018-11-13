@@ -76,7 +76,7 @@
                     <li><a href="loja.html">Loja</a></li>
                     <li><a href="produtos.html"> Produtos</a></li>
 
-                    <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Loginn</a>
+                    <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
                             <form name="formLogin" class="centralizar" method="post">
                                 <span class="xis" onclick="abrePopUp();">X</span> 
@@ -117,40 +117,13 @@
                 <div class="row">
                     <div class="col-12 col-lg-7">
                         <div class="single_product_thumb">
-                            <!-- informações virão do banco de dados -->
-                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
-                                <ol class="carousel-indicators">
-                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url(img/product-img/pro-big-1.jpg);">
-                                    </li>
-                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url(img/product-img/pro-big-2.jpg);">
-                                    </li>
-                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url(img/product-img/pro-big-3.jpg);">
-                                    </li>
-                                    <li data-target="#product_details_slider" data-slide-to="3" style="background-image: url(img/product-img/pro-big-4.jpg);">
-                                    </li>
-                                </ol>
-                                <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <a class="gallery_img" href="img/product-img/pro-big-1.jpg">
-                                            <img class="d-block w-100" src="img/product-img/pro-big-1.jpg" alt="First slide">
-                                        </a>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/pro-big-2.jpg">
-                                            <img class="d-block w-100" src="img/product-img/pro-big-2.jpg" alt="Second slide">
-                                        </a>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/pro-big-3.jpg">
-                                            <img class="d-block w-100" src="img/product-img/pro-big-3.jpg" alt="Third slide">
-                                        </a>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <a class="gallery_img" href="img/product-img/pro-big-4.jpg">
-                                            <img class="d-block w-100" src="img/product-img/pro-big-4.jpg" alt="Fourth slide">
-                                        </a>
-                                    </div>
-                                </div>
+                            
+                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">                                                                
+                                <div class="carousel-item active">
+                                    <a id="imagemProduto" class="gallery_img" href="img/product-img/pro-big-1.jpg"><!-- caminho da imagem virá do banco de dados -->
+                                        <img class="d-block w-100" src="img/product-img/pro-big-1.jpg">
+                                    </a>
+                                </div>                                
                             </div>
                         </div>
                     </div>
