@@ -2,18 +2,18 @@
 function exibeClientes(clientes) {
     for (var i = 0; i < clientes.length; i++) {
         var cliente = clientes[i];
-        var dadosCliente = 
-                '<div class="single-products-catagory clearfix">'+
-                    '<a href="shop.html">'+
-                        '<img src="'+ cliente.caminhoImagem +'" alt="">'+
-                        '<div class="hover-content">'+
-                            '<div class="line"></div>'+
-                            //'<p>From $180</p>'+
-                            //'<h4>Modern Chair</h4>'+
-                        '</div>'+
-                    '</a>'+
-                '</div>';
-        document.getElementById('result').innerHTML += dadosCliente ;
+        console.log(cliente);
+        var dadosCliente =
+        '<div class="single-products-catagory clearfix" id="'+ cliente.idProdutos +'">'+
+            '<img src="' + cliente.caminhoImagem + '">'+
+                '<div class="hover-content">'+
+                    '<div class="line"></div>'+
+                    '<p>R$'+cliente.precoAtual+'</p>'+
+                    '<h4>'+cliente.nome+'</h4>'+
+                '</div>'+
+        '</div>';
+                    
+        document.getElementById('result').innerHTML += dadosCliente;
     }
 }
 
@@ -61,11 +61,11 @@ function salvaCliente() {
 
     var param = new URLSearchParams
         (window.location.search);
-        var urlAcao ;
+    var urlAcao;
     if (param.has('id')) {
         urlAcao = '/cliente/altera?id=' + param.get('id');
     }
-    else{
+    else {
         alert("Entrou aqui!");
         console.log(input);
         urlAcao = '/cliente/insere';
@@ -84,7 +84,7 @@ function salvaCliente() {
                 alert('Erro:' + dados.data);
             else {
                 alert(dados.data);
-                window.location.href ='/index.html'
+                window.location.href = '/index.html'
             }
         }
     });
@@ -94,25 +94,25 @@ function confirmaSenhas() {
     var senha = document.formCliente.senha.value;
     var senhaConfirmacao = document.formCliente.confirmaSenha.value;
 
-    if(senha != senhaConfirmacao){
+    if (senha != senhaConfirmacao) {
         bordaVermelha();
     }
 }
 
-function bordaVermelha(){
+function bordaVermelha() {
     document.getElementById("confirmaSenha").style.borderColor == "red";
 }
 
-function validaFormularioVazio(){
+function validaFormularioVazio() {
     document.formCliente.usuario
 }
 
-function validaCampoVazio(){
+function validaCampoVazio() {
 
 }
 
-function resetaCliente(){
-	
+function resetaCliente() {
+
 }
 
 function alterarCliente(id) {
@@ -131,26 +131,26 @@ function alterarCliente(id) {
                 success: function (dados) {
                     if (dados.status === 'ERRO')
                         alert('Erro: ' + dados.data);
-                        else {
-                            var form = document.formCliente;
-                            console.log(dados.data[0]);
-                            form.usuario.value = dados.data[0].usuario;
-                            form.senha.value = dados.data[0].senha;
-                            form.nome.value = dados.data[0].nome;
-                            form.endereco.value = dados.data[0].endereco;
-                            form.telefone.value = dados.data[0].telefone;
-                            form.celular.value = dados.data[0].celular;
-                            form.CPF.value = dados.data[0].CPF;
-                            form.rua.value = dados.data[0].rua;
-                            form.numero.value = dados.data[0].numero;
-                            form.complemento.value = dados.data[0].complemento;
-                            form.cep.value = dados.data[0].CEP;
-                            form.bairro.value = dados.data[0].bairro;
-                            form.cidade.value = dados.data[0].cidade;
-                            form.estado.value = dados.data[0].estado;
-                            form.email.value = dados.data[0].email;
-                            form.dataNascimento.value = dados.data[0].dataNascimento;
-                        }
+                    else {
+                        var form = document.formCliente;
+                        console.log(dados.data[0]);
+                        form.usuario.value = dados.data[0].usuario;
+                        form.senha.value = dados.data[0].senha;
+                        form.nome.value = dados.data[0].nome;
+                        form.endereco.value = dados.data[0].endereco;
+                        form.telefone.value = dados.data[0].telefone;
+                        form.celular.value = dados.data[0].celular;
+                        form.CPF.value = dados.data[0].CPF;
+                        form.rua.value = dados.data[0].rua;
+                        form.numero.value = dados.data[0].numero;
+                        form.complemento.value = dados.data[0].complemento;
+                        form.cep.value = dados.data[0].CEP;
+                        form.bairro.value = dados.data[0].bairro;
+                        form.cidade.value = dados.data[0].cidade;
+                        form.estado.value = dados.data[0].estado;
+                        form.email.value = dados.data[0].email;
+                        form.dataNascimento.value = dados.data[0].dataNascimento;
+                    }
                 }
             });
         });
@@ -158,10 +158,10 @@ function alterarCliente(id) {
     }
 }
 
-function resetaCliente(){
+function resetaCliente() {
 
     var opcao = confirm("Deseja realmente limpar o formulario?");
-    if(opcao === true){
+    if (opcao === true) {
         document.getElementById("formCliente").reset();
 
     }

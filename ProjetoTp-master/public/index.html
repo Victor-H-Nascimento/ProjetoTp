@@ -16,8 +16,9 @@
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css">
-    <link rel="stylesheet" href="css/style.css">
-<<<<<<< HEAD
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scss/style.scss">
+    <!--<link rel="stylesheet" href="scss/style.scss">-->
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/cliente.js"></script>
@@ -34,12 +35,7 @@
                     if (dados.status === 'ERRO')
                         alert('Erro: ' + dados.data);
                     else
-                        if (dados.status === 'SEMACESSO') {
-                            alert('Erro: ' + dados.data);
-                            window.location.href = '/login.html';
-                        }
-                        else
-                            exibeClientes(dados.data);
+                        exibeClientes(dados.data);
                 }
             });
         });
@@ -66,10 +62,8 @@
     </script>
 
 
-=======
     <!-- Referencia JS -->
     <script type="text/javascript" src="js/script.js"></script>
->>>>>>> 1861c8f9f46d8ba805e66e98ea694bdf42fe392a
 
 </head>
 
@@ -165,9 +159,8 @@
 
         <!-- Product Catagories Area Start -->
         <div class="products-catagories-area clearfix">
-            <div class="amado-pro-catagory clearfix">
-                
-                <div id="result"></div> 
+            <div  class="amado-pro-catagory clearfix">
+                    <div id="result" class="clearfix"></div>
             </div>
         </div>
         <!-- Product Catagories Area End -->
