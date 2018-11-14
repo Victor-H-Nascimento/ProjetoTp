@@ -96,25 +96,52 @@ function confirmaSenhas() {
     var senha = document.formCliente.senha.value;
     var senhaConfirmacao = document.formCliente.confirmaSenha.value;
 
-    if (senha != senhaConfirmacao) {
+    if(senha != senhaConfirmacao){
         bordaVermelha();
+        //  ou
+        //  mostraMensagemDeValidacao();
     }
 }
+
+//  function mostraMensagemDeValidacao() {
+//      innerHTML   "As senhas devem ser iguais"
+//  }
 
 function bordaVermelha() {
     document.getElementById("confirmaSenha").style.borderColor == "red";
 }
 
-function validaFormularioVazio() {
-    document.formCliente.usuario
+function validaFormularioVazio(){
+    var campoEstaVazio = false;
+    var input = document.formCliente;
+
+    if( input.usuario.value === "" || 
+        input.senha.value === "" || 
+        input.confirmaSenha.value === "" ||
+        input.nome.value === "" ||
+        input.dataNascimento.value === "" ||
+        input.celular.value === "" ||
+        input.CPF.value === "" ||
+        input.cep.value === "" ||
+        input.rua.value === "" ||
+        input.numeroCasa.value === "" ||
+        input.bairro.value === "" ||
+        input.cidade.value === "" ||
+        input.uf.value === "" ||
+        input.email.value === ""
+        ){
+        campoEstaVazio = true;
+    }
+
+  verificaCampoEstaVazio(campoEstaVazio);
 }
 
-function validaCampoVazio() {
-
-}
-
-function resetaCliente() {
-
+function verificaCampoEstaVazio(campoEstaVazio){
+    if(campoEstaVazio){
+        alert("Há campos obrigatório sem preencher");
+    } else {
+        salvaCliente();
+    }
 }
 
 function alterarCliente(id) {
