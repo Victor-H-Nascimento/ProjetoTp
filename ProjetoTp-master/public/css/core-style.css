@@ -950,6 +950,7 @@ img {
   position: relative;
   z-index: 1;
   width: 33.33333%;
+  float: left;
   top: 0; }
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .single-products-catagory {

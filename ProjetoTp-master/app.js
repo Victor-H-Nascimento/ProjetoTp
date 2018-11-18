@@ -7,10 +7,13 @@ var logger = require('morgan');
 var expressSession = require('express-session');
 var SQLiteStore = require('connect-sqlite3')(expressSession);
 
+var produtos = require('./routes/produtos');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var cliente = require('./routes/cliente');
 var acesso = require('./routes/acesso');
+
+
 
 var app = express();
 
@@ -42,10 +45,13 @@ app.use(
   }, 'pool')
 );
 
+app.use('/produtos', produtos);
 app.use('/acesso', acesso);
 app.use('/cliente', cliente);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

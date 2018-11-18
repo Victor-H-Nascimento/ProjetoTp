@@ -23,6 +23,8 @@
 
     <script type="text/javascript" src="js/script.js"></script>
     <script type="text/javascript" src="js/cliente.js"></script>
+    <script type="text/javascript" src="js/produtos.js"></script>
+
 
 
     <script>
@@ -112,7 +114,7 @@
 
             <!-- Cart Menu -->
               <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
+                <a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
                 <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>
             </div>
             
@@ -123,47 +125,7 @@
         <div class="single-product-area section-padding-100 clearfix">
             <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-12 col-lg-7">
-                        <div class="single_product_thumb">
-                            
-                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">                                                                
-                                <div class="carousel-item active">
-                                    <a id="imagemProduto" class="gallery_img" href="img/product-img/pro-big-1.jpg"><!-- caminho da imagem virá do banco de dados -->
-                                        <img class="d-block w-100" src="img/product-img/pro-big-1.jpg">
-                                    </a>
-                                </div>                                
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-lg-5">
-                        <div class="single_product_desc">
-                            <!-- Product Meta Data -->
-                            <div class="product-meta-data">
-                                <div class="line" id="dados"></div>
-                               
-                            </div>
-
-                            <div id="descricao-produtos" class="short_overview my-5">
-                                
-                            </div>
-
-                            <!-- Add to Cart Form -->
-                            <form class="cart clearfix" method="post">
-                                <div class="cart-btn d-flex mb-50">
-                                    <p>Quantidade</p>
-                                    <div class="quantity">
-                                        <span class="qty-minus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty ) &amp;&amp; qty &gt; 1 ) effect.value--;return false;"><i class="fa fa-caret-down" aria-hidden="true"></i></span>
-                                        <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
-                                        <span class="qty-plus" onclick="var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;"><i class="fa fa-caret-up" aria-hidden="true"></i></span>
-                                    </div>
-                                </div>
-                                <button type="submit" name="addtocart" value="5" class="button">Adicionar ao carrinho</button>
-                            </form>
-
-                        </div>
-                    </div>
+                <div class="row" id="dadosProduto"><!--aqui recebe as informações dos produtos-->
                 </div>
             </div>
         </div>

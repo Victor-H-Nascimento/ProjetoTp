@@ -23,10 +23,12 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/cliente.js"></script>
     <script type="text/javascript" src="js/acesso.js"></script>
+    <script type="text/javascript" src="js/produtos.js"></script>
+
     <script>
         $(document).ready(function () {
             $.ajax({
-                url: '/cliente/lista',
+                url: '/produtos/lista',
                 dataType: 'json',
                 error: function (dados) {
                     alert('Erro: 1 ' + dados.data);
@@ -35,7 +37,11 @@
                     if (dados.status === 'ERRO')
                         alert('Erro: ' + dados.data);
                     else
-                        exibeClientes(dados.data);
+                    {
+                        console.log(dados.data);
+                        exibeProdutos(dados.data);
+                    }
+                       
                 }
             });
         });
@@ -158,10 +164,8 @@
         <!-- Fim do menu lateral -->
 
         <!-- Product Catagories Area Start -->
-        <div class="products-catagories-area clearfix">
-            <div  class="amado-pro-catagory clearfix">
-                    <div id="result" class="clearfix"></div>
-            </div>
+        <div class="products-catagories-area clearfix" id="result">
+            
         </div>
         <!-- Product Catagories Area End -->
     </div>

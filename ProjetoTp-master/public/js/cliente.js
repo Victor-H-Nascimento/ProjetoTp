@@ -1,24 +1,3 @@
-
-function exibeClientes(clientes) {
-    for (var i = 0; i < clientes.length; i++) {
-        var cliente = clientes[i];
-        console.log(cliente);
-        var dadosCliente =
-        '<div class="single-products-catagory clearfix" id="'+ cliente.idProdutos +'">'+
-                '<a href="detalheProduto.html?id='+ cliente.idProdutos +'">'+
-                '<img src="' + cliente.caminhoImagem + '">'+
-                '<div class="hover-content">'+
-                    '<div class="line"></div>'+
-                    '<p>R$'+cliente.precoAtual+'</p>'+
-                    '<h4>'+cliente.nome+'</h4>'+
-                '</div>'+
-                '</a>'+
-        '</div>';
-                    
-        document.getElementById('result').innerHTML += dadosCliente;
-    }
-}
-
 function deletaCliente(id) {
     $.ajax({
         url: '/cliente/deleta?id=' + id,
@@ -46,7 +25,6 @@ function salvaCliente() {
         usuario: form.usuario.value,
         senha: form.senha.value,
         nome: form.nome.value,
-        //nome: "batata",
         celular: form.celular.value,
         CPF: form.CPF.value,
         rua: form.rua.value,
@@ -57,7 +35,6 @@ function salvaCliente() {
         cidade: form.cidade.value,
         estado: form.uf.value,
         email: form.email.value,
-        //dataNascimento: "08/03/1997"
         dataNascimento: form.dataNascimento.value
     };
 
@@ -196,37 +173,3 @@ function resetaCliente() {
     }
 }
 
-function lerProduto(){
-    var param = new URLSearchParams
-        (window.location.search);
-    //console.log(param);
-        if (param.has('id')) {
-            //$(document).ready(function () {
-                $.ajax({
-                    url: '/cliente/lerProduto?id=' + param.get('id'),
-                    dataType: 'json',
-                    error: function (dados) {
-                        alert('Erro: 1 ' + dados.data);
-                    },
-                    success: function (dados) {
-                        if (dados.status === 'ERRO')
-                            alert('Erro: 2 ' + dados.data);
-                        else {
-                            console.log(dados.data[0]);
-                            var dados =
-                            '<p id="preco-produto" class="product-price">'+ dados.data[0].nome +'</p>' +                                
-                            '<p id="titulo-produto">'+ dados.data[0].precoAtual +'</p>' +
-                            '<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>';
-                            document.getElementById('dados').innerHTML = dados;
-
-                            dados.data[0].descricao = "Pudim";
-
-                            var dados2 = '<p > "'+ dados.data[0].descricao +'" </p>';
-
-                            document.getElementById('descricao-produtos').innerHTML = dados2;
-                        }
-                    }
-                });
-            //});
-        }
-}
