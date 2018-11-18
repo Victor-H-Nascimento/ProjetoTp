@@ -3,7 +3,7 @@ function exibeProdutos(produtos) {
         var produto = produtos[i];
         var dadosProdutos =
         
-        '<div class="single-products-catagory clearfix" id="'+ produto.idProdutos +'">'+
+        '<div class="single-products-catagory clearfix" id="'+ produto.idImagensProdutos +'">'+
                 '<a href="detalheProduto.html?id='+ produto.idProdutos +'">'+
                     '<img src="' + produto.caminhoImagem + '">'+
                     '<div class="hover-content">'+
@@ -58,7 +58,7 @@ function lerProduto(){
                             '<div id="product_details_slider" class="carousel slide" data-ride="carousel">' +                                                     
                                 '<div class="carousel-item active">'+
                                     '<a id="imagemProduto" class="gallery_img" href="'+ dados.data[0].caminhoImagem +'">'+
-                                        '<img class="d-block w-100" src="'+ dados.data[0].caminhoImagem +'">'+
+                                        '<img class="d-block w-100"   height="20em" src="'+ dados.data[0].caminhoImagem +'">'+
                                     '</a>'+
                                 '</div>' +                               
                             '</div>'+
@@ -70,7 +70,7 @@ function lerProduto(){
                             '<div class="product-meta-data">'+
                                 '<div class="line"></div>'+
                                 '<p id="preco-produto" class="product-price">'+ dados.data[0].nome +'</p>' +                                
-                                '<p id="titulo-produto">'+ dados.data[0].precoAtual +'</p>' +
+                                '<p id="titulo-produto">R$ '+ dados.data[0].precoAtual +'</p>' +
                                 '<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>'+
                             '</div>'+
 
@@ -109,9 +109,14 @@ function diminuiQntd(){
     var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;
 }
 
-/*function adicionarCarrinho(id){
+function adicionarCarrinho(id){
+    if (req.session.logado) {
     console.log(id);
-    $.ajax({
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+        }
+    /*$.ajax({
         url: '/produtos/adicionarCarinho?id=' + id,
         dataType: 'json',
         error: function (dados) {
@@ -123,5 +128,5 @@ function diminuiQntd(){
             else {
             }
         }
-    }
-}*/
+    }*/
+}

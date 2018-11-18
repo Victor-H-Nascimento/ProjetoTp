@@ -3,7 +3,7 @@ var router = express.Router();
 
 router.get('/lista', function (req, res, next) {
         req.getConnection(function (err, connection) {
-            connection.query("SELECT p.nome, p.idProdutos, p.precoAtual, i.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos", function (err, rows) {
+            connection.query("SELECT p.nome, p.idProdutos, p.precoAtual,i.idImagensProdutos, i.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos", function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: "TEste" });
                 else
