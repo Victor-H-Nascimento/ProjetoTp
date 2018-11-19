@@ -51,10 +51,10 @@ router.post('/adicionarCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
         req.getConnection(function (err, connection) {
-            connection.query('INSERT INTO Compras SET idUsuario ='+ id, function (err, rows) {
+            connection.query('INSERT INTO Compras SET idUsuario =' + id, function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: err });
-                res.json({ status: 'OK', data: rows  });
+                res.json({ status: 'OK', data: rows });
             });
             if (err)
                 res.json({ status: 'ERRO', data: err });
@@ -63,7 +63,7 @@ router.post('/adicionarCarrinho', function (req, res, next) {
         });
         if (err)
             res.json({ status: 'ERRO', data: err });
-    });
+    }
 });
 
 
