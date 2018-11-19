@@ -77,7 +77,24 @@
                     <li><a href="produtos.html">Produtos</a></li>
                     <li class="active"><a href="carrinho.html">Carrinho</a></li>
                     <li><a href="checkout.html">Cadastro</a></li>
-                    <li><a href="">Login</a></li>
+                    <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
+                        <span class="popuptext" id="myPopup">
+                            <form name="formLogin" class="centralizar" method="post">
+                                <span class="xis" onclick="abrePopUp();">X</span> 
+                                <span id="usuarioForm"> Usuário:</span> <br><input type="text" name="login" required><br>
+                                   
+                                Senha: <br><input type="password" name="senha" required><br>
+                                <br>
+                                <div>
+                                    <input class="button" type="button" name="enviar" value="Login" onClick="loginUsuario();">
+                                </div>
+                                <br>
+                                <p>Ainda não tem conta?<br><span class="callCheckout" onclick="teste();">&nbsp;Cadastre-se</span></p>
+                            </form>
+                        </span>
+                    </li>
+                    <li><a href="#" onclick="logoutUsuario();"> Logout</a></li>
+
                 </ul>
             </nav>
             <!-- Button Group -->
