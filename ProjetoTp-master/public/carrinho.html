@@ -19,11 +19,12 @@
   
     <script type="text/javascript" src="js/cliente.js"></script>
     <script type="text/javascript" src="js/produtos.js"></script>
+    <script type="text/javascript" src="js/acesso.js"></script>
 
 
 </head>
 
-<body>
+<body onload="enderecoCarrinho();">
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -135,6 +136,10 @@
                                         </td>
                                     </tr>                                        
                                 </tbody>
+                                <div id="produto">
+
+                                </div>
+                               
                             </table>
                         </div>
                     </div>
@@ -143,7 +148,7 @@
                             <h5>Valor Total</h5>
                             <ul class="summary-table">
                                 <li><span>Subtotal:</span> <span>R$140.00</span></li>
-                                <li><span>Frete:</span> <span>Free</span></li>
+                                <li><span>Frete:</span> <span id="endereco" ></span></li>
                                 <li><span>Desconto:</span> <span>Desconto</span></li>
                                 <li><span>total:</span> <span>R$140.00</span></li>
                             </ul>

@@ -659,6 +659,7 @@ img {
           text-transform: capitalize;
           font-weight: 400; }
     .main-content-wrapper .cart-table-area table tbody {
+      border: 5px solid red;
       width: 100%;
       display: block; }
       .main-content-wrapper .cart-table-area table tbody tr {

@@ -30,10 +30,32 @@ router.get('/lerProduto', function (req, res, next) {
 });
 
 router.post('/adicionarCarrinho', function (req, res, next) {
-    var id = req.query.id; 
-    //console.log(id);
-    req.getConnection(function (err, connection) {
-        connection.query('INSERT * FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos WHERE p.idProdutos=' + id, function (err, rows) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        req.getConnection(function (err, connection) {
+            connection.query('INSERT INTO Compras SET idUsuario ='+ id, function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: rows  });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: err });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.post('/adicionarCarrinho', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        req.getConnection(function (err, connection) {
+            connection.query('INSERT INTO Compras SET idUsuario ='+ id, function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: rows  });
+            });
             if (err)
                 res.json({ status: 'ERRO', data: err });
             //console.log("PUDIM@");    
@@ -43,5 +65,6 @@ router.post('/adicionarCarrinho', function (req, res, next) {
             res.json({ status: 'ERRO', data: err });
     });
 });
+
 
 module.exports = router;
