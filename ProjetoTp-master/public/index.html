@@ -24,6 +24,8 @@
     <script type="text/javascript" src="js/cliente.js"></script>
     <script type="text/javascript" src="js/acesso.js"></script>
     <script type="text/javascript" src="js/produtos.js"></script>
+     <!-- Referencia JS -->
+     <script type="text/javascript" src="js/script.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -46,30 +48,6 @@
             });
         });
     </script>
-
-    <script type="text/javascript">
-        function openwindow() {
-            window.open("login.html", "Login", "menubar=no,top=100,left=500,resizable=no,width=350,height=350");
-        }
-    </script>
-
-    <script>
-        function abrePopUp() {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-        }
-    </script>
-
-<script>
-        function teste() {
-           abrePopUp();
-            window.open("checkout.html","_self");
-        }
-    </script>
-
-
-    <!-- Referencia JS -->
-    <script type="text/javascript" src="js/script.js"></script>
 
 </head>
 
@@ -221,14 +199,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
                                         </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" onclick="javascript:openwindow(); return false;">Login</a>
-                                        </li>
-
-
-
-
+                                        
                                     </ul>
                                 </div>
                             </nav>
