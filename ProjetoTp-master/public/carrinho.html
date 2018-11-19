@@ -19,11 +19,12 @@
   
     <script type="text/javascript" src="js/cliente.js"></script>
     <script type="text/javascript" src="js/produtos.js"></script>
+    <script type="text/javascript" src="js/acesso.js"></script>
 
 
 </head>
 
-<body>
+<body onload="enderecoCarrinho();">
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -129,29 +130,10 @@
                                         <th>Quantidade</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="cart_product_img">
-                                            <a href="#"><img src="img/bg-img/cart1.jpg" alt="Product"></a>
-                                        </td>
-                                        <td class="cart_product_desc">
-                                            <h5>White Modern Chair</h5>
-                                        </td>
-                                        <td class="price">
-                                            <span>R$130</span>
-                                        </td>
-                                        <td class="qty">
-                                            <div class="qty-btn d-flex">
-                                                <p>Qty</p>
-                                                <div class="quantity">
-                                                    <span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus" aria-hidden="true"></i></span>
-                                                    <input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">
-                                                    <span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>                                        
-                                </tbody>
+                                <div id="produto">
+
+                                </div>
+                               
                             </table>
                         </div>
                     </div>
@@ -160,7 +142,7 @@
                             <h5>Valor Total</h5>
                             <ul class="summary-table">
                                 <li><span>Subtotal:</span> <span>R$140.00</span></li>
-                                <li><span>Frete:</span> <span>Free</span></li>
+                                <li><span>Frete:</span> <span id="endereco" ></span></li>
                                 <li><span>Desconto:</span> <span>Desconto</span></li>
                                 <li><span>total:</span> <span>R$140.00</span></li>
                             </ul>

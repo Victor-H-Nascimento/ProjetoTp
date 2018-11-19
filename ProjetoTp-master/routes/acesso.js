@@ -16,7 +16,7 @@ router.post('/login', function (req, res, next) {
                     else {
                         req.session.logado = true;
                         req.session.login = rows[0].login;
-                        res.json({ status: 'OK', data: 'Logado com sucesso!' });
+                        res.json({ status: 'OK', data:  rows });
                     }
                 }
             });

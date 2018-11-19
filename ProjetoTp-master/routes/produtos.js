@@ -29,15 +29,32 @@ router.get('/lerProduto', function (req, res, next) {
     });
 });
 
-router.get('/adicionarCarrinho', function (req, res, next) {
+router.post('/adicionarCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
-        //console.log(id);
         req.getConnection(function (err, connection) {
-            connection.query('SELECT * FROM Produtos WHERE idProdutos=' + id, function (err, rows) {
+            connection.query('INSERT INTO Compras SET idUsuario ='+ id, function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: err });
-                res.json({ status: 'OK', data: rows });
+                res.json({ status: 'OK', data: rows  });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: err });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.post('/adicionarCarrinho', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        req.getConnection(function (err, connection) {
+            connection.query('INSERT INTO Compras SET idUsuario ='+ id, function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: rows  });
             });
             if (err)
                 res.json({ status: 'ERRO', data: err });
@@ -48,5 +65,6 @@ router.get('/adicionarCarrinho', function (req, res, next) {
     }
 
 });
+
 
 module.exports = router;
