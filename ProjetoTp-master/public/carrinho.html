@@ -79,14 +79,24 @@
                     <li><a href="produtos.html">Produtos</a></li>
                     <li class="active"><a href="carrinho.html">Carrinho</a></li>
                     <li><a href="checkout.html">Cadastro</a></li>
-                    <li><a href="">Login</a></li>
+                    <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
+                        <span class="popuptext" id="myPopup">
+                            <form name="formLogin" class="centralizar" method="post">
+                                <span class="xis" onclick="abrePopUp();">X</span> 
+                                <span id="usuarioForm"> Usuário:</span><br>
+                                    <input type="text" name="login" required><br>
+                                    Senha: <br><input type="password" name="senha" required><br><br>
+                                    <div><input class="button" type="button" name="enviar" value="Login" onClick="loginUsuario();"></div><br>
+                                    <p>Ainda não tem conta?<br>
+                                <span class="callCheckout" onclick="teste();">&nbsp;Cadastre-se</span></p>
+                            </form>
+                        </span></li>
                     <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
                         <span class="popuptext" id="myPopUp1">
                             <form name="formCupom" class="centralizar" method="post">
                                 <input class="centralizar" type="text" name="cupom" placeholder="Digite o cupom"><br>
                              </form>
-                        </span>
-                    </li>
+                        </span></li>
                 </ul>
             </nav>
 
@@ -157,7 +167,8 @@
                             <h5>Valor Total</h5>
                             <ul class="summary-table">
                                 <li><span>Subtotal:</span> <span>R$140.00</span></li>
-                                <li><span>Frete:</span> <span id="endereco"></span></li>
+                                <li><span>Frete:</span> <span>R$0.00</span></li>
+                                <li><span>Endereço de entrega:</span> <span id="endereco"></span></li>
                                 <li><span>Desconto:</span> <span>Desconto</span></li>
                                 <li><span>total:</span> <span>R$140.00</span></li>
                             </ul>

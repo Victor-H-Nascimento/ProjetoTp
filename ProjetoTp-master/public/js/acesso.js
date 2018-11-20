@@ -84,15 +84,14 @@ function  retiraLocalStorage() {
 
 function enderecoCarrinho(){
 
-    var dadosEndereco = 
-    '<h5>'+window.localStorage.getItem("rua")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("numero")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("complento")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("bairro")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("cidade")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("estado")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("cep")+'</h5>';
+    var dadosEndereco = "";
+    
+    dadosEndereco = 
+    '<h5>'
+    +window.localStorage.getItem("rua") + ',' 
+    +window.localStorage.getItem("numero") + ',' 
+    +window.localStorage.getItem("cidade") + ',' 
+    +window.localStorage.getItem("estado") + '</h5>';    
     console.log(dadosEndereco);
-
     document.getElementById("endereco").innerHTML = dadosEndereco;
 }
