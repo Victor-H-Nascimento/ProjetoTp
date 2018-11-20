@@ -119,19 +119,7 @@ function  retiraLocalStorage() {
     }
 }
 
-function enderecoCarrinho(){
 
-    var dadosEndereco = "";
-    
-    dadosEndereco = 
-    '<h5>'
-    +window.localStorage.getItem("rua") + ',' 
-    +window.localStorage.getItem("numero") + ',' 
-    +window.localStorage.getItem("cidade") + ',' 
-    +window.localStorage.getItem("estado") + '</h5>';    
-    console.log(dadosEndereco);
-    document.getElementById("endereco").innerHTML = dadosEndereco;
-}
 
 function criaCarrinho(){
     console.log(window.localStorage.getItem("id"));

@@ -139,27 +139,7 @@ function diminuiQntd(){
 
 
 function adicionarCarrinho(id){
-    if (req.session.logado) {
-    console.log(id);
-    }
-    else {
-        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
-        }
-    /*$.ajax({
-        url: '/produtos/adicionarCarinho?id=' + id,
-        dataType: 'json',
-        error: function (dados) {
-            alert('Erro: 1 ' + dados.data);
-        },
-        success: function (dados) {
-            if (dados.status === 'ERRO')
-                alert('Erro: 2 ' + dados.data);
-            else {
-            }
-        }
-    }*/
-    //alert(id);
-    //criaCarrinho();
+  
     var effect = document.getElementById('qty');// pego a quantidade de itens comprados
     var valor = window.sessionStorage.getItem('valorProduto');//valor do produto
     var idComprasAux = window.localStorage.getItem("idCompras");//lista de compras
@@ -192,4 +172,63 @@ function adicionarCarrinho(id){
     });    
 }
 
+function enderecoCarrinho(){
+    $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+        url: '/produtos/lerCarrinho?id=' + window.localStorage.getItem("idCompras"),
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em ler o carrinho ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                  console.log(dados.data);
+                  console.log(dados.data.length);
+                  exibeCarrinho(dados.data);
+                
+                }
+                  
+            }
+        });
+
+
+
+    dadosEndereco = 
+    '<h5>'
+    +window.localStorage.getItem("rua") + ',' 
+    +window.localStorage.getItem("numero") + ',' 
+    +window.localStorage.getItem("cidade") + ',' 
+    +window.localStorage.getItem("estado") + '</h5>';    
+    console.log(dadosEndereco);
+    document.getElementById("endereco").innerHTML = dadosEndereco;
+}
+
     
+function exibeCarrinho(dados){
+    for(var i = 0; i < dados.length; i++){
+        var dados=
+            '<tr>' +
+            '<td class="cart_product_img">' +
+            '<a href="#"><img src="img/bg-img/cart1.jpg" alt="Product"></a>' +
+            '</td>' +
+            '<td class="cart_product_desc">' +
+            '<h5>White Modern Chair</h5>' +
+            '</td>' +
+            '<td class="price">' +
+            ' <span>R$140</span>' +
+            '</td>' +
+            '<td class="qty">' +
+            '<div class="qty-btn d-flex">' +
+            '<p>Qtd</p>' +
+            '<div class="quantity">' +
+            '  <span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
+            '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="1">' +
+            ' <span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
+            ' </div>' +
+            '</div>' +
+            '</td>' +
+            '</tr>';
+            document.getElementById("listaCarrinho").innerHTML += dados;
+    }
+}
