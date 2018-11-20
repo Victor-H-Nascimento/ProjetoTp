@@ -179,5 +179,14 @@ function teste() {
     window.open("checkout.html", "_self");
 }
 
+function abrePopUp1() {
+    var popup = document.getElementById("myPopUp1");
+    popup.classList.toggle("show");
+}
 
+
+function trocaPagina() {
+    abrePopUp1();
+    window.open("carrinho.html", "_self");
+}
 
