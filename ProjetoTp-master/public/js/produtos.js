@@ -139,6 +139,25 @@ function diminuiQntd(){
 
 
 function adicionarCarrinho(id){
+    if (req.session.logado) {
+    console.log(id);
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+        }
+    /*$.ajax({
+        url: '/produtos/adicionarCarinho?id=' + id,
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro: 1 ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'ERRO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+            }
+        }
+    }*/
     //alert(id);
     //criaCarrinho();
     var effect = document.getElementById('qty');// pego a quantidade de itens comprados

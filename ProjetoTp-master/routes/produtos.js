@@ -2,16 +2,16 @@ var express = require('express');
 var router = express.Router();
 
 router.get('/lista', function (req, res, next) {
-    req.getConnection(function (err, connection) {
-        connection.query("SELECT p.nome, p.idProdutos, p.precoAtual,i.idImagensProdutos, i.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos", function (err, rows) {
+        req.getConnection(function (err, connection) {
+            connection.query("SELECT p.nome, p.idProdutos, p.precoAtual,i.idImagensProdutos, i.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos", function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: "TEste" });
+                else
+                    res.json({ status: 'OK', data: rows });
+            });
             if (err)
-                res.json({ status: 'ERRO', data: "TEste" });
-            else
-                res.json({ status: 'OK', data: rows });
+                res.json({ status: 'ERRO', data: "TESTE2" });
         });
-        if (err)
-            res.json({ status: 'ERRO', data: "TESTE2" });
-    });
 });
 
 router.get('/lerProduto', function (req, res, next) {
@@ -64,6 +64,8 @@ router.post('/criaCarrinho', function (req, res, next) {
             if (err)
                 res.json({ status: 'ERRO', data: "Deu bom ..." });
         });
+        if (err)
+            res.json({ status: 'ERRO', data: err });
     }
     else {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Node + MySQL</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/cliente.js"></script>
+    <script type="text/javascript" src="javascripts/acesso.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: '/cliente/lista',
+                dataType: 'json',
+                error: function (dados) {
+                    alert('Erro: 1 ' + dados.data);
+                },
+                success: function (dados) {
+                    if (dados.status === 'ERRO')
+                        alert('Erro: ' + dados.data);
+                    else
+                        if (dados.status === 'SEMACESSO') {
+                            alert('Erro: ' + dados.data);
+                            window.location.href = '/login.html';
+                        }
+                        else
+                            exibeClientes(dados.data);
+                }
+            });
+        });
+    </script>
+
+</head>
+
+<body>
+    <div id="result"></div>
+    <a href="#" onClick="logoutUsuario();">LOGOUT</a><br>
+    <a href="insereCliente.html">INCLUIR CLIENTE</a><br><br>
+</body>
+
+</html>

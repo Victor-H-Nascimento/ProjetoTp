@@ -1,11 +1,10 @@
 function loginUsuario() {
-
     var form = document.formLogin;
     var input = {
         login: form.login.value,
         senha: form.senha.value
     };
-    console.log(input);
+
     $.ajax({
         url: '/acesso/login',
         type: 'post',
@@ -93,8 +92,6 @@ function logoutUsuario() {
             if (dados.status === 'ERRO')
                 alert('Erro: ' + dados.data);
             else {
-                retiraLocalStorage();
-                retiraUsuario();
                 alert(dados.data);
                 window.location.href = '/index.html';
 
@@ -102,8 +99,9 @@ function logoutUsuario() {
             
             }
         }
-    });
-}
+    });    
+} 
+   
 
 function retiraUsuario() {
     if (!window.localStorage) {
@@ -123,16 +121,15 @@ function  retiraLocalStorage() {
 
 function enderecoCarrinho(){
 
-    var dadosEndereco = 
-    '<h5>'+window.localStorage.getItem("rua")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("numero")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("complento")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("bairro")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("cidade")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("estado")+'</h5>'+
-    '<h5>'+window.localStorage.getItem("cep")+'</h5>';
+    var dadosEndereco = "";
+    
+    dadosEndereco = 
+    '<h5>'
+    +window.localStorage.getItem("rua") + ',' 
+    +window.localStorage.getItem("numero") + ',' 
+    +window.localStorage.getItem("cidade") + ',' 
+    +window.localStorage.getItem("estado") + '</h5>';    
     console.log(dadosEndereco);
-
     document.getElementById("endereco").innerHTML = dadosEndereco;
 }
 

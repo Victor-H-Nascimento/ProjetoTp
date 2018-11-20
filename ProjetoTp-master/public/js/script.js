@@ -113,7 +113,7 @@ http://www.kadunew.com/blog/html/botao-mostrar-ou-ocultar-senha
 */
 
 
-
+//Mostrar e Esconder senha
 $(document).ready(function () {
 
     // Click event of the showPassword button
@@ -164,16 +164,29 @@ $(document).ready(function () {
 
 
 //Login novo
+
+function openwindow() {
+    window.open("login.html", "Login", "menubar=no,top=100,left=500,resizable=no,width=350,height=350");
+}
+
 function abrePopUp() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
 }
-
 
 function teste() {
     abrePopUp();
     window.open("checkout.html", "_self");
 }
 
+function abrePopUp1() {
+    var popup = document.getElementById("myPopUp1");
+    popup.classList.toggle("show");
+}
 
+
+function trocaPagina() {
+    abrePopUp1();
+    window.open("carrinho.html", "_self");
+}
 

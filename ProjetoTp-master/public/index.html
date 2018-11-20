@@ -24,7 +24,8 @@
     <script type="text/javascript" src="js/cliente.js"></script>
     <script type="text/javascript" src="js/acesso.js"></script>
     <script type="text/javascript" src="js/produtos.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
+     <!-- Referencia JS -->
+     <script type="text/javascript" src="js/script.js"></script>
 
     <script>
         $(document).ready(function () {
@@ -48,29 +49,9 @@
         });
     </script>
 
-    <script type="text/javascript">
-        function openwindow() {
-            window.open("login.html", "Login", "menubar=no,top=100,left=500,resizable=no,width=350,height=350");
-        }
-    </script>
-
-    <script>
-        function abrePopUp() {
-            var popup = document.getElementById("myPopup");
-            popup.classList.toggle("show");
-        }
-    </script>
-
-    <script>
-        function teste() {
-           abrePopUp();
-            window.open("checkout.html","_self");
-        }
-    </script>
-
 </head>
 
-<body onload="colocarUsuario();">
+<body>
     <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -81,7 +62,7 @@
                 <div class="col-12">
                     <div class="search-content">
                         <form action="#" method="get">
-                            <input type="search" name="search" id="search" placeholder="Digite o produto que está buscando">
+                            <input type="search" name="search" id="search" placeholder="O que está procurando?">
                             <button type="submit"><img src="img/core-img/search.png" alt=""></button>
                         </form>
                     </div>
@@ -115,9 +96,6 @@
             <!-- Logo -->
             <div class="logo">
                 <a href="index.html"><img src="img/etiqueta_2_.jpg" alt=""></a>
-                <!--<br><br>
-                <h1 id='test'>PUDIM</h1>-->
-                <div id="login"></div>
             </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
@@ -125,7 +103,6 @@
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="loja.html">Loja</a></li>
                     <li><a href="produtos.html"> Produtos</a></li>
-
         
                    
                     <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
@@ -144,10 +121,10 @@
                                     <p>Ainda não tem conta?<br><span class="callCheckout" onclick="teste();">&nbsp;Cadastre-se</span></p>
     
                                 </form></span>
+
+                        
+
                     </li>
-
-                    <li><a href="#" onclick="logoutUsuario();"> Logout</a></li>
-
 
                 </ul>
             </nav>
@@ -222,14 +199,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
                                         </li>
-
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="#" onclick="javascript:openwindow(); return false;">Login</a>
-                                        </li>
-
-
-
-
+                                        
                                     </ul>
                                 </div>
                             </nav>
