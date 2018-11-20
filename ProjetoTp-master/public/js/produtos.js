@@ -35,6 +35,7 @@ function lerProduto(){
                         if (dados.status === 'ERRO')
                             alert('Erro: 2 ' + dados.data);
                         else {
+                            window.sessionStorage.valorProduto = dados.data[0].precoAtual;
                           var dados =  '<div class="col-12 col-lg-7">'+
                         '<div class="single_product_thumb">'+
                             
@@ -76,6 +77,8 @@ function lerProduto(){
                         '</div>'+
                     '</div>';
                     document.getElementById('dadosProduto').innerHTML = dados;
+
+
                         }
                     }
                 });
@@ -92,22 +95,82 @@ function diminuiQntd(){
     var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;
 }
 
-function adicionarCarrinho(id){
-    //alert(id);
-
-    $.ajax({
-        url: '/produtos/adicionarCarrinho?id=' + id,
+/*function criaCarrinho(){
+    console.log(window.localStorage.getItem("id"));
+    $.ajax({//cria um carrinho para o cliente qnd ele loga
+        url: '/produtos/criaCarrinho?id=' + window.localStorage.getItem("id"),
         dataType: 'json',
         type: 'post',
         error: function (dados) {
-            alert('Erro: 1 ' + dados.data);
+            alert('Erro em criar o carrinho 3 ' + dados.data);
         },
         success: function (dados) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                  console.log(dados.data);
+                  alert(dados.data);
+                 $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+                    url: '/produtos/idCarrinho',
+                    dataType: 'json',
+
+                    error: function (dados) {
+                        alert('Erro em criar o carrinho' + dados.data);
+                    },
+                    success: function (dados) {
+                        if (dados.status === 'SEMACESSO')
+                            alert('Erro: 2 ' + dados.data);
+                        else {
+                              console.log(dados.data[0].id);
+                            window.localStorage.idCompras = dados.data[0].id;
+                              
+                        }
+                    }
+                });
+            
+
+
             }
         }
     });
+
+   
+}*/
+
+
+
+function adicionarCarrinho(id){
+    //alert(id);
+    //criaCarrinho();
+    var effect = document.getElementById('qty');// pego a quantidade de itens comprados
+    var valor = window.sessionStorage.getItem('valorProduto');//valor do produto
+    var idComprasAux = window.localStorage.getItem("idCompras");//lista de compras
+
+    var dadosProdutos = ({
+        idCompras: idComprasAux,
+        idProd: id,
+        valorProd: valor,
+        qntdProd: effect.value
+    });
+
+    console.log(dadosProdutos);
+
+    $.ajax({
+        url: '/produtos/adicionarCarrinho',
+        dataType: 'json',
+        type: 'post',
+        data: dadosProdutos,
+        error: function (dados) {
+            alert('Erro: 1 AddCarrinho ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'ERRO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                alert(dados.data);
+
+            }
+        }
+    });    
 }
+
+    

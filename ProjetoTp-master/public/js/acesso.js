@@ -17,10 +17,45 @@ function loginUsuario() {
             if (dados.status === 'ERRO')
                 alert('Erro: ' + dados.data);
             else {
-                console.log(dados.data[0]);
-                insereLocalStorage(dados.data[0]);
+                console.log(dados.data.idUsuarios);
+                insereLocalStorage(dados.data);
                 alert('Logado com sucesso!');
-                window.location.href = '/index.html';
+                //window.location.href = '/index.html';
+
+                $.ajax({//cria um carrinho para o cliente qnd ele loga
+                    url: '/produtos/criaCarrinho?id=' + dados.data.idUsuarios,
+                    dataType: 'json',
+                    type: 'post',
+                    error: function (dados) {
+                        alert('Erro em criar o carrinho 1 '  + dados.data);
+                    },
+                    success: function (dados) {
+                        if (dados.status === 'SEMACESSO')
+                            alert('Erro: 2 ' + dados.data);
+                        else {
+                              alert(dados.data);
+                             $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+                                url: '/produtos/idCarrinho',
+                                dataType: 'json',
+                                error: function (dados) {
+                                    alert('Erro em criar o carrinho 2 ' + dados.data);
+                                },
+                                success: function (dados) {
+                                    if (dados.status === 'SEMACESSO')
+                                        alert('Erro: 2 ' + dados.data);
+                                    else {
+                                          console.log(dados.data[0].id);
+                                        window.localStorage.idCompras = dados.data[0].id;
+                                          
+                                    }
+                                }
+                            });
+                        
+            
+            
+                        }
+                    }
+                });
             }
         }
     });
@@ -28,7 +63,7 @@ function loginUsuario() {
 
 function  insereLocalStorage(dados) {
     //localStorage
-    console.log(dados);
+    //console.log(dados);
     window.localStorage.usuario = dados.usuario;
     window.localStorage.id = dados.idUsuarios;
     window.localStorage.rua = dados.rua;
@@ -62,6 +97,9 @@ function logoutUsuario() {
                 retiraUsuario();
                 alert(dados.data);
                 window.location.href = '/index.html';
+
+                
+            
             }
         }
     });
@@ -96,4 +134,44 @@ function enderecoCarrinho(){
     console.log(dadosEndereco);
 
     document.getElementById("endereco").innerHTML = dadosEndereco;
+}
+
+function criaCarrinho(){
+    console.log(window.localStorage.getItem("id"));
+    $.ajax({//cria um carrinho para o cliente qnd ele loga
+        url: '/produtos/criaCarrinho?id=' + window.localStorage.getItem("id"),
+        dataType: 'json',
+        type: 'post',
+        error: function (dados) {
+            alert('Erro em criar o carrinho 1 '  + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                  alert(dados.data);
+                 $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+                    url: '/produtos/idCarrinho',
+                    dataType: 'json',
+                    error: function (dados) {
+                        alert('Erro em criar o carrinho 2 ' + dados.data);
+                    },
+                    success: function (dados) {
+                        if (dados.status === 'SEMACESSO')
+                            alert('Erro: 2 ' + dados.data);
+                        else {
+                              console.log(dados.data[0].id);
+                            window.localStorage.idCompras = dados.data[0].id;
+                              
+                        }
+                    }
+                });
+            
+
+
+            }
+        }
+    });
+
+   
 }
