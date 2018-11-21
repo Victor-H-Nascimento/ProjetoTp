@@ -38,10 +38,6 @@ h6 {
   font-weight: 400; }
 
 
-.apareceNome{
-  color: #000000;
-}
-
 p {
   color: #6d6d6d;
   font-size: 16px;
@@ -1586,7 +1582,7 @@ p{
 }
 
 .callCheckout.hover{
-  color: orange;
+  color: #eeac11;
 }
 
 #titulo-produto{
@@ -1594,4 +1590,8 @@ p{
   color: black;
   text-decoration: bolder;
   display: block;
+}
+
+.nomeAposLogin{
+  color: #eeac11;
 }

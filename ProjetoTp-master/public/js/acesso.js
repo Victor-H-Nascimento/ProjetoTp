@@ -83,7 +83,7 @@ function  insereLocalStorage(dados) {
 
 function colocarUsuario() {
     if (window.localStorage) {
-        var dados = '<h3>Olá,'+ window.localStorage.getItem("nome") +'</h3>';
+        var dados = '<h2 class="nomeAposLogin">Olá,'+ window.localStorage.getItem("nome") +'</h2>';
         document.getElementById('nomeUsuario').innerHTML = dados;
     }
 }
