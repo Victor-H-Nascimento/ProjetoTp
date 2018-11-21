@@ -172,7 +172,7 @@ function adicionarCarrinho(id){
     });    
 }
 
-function enderecoCarrinho(){
+function dadosCarrinho(){
     $.ajax({//idCarrinho para pegar o id do carrinho do usuario
         url: '/produtos/lerCarrinho?id=' + window.localStorage.getItem("idCompras"),
         dataType: 'json',
@@ -184,7 +184,6 @@ function enderecoCarrinho(){
                 alert('Erro: 2 ' + dados.data);
             else {
                   console.log(dados.data);
-                  console.log(dados.data.length);
                   exibeCarrinho(dados.data);
                 
                 }
@@ -206,9 +205,43 @@ function enderecoCarrinho(){
 
     
 function exibeCarrinho(dados){
-    for(var i = 0; i < dados.length; i++){
-        var dados=
+    var aux = dados.length;
+    var valorTotal = 0;
+    for(var i = 0; i < aux; i++){
+
+        var dadosCarrinho =
             '<tr>' +
+            '<td class="cart_product_img">' +
+            '<a href="#"><img src="'+ dados[i].caminhoImagem +'" alt="Product"></a>' +
+            '</td>' +
+            '<td class="cart_product_desc">' +
+            '<h5>'+dados[i].nome+'</h5>' +
+            '</td>' +
+            '<td class="price">' +
+            ' <span>R$'+dados[i].precoAtual+'</span>' +
+            '</td>' +
+            '<td class="qty">' +
+            '<div class="qty-btn d-flex">' +
+            '<p>Qtd</p>' +
+            '<div class="quantity">' +
+            '  <span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
+            '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="'+dados[i].quantidadeComprada+'">' +
+            ' <span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
+            ' </div>' +
+            '</div>' +
+            '</td>' +
+            '</tr>';
+
+            document.getElementById("listaCarrinho").innerHTML += dadosCarrinho;
+            valorTotal += dados[i].precoAtual * dados[i].quantidadeComprada;
+    }
+    var dadosValor = 
+    '<h5>R$'+ valorTotal+ '</h5>';    
+    document.getElementById("total").innerHTML = dadosValor;
+    //console.log(valorTotal);
+}
+
+/*'<tr>' +
             '<td class="cart_product_img">' +
             '<a href="#"><img src="img/bg-img/cart1.jpg" alt="Product"></a>' +
             '</td>' +
@@ -228,7 +261,4 @@ function exibeCarrinho(dados){
             ' </div>' +
             '</div>' +
             '</td>' +
-            '</tr>';
-            document.getElementById("listaCarrinho").innerHTML += dados;
-    }
-}
+            '</tr>';*/

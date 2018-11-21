@@ -47,7 +47,7 @@ router.post('/insere', function (req, res, next) {
 router.post('/altera', function (req, res, next) {
     var input = req.body;
     var id = req.query.id;
-    console.log(input);
+    //console.log(input);
     req.getConnection(function (err, connection) {
         connection.query("UPDATE cliente SET ? WHERE id = ?", [input, id], function (err, rows) {
             if (err) {

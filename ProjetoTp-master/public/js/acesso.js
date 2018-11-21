@@ -7,6 +7,7 @@ function loginUsuario() {
 
     $.ajax({
         url: '/acesso/login',
+        dataType: 'json',
         type: 'post',
         data: input,
         error: function (dados) {
@@ -22,7 +23,7 @@ function loginUsuario() {
                 //window.location.href = '/index.html';
 
                 $.ajax({//cria um carrinho para o cliente qnd ele loga
-                    url: '/produtos/criaCarrinho?id=' + dados.data.idUsuarios,
+                    url: '/acesso/criaCarrinho?id=' + dados.data.idUsuarios,
                     dataType: 'json',
                     type: 'post',
                     error: function (dados) {
@@ -33,8 +34,8 @@ function loginUsuario() {
                             alert('Erro: 2 ' + dados.data);
                         else {
                               alert(dados.data);
-                             $.ajax({//idCarrinho para pegar o id do carrinho do usuario
-                                url: '/produtos/idCarrinho',
+                              $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+                                url: '/acesso/idCarrinho',
                                 dataType: 'json',
                                 error: function (dados) {
                                     alert('Erro em criar o carrinho 2 ' + dados.data);
@@ -59,6 +60,8 @@ function loginUsuario() {
         }
     });
 }
+
+/**/
 
 function  insereLocalStorage(dados) {
     //localStorage
@@ -93,6 +96,7 @@ function logoutUsuario() {
                 alert('Erro: ' + dados.data);
             else {
                 alert(dados.data);
+                window.localStorage.clear();
                 window.location.href = '/index.html';
 
                 

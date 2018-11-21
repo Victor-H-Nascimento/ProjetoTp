@@ -32,7 +32,7 @@ router.get('/lerProduto', function (req, res, next) {
 router.post('/adicionarCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var input = req.body;
-        console.log(input);
+        //console.log("PUDIM 3 " + input);
         req.getConnection(function (err, connection) {
             connection.query('INSERT INTO ProdutosComprados SET idCompras = ?, idProdutos = ?, valorUnitario = ?, quantidadeComprada = ? ',[ input.idCompras ,input.idProd, input.valorProd, input.qntdProd], function (err, rows) {
                 if (err)
@@ -93,9 +93,9 @@ router.get('/idCarrinho', function (req, res, next) {
 router.get('/lerCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
-        console.log(id);
+        //console.log(id);
         req.getConnection(function (err, connection) {
-            connection.query('SELECT * FROM ProdutosComprados WHERE idCompras = ' + id, function (err, rows) {
+            connection.query('SELECT p.nome, p.precoAtual, pc.quantidadeComprada, i.caminhoImagem  FROM ProdutosComprados as pc, Produtos as p, ImagensProdutos as i WHERE p.idProdutos = i.idProdutos and pc.idProdutos = p.idProdutos and pc.idCompras = ' + id, function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: err });
                 res.json({ status: 'OK', data: rows });
