@@ -67,6 +67,9 @@ function loginUsuario() {
 function  insereLocalStorage(dados) {
     //localStorage
     //console.log(dados);
+
+    var spl = dados.nome.split(' ');
+    window.localStorage.nome = spl[0];
     window.localStorage.usuario = dados.usuario;
     window.localStorage.id = dados.idUsuarios;
     window.localStorage.rua = dados.rua;
@@ -80,7 +83,7 @@ function  insereLocalStorage(dados) {
 
 function colocarUsuario() {
     if (window.localStorage) {
-        var dados = '<h3>Olá,'+ window.localStorage.getItem("usuario") +'</h3>';
+        var dados = '<h3>Olá,'+ window.localStorage.getItem("nome") +'</h3>';
         document.getElementById('nomeUsuario').innerHTML = dados;
     }
 }
