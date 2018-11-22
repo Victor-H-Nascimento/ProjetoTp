@@ -20,6 +20,7 @@ function loginUsuario() {
                 console.log(dados.data.idUsuarios);
                 insereLocalStorage(dados.data);
                 alert('Logado com sucesso!');
+                colocarUsuario();
                 //window.location.href = '/index.html';
 
                 $.ajax({//cria um carrinho para o cliente qnd ele loga
@@ -67,6 +68,9 @@ function loginUsuario() {
 function  insereLocalStorage(dados) {
     //localStorage
     //console.log(dados);
+
+    var spl = dados.nome.split(' ');
+    window.localStorage.nome = spl[0];
     window.localStorage.usuario = dados.usuario;
     window.localStorage.id = dados.idUsuarios;
     window.localStorage.rua = dados.rua;
@@ -80,8 +84,8 @@ function  insereLocalStorage(dados) {
 
 function colocarUsuario() {
     if (window.localStorage) {
-        var dados = '<h1>Olá,'+ window.localStorage.getItem("usuario") +'</h1>';
-        document.getElementById('login').innerHTML = dados;
+        var dados = '<h2 class="nomeAposLogin">Olá,'+ window.localStorage.getItem("nome") +'</h2>';
+        document.getElementById('nomeUsuario').innerHTML = dados;
     }
 }
 
