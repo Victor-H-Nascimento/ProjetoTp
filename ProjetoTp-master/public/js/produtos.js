@@ -235,30 +235,38 @@ function exibeCarrinho(dados){
             document.getElementById("listaCarrinho").innerHTML += dadosCarrinho;
             valorTotal += dados[i].precoAtual * dados[i].quantidadeComprada;
     }
+    window.localStorage.valorTotal = valorTotal;
     var dadosValor = 
-    '<h5>R$'+ valorTotal+ '</h5>';    
+    '<h5 id="dadosValor" >R$'+ valorTotal+ '</h5>';    
     document.getElementById("total").innerHTML = dadosValor;
     //console.log(valorTotal);
 }
 
-/*'<tr>' +
-            '<td class="cart_product_img">' +
-            '<a href="#"><img src="img/bg-img/cart1.jpg" alt="Product"></a>' +
-            '</td>' +
-            '<td class="cart_product_desc">' +
-            '<h5>White Modern Chair</h5>' +
-            '</td>' +
-            '<td class="price">' +
-            ' <span>R$140</span>' +
-            '</td>' +
-            '<td class="qty">' +
-            '<div class="qty-btn d-flex">' +
-            '<p>Qtd</p>' +
-            '<div class="quantity">' +
-            '  <span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
-            '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="1">' +
-            ' <span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
-            ' </div>' +
-            '</div>' +
-            '</td>' +
-            '</tr>';*/
+function finalizaCompra(){
+
+    var dadosFinalizaCompra = ({
+        idCompras: window.localStorage.getItem("idCompras"),
+        valor: window.localStorage.getItem("valorTotal")
+    }); 
+
+    console.log(dadosFinalizaCompra);
+    $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+        url: '/produtos/finalizaCompra',
+        dataType: 'json',
+        type: 'post',
+        data: dadosFinalizaCompra,
+        error: function (dados) {
+            alert('Erro ao finalizar a compra ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                  alert(dados.data);
+                  window.localStorage.compraFinalizada = true;
+                  window.location.href = '/index.html'
+                }
+                  
+            }
+        });
+}

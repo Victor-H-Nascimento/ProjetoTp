@@ -46,6 +46,7 @@ function loginUsuario() {
                                     else {
                                           console.log(dados.data[0].id);
                                         window.localStorage.idCompras = dados.data[0].id;
+                                      
                                           
                                     }
                                 }
@@ -126,9 +127,9 @@ function  retiraLocalStorage() {
 
 
 function criaCarrinho(){
-    console.log(window.localStorage.getItem("id"));
+    console.log("Teste " + window.localStorage.getItem("id"));
     $.ajax({//cria um carrinho para o cliente qnd ele loga
-        url: '/produtos/criaCarrinho?id=' + window.localStorage.getItem("id"),
+        url: '/acesso/criaCarrinho?id=' + window.localStorage.getItem("id"),
         dataType: 'json',
         type: 'post',
         error: function (dados) {
@@ -140,7 +141,7 @@ function criaCarrinho(){
             else {
                   alert(dados.data);
                  $.ajax({//idCarrinho para pegar o id do carrinho do usuario
-                    url: '/produtos/idCarrinho',
+                    url: '/acesso/idCarrinho',
                     dataType: 'json',
                     error: function (dados) {
                         alert('Erro em criar o carrinho 2 ' + dados.data);
@@ -149,8 +150,9 @@ function criaCarrinho(){
                         if (dados.status === 'SEMACESSO')
                             alert('Erro: 2 ' + dados.data);
                         else {
-                              console.log(dados.data[0].id);
+                            console.log(dados.data[0].id);
                             window.localStorage.idCompras = dados.data[0].id;
+                            window.localStorage.compraFinalizada = false;
                               
                         }
                     }
