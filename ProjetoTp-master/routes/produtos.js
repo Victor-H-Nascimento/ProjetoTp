@@ -68,24 +68,6 @@ router.post('/finalizaCompra', function (req, res, next) {
     }
 });
 
-/*router.get('/idCarrinho', function (req, res, next) {
-    if (req.session.logado) {
-  
-        req.getConnection(function (err, connection) {
-            connection.query('SELECT LAST_INSERT_ID() as id', function (err, rows) {
-                if (err)
-                    res.json({ status: 'ERRO', data: err });
-                res.json({ status: 'OK', data: rows });
-            });
-            if (err)
-                res.json({ status: 'ERRO', data: rows });
-        });
-    }
-    else {
-        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
-    }
-});*/
-
 router.get('/lerCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;

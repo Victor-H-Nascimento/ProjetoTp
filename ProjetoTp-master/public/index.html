@@ -54,20 +54,8 @@
 
     <script>
         $(document).ready(function () {
-            if (window.localStorage.getItem("compraFinalizada") == "undefined") {
-                            alert("compraFinalizada = undefined");
-                        }
-
-                        if (window.localStorage.getItem("compraFinalizada") == "null") {
-                            alert("compraFinalizada = null");
-                        }
-
-                        if (window.localStorage.getItem("compraFinalizada") == "false") {
-                            alert("compraFinalizada = false");
-                        }
-
                         if (window.localStorage.getItem("compraFinalizada") == "true") {
-                            alert("compraFinalizada = true");
+                            alert("Compra finalizada, iniciando um novo carrinho de compras");
                             criaCarrinho();
                         }
         });

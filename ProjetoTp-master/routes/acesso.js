@@ -40,10 +40,45 @@ router.post('/logout', function (req, res, next) {
     });
 });
 
+router.post('/destroiProdutosComprados', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        //console.log("PUDIM 7 " + id)
+        req.getConnection(function (err, connection) {
+            connection.query('DELETE FROM ProdutosComprados WHERE idCompras =' + id, function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: "ProdutosComprados apagados ..." });
+            });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+
+router.post('/destruirCompras', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        //console.log("PUDIM 6 " + id)
+        req.getConnection(function (err, connection) {
+            connection.query('DELETE FROM Compras WHERE idCompras =' + id, function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: "Compras apagada ..." });
+            });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});//SELECT * FROM ProdutosComprados as p INNER JOIN Compras c ON c.idCompras = p.idCompras
+
 router.post('/criaCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
-        console.log("PUDIM 6 " + id)
+        //console.log("PUDIM 6 " + id)
         req.getConnection(function (err, connection) {
             connection.query('INSERT INTO Compras SET idUsuario = '+ id, function (err, rows) {
                 if (err)
