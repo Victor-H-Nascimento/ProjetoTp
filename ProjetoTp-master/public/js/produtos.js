@@ -235,10 +235,22 @@ function exibeCarrinho(dados){
             document.getElementById("listaCarrinho").innerHTML += dadosCarrinho;
             valorTotal += dados[i].precoAtual * dados[i].quantidadeComprada;
     }
-    var dadosValor = 
-    '<h5>R$'+ valorTotal+ '</h5>';    
-    document.getElementById("total").innerHTML = dadosValor;
-    //console.log(valorTotal);
+
+
+    if(valorTotal === 0)
+    {
+        var dadosValor = 
+        '<h5>R$ 0.00'+'</h5>';    
+        document.getElementById("total").innerHTML = dadosValor;
+    }
+
+    else
+    {
+        var dadosValor = 
+        '<h5>R$'+ valorTotal+ '</h5>';    
+        document.getElementById("total").innerHTML = dadosValor;
+    }
+
 }
 
 /*'<tr>' +
