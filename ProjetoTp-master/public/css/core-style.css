@@ -23,6 +23,19 @@
   margin: 0;
   padding: 0; }
 
+.errado{
+  background-image: url(../img/wrong.gif);
+  background-position: 98%; 
+  background-repeat: no-repeat;
+  opacity: 1;
+}
+  
+.correta {
+  background-image: url(../img/check.png);
+  background-position: 98%; 
+  background-repeat: no-repeat;
+}
+
 body {
   font-family: "helveticaneuemedium";
   font-size: 16px; }

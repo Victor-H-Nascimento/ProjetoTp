@@ -161,7 +161,23 @@ $(document).ready(function () {
     });
 });
 
+//comparar se as senhas sao iguais
+function testaSenha(){
+    var senha = document.formCliente.senha.value;
+    var confirmaSenha = document.formCliente.confirmaSenha.value;
 
+    if(senha == confirmaSenha){
+        console.log("Senhas iguais");
+        document.getElementById("confirmaSenha").classList.remove("errado");
+        document.getElementById("confirmaSenha").classList.add('correta');
+    }
+    else{
+        console.log("Senhas Diferentes");
+        document.getElementById("confirmaSenha").classList.remove("correta");
+        document.getElementById("confirmaSenha").classList.add('errado');
+    }
+    
+}
 
 //Login novo
 

@@ -233,7 +233,7 @@ function exibeCarrinho(dados){
             '<h5>'+dados[i].nome+'</h5>' +
             '</td>' +
             '<td class="price">' +
-            '<span>R$'+dados[i].precoAtual+'</span>' +
+            ' <span>R$'+dados[i].precoAtual+'</span>' +
             '</td>' +
             '<td class="qty">' +
             '<div class="qty-btn d-flex">' +

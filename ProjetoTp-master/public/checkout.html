@@ -28,6 +28,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/cliente.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
     <!-- Title  -->
     <title>Cadastro</title>
 
@@ -128,8 +129,9 @@
                                     </div>
                                     
                                     <div class="col-md-6 mb-3">
-                                        <input type="password" name="confirmaSenha" class="form-control" id="confirmaSenha"
-                                            value="" placeholder="Confirme sua senha" required>
+                                        <input type="password" name="confirmaSenha" class="form-control errado" id="confirmaSenha"
+                                            onkeyup="testaSenha();" value="" placeholder="Confirme sua senha" required>
+                                            
                                     </div>
 
                                     <div class="col-md-6 mb-3">
@@ -171,7 +173,7 @@
 
                                     <div class="col-md-6 mb-3">
                                         <input type="text" name="complemento" class="form-control" id="complemento"
-                                            value="" placeholder="Complemento">
+                                            value="" placeholder="Complemento" >
                                     </div>
 
                                     <div class="col-md-6 mb-3">
