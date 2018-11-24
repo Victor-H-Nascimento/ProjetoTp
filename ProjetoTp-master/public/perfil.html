@@ -31,7 +31,7 @@
    
 </head>
 
-<body onload="exibirDados();">
+<body onload=" verificaLogin(), exibirDados();">
     <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -90,15 +90,15 @@
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li class="active"><a href="index.html">Home</a></li>
-                    <li><a href="perfil.html"> Perfil</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="perfil.html"> Perfil</a></li>
                     <li><a href="#" onclick="historicoCompra(window.localStorage.getItem(id));">Histórico de compras</a></li>
                     <li><a href="#" onclick="redefinirSenha(window.localStorage.getItem(id));"> Redefinir Senha</a></li>
                     <li><a href="#" onclick="alterarDadosPessoais(window.localStorage.getItem(id));">Alterar dados pessoais</a></li>
                     <li><a href="#" onclick="alterarDadosEntrega(window.localStorage.getItem(id));">Alterar dados de entrega</a></li>
 
 
-                    <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
+                    <li id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
                             <form name="formLogin" class="centralizar" method="post">
                                 <span class="xis" onclick="abrePopUp();">X</span>
@@ -117,7 +117,7 @@
                         </span>
                     </li>
 
-                    <li><a href="#" onClick="logoutUsuario();"> Logout</a></li>
+                    <li id="botaoLogout"><a  href="#" onClick="logoutUsuario();"> Logout</a></li>
                 </ul>
             </nav>
             

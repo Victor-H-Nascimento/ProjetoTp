@@ -25,7 +25,7 @@
 
 </head>
 
-<body onload="dadosCarrinho();">
+<body onload="verificaLogin(), dadosCarrinho();">
     <!-- Search Wrapper Area Start -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -85,7 +85,7 @@
                     <li><a href="produtos.html">Produtos</a></li>
                     <li class="active"><a href="carrinho.html">Carrinho</a></li>
                     <li><a href="checkout.html">Cadastro</a></li>
-                    <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
+                    <li id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
                             <form name="formLogin" class="centralizar" method="post">
                                 <span class="xis" onclick="abrePopUp();">X</span> 
@@ -97,7 +97,7 @@
                                 <span class="callCheckout" onclick="teste();">&nbsp;Cadastre-se</span></p>
                             </form>
                         </span></li>
-                    <li><a href="#" onClick="logoutUsuario();"> Logout</a></li>    
+                    <li id="botaoLogout"><a href="#" onClick="logoutUsuario();"> Logout</a></li>    
                     <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
                         <span class="popuptext" id="myPopUp1">
                             <form name="formCupom" class="centralizar" method="post">
