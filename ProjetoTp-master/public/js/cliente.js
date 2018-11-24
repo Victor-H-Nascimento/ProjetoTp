@@ -18,7 +18,6 @@ function deletaCliente(id) {
     });
 }
 
-
 function salvaCliente() {
     var form = document.formCliente;
     var input = {

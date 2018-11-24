@@ -45,7 +45,6 @@ router.post('/adicionarCarrinho', function (req, res, next) {
     else {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
     }
-
 });
 
 
