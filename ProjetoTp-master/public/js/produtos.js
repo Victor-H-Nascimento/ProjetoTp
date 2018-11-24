@@ -88,11 +88,23 @@ function lerProduto(){
 
 //funções criadas para poder usar o innerHTML de cima
 function aumentaQntd(){
-    var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value--;return false;
+    var effect = document.getElementById('qty'); 
+    var qty = effect.value; 
+    console.log(qty);
+    if( !isNaN( qty )) 
+        if(effect.value == 1)
+            alert("Necessario pelo menos um produto!");
+        else    
+            effect.value--;
+    return false;
 }
 
 function diminuiQntd(){
-    var effect = document.getElementById('qty'); var qty = effect.value; if( !isNaN( qty )) effect.value++;return false;
+    var effect = document.getElementById('qty'); 
+    var qty = effect.value; 
+    if( !isNaN( qty )) 
+        effect.value++;
+    return false;
 }
 
 /*function criaCarrinho(){
@@ -214,20 +226,23 @@ function exibeCarrinho(dados){
             '<td class="cart_product_img">' +
             '<a href="#"><img src="'+ dados[i].caminhoImagem +'" alt="Product"></a>' +
             '</td>' +
+            '<td class="price" id="idProdutos">' +
+            '<span>'+dados[i].idProdutos+'</span>' +
+            '</td>' +
             '<td class="cart_product_desc">' +
             '<h5>'+dados[i].nome+'</h5>' +
             '</td>' +
             '<td class="price">' +
-            ' <span>R$'+dados[i].precoAtual+'</span>' +
+            '<span>R$'+dados[i].precoAtual+'</span>' +
             '</td>' +
             '<td class="qty">' +
             '<div class="qty-btn d-flex">' +
             '<p>Qtd</p>' +
             '<div class="quantity">' +
-            '  <span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
+            '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
             '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="'+dados[i].quantidadeComprada+'">' +
-            ' <span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
-            ' </div>' +
+            '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
+            '</div>' +
             '</div>' +
             '</td>' +
             '</tr>';
@@ -285,4 +300,9 @@ function finalizaCompra(){
                   
             }
         });
+}
+
+function excluiProduto(){
+    var id = document.getElementById("id").textContent;
+    console.log(id);
 }

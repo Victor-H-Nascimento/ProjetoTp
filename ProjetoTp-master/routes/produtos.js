@@ -73,7 +73,7 @@ router.get('/lerCarrinho', function (req, res, next) {
         var id = req.query.id;
         //console.log(id);
         req.getConnection(function (err, connection) {
-            connection.query('SELECT p.nome, p.precoAtual, pc.quantidadeComprada, i.caminhoImagem  FROM ProdutosComprados as pc, Produtos as p, ImagensProdutos as i WHERE p.idProdutos = i.idProdutos and pc.idProdutos = p.idProdutos and pc.idCompras = ' + id, function (err, rows) {
+            connection.query('SELECT p.nome, p.precoAtual, p.idProdutos, pc.quantidadeComprada, i.caminhoImagem  FROM ProdutosComprados as pc, Produtos as p, ImagensProdutos as i WHERE p.idProdutos = i.idProdutos and pc.idProdutos = p.idProdutos and pc.idCompras = ' + id, function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: err });
                 res.json({ status: 'OK', data: rows });
