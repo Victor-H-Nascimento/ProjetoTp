@@ -64,7 +64,7 @@ function lerProduto(){
     
                             '<form class="cart clearfix" method="post">'+
                                 '<div class="cart-btn d-flex mb-50">'+
-                                    '<p>Quantidade</p>'+
+                                    '<p id="testeee">Quantidade</p>'+
                                     '<div class="quantity">'+
                                         '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-caret-down" aria-hidden="true"></i></span>'+
                                         '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">'+
