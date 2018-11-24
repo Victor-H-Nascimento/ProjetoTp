@@ -234,7 +234,73 @@ var dadosRedefinir =
     '</div>';
 
     document.getElementById('perfilPagina').innerHTML = dadosRedefinir;
+
 }
+
+function redefineSenhaNoBD() {
+    var senhaNova = document.formRedefineSenha.novaSenha.value;
+    var confirmaSenhaNova = document.formRedefineSenha.confirmaNovaSenha.value;
+    var senhaAtual = document.formRedefineSenha.senhaAtual.value;
+
+    console.log(senhaAtual);
+    console.log(senhaNova);
+    console.log(confirmaSenhaNova);
+
+
+    if (senhaNova === confirmaSenhaNova) {
+        console.log(window.localStorage.getItem("id"));
+
+        $.ajax({//pega senha atual do usuario
+            url: '/acesso/pegaSenha?id=' + window.localStorage.getItem("id"),
+            dataType: 'json',
+            error: function (dados) {
+                alert('Erro em redefinir senha ' + dados.data);
+            },
+            success: function (dados) {
+                if (dados.status === 'SEMACESSO')
+                    alert('Erro: 2 ' + dados.data);
+                else {
+                    console.log(dados.data[0]);
+                    if(dados.data[0].senha != senhaNova && dados.data[0].senha == senhaAtual){
+                        var dadosSenha = ({
+                            id: window.localStorage.getItem("id"),
+                            senha: senhaNova
+                        });
+
+                                console.log(dadosSenha);
+                        $.ajax({//SAlva a senha nova 
+                            url: '/acesso/alteraSenha',
+                            dataType: "json",
+                            type: 'post',
+                            data: dadosSenha,
+                            error: function (dados) {
+                                alert('Erro em redefinir senha' + dados.data);
+                            },
+                            success: function (dados) {
+                                if (dados.status === 'ERRO')
+                                    alert('Erro: ' + dados.data);
+                                else {
+                                    alert(dados.data);
+                                    window.location.href = '/perfil.html';
+                                }
+                            }
+                        });
+                    }
+
+                    else{
+                        alert("Senha atual incorreta!");
+                    }
+                }
+            }
+        });
+    }
+
+    else {
+        alert("Senha Nova e Confimação de Senha Nova não são iguais")
+    }
+}
+
+
 
 function historicoCompra(id) {
 
