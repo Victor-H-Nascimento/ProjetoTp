@@ -163,10 +163,10 @@ $(document).ready(function () {
 
 //comparar se as senhas sao iguais
 function testaSenha(){
-    var senha = document.formCliente.senha.value;
-    var confirmaSenha = document.formCliente.confirmaSenha.value;
+    var senha1 = document.formCliente.senha.value;
+    var confirmaSenha1 = document.formCliente.confirmaSenha.value;
 
-    if(senha == confirmaSenha){
+    if(senha1 == confirmaSenha1){
         console.log("Senhas iguais");
         document.getElementById("confirmaSenha").classList.remove("errado");
         document.getElementById("confirmaSenha").classList.add('correta');

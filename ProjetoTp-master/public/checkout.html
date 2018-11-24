@@ -121,10 +121,12 @@
                                     </div>
 
                                     <div class="col-md-6 mb-3">
-                                        <input type="password" name="senha" class="form-control" id="senha" value="" placeholder="Senha" required >       
+                                        <input type="password" name="senha" class="form-control" id="senha" value="" placeholder="Senha" onkeyup="testaSenha();" required >       
+                                        
                                         <div class="showpassword">
                                         <input type="button" id="mostrarSenha" value="Mostrar Senha" class="button" />  
                                         </div>
+                                        
                                         <span title='Força da senha' class='password-strength'></span>    
                                     </div>
                                     
