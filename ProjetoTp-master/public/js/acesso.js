@@ -21,6 +21,7 @@ function loginUsuario() {
                 insereLocalStorage(dados.data);
                 alert('Logado com sucesso!');
                 colocarUsuario();
+				verificaLogin();
                 //window.location.href = '/index.html';
 
                 $.ajax({//cria um carrinho para o cliente qnd ele loga
