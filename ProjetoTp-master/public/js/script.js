@@ -179,6 +179,27 @@ function testaSenha(){
     
 }
 
+
+//verificar se o usuario esta logado para mostrar login/logout
+
+function verificaLogin(){
+    if(window.localStorage.getItem("id") != null){//usuário logado
+        var login = document.getElementById("botaoLogin");
+        login.style.visibility = "hidden";
+        var logout = document.getElementById("botaoLogout");
+        logout.style.visibility = "visible";
+        logout.style.bottom = "50px";
+        logout.style.position = "relative";
+        colocarUsuario();
+    } 
+    else{   //não logado
+        var login = document.getElementById("botaoLogin");
+        login.style.visibility = "visible";
+        var logout = document.getElementById("botaoLogout");
+        logout.style.visibility = "hidden";
+    }
+}
+
 //Login novo
 
 function openwindow() {
