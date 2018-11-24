@@ -272,7 +272,33 @@ function alterarDadosPessoais(id) {
     
     '<div>'+
 
-        '<h1>DADOS PESSOAIS</h1>'+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário" >' +
+        '</div>' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Completo" >' +
+        '</div>' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento" >' +
+        '</div>' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="celular" class="form-control" id="celular" value="" placeholder="Celular" >' +
+        '</div>' +
+
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF" >' +
+        '</div>' +     
+
+        '<div class="col-12 mb-3">'+
+        '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="" >'+
+        '</div>'+
+
+        '<input type="button" class="button" name="alteraDadosPessoais" value="Alterar" onClick="alteraDadosPessoaisNoBD();"></input>'+
+
     '</div>';
         
     
@@ -296,7 +322,37 @@ function alterarDadosEntrega(id) {
     
     '<div>'+
 
-        '<h1>DADOS ENTREGA</h1>'+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP" >'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número" >'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="complemento" class="form-control" id="complemento" value="" placeholder="Complemento" >'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="bairro" class="form-control" id="bairro" value="" placeholder="Bairro" disabled>'+
+            '</div>'+
+
+           ' <div class="col-md-6 mb-3">'+
+                '<input type="text" name="cidade" class="form-control" id="cidade" value="" placeholder="Cidade" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF" disabled>'+
+            '</div>'+
+
+            '<input type="button" class="button" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>'+
+
+       
     '</div>';
         
     
@@ -313,7 +369,66 @@ function exibirDados() {
     
     '<div>'+
 
-        '<h1>DADOS INICIAIS</h1>'+
+    
+    '<form id="formDados" name="formDados" action="#" method="post">'+
+        '<div class="row">'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Completo" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="celular" class="form-control" id="celular" value="" placeholder="Celular" disabled>'+
+            '</div>'+
+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF" disabled>'+
+            '</div>'+
+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="complemento" class="form-control" id="complemento" value="" placeholder="Complemento" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="bairro" class="form-control" id="bairro" value="" placeholder="Bairro" disabled>'+
+            '</div>'+
+
+           ' <div class="col-md-6 mb-3">'+
+                '<input type="text" name="cidade" class="form-control" id="cidade" value="" placeholder="Cidade" disabled>'+
+            '</div>'+
+
+            '<div class="col-md-6 mb-3">'+
+                '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF" disabled>'+
+            '</div>'+
+
+            '<div class="col-12 mb-3">'+
+                '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="" disabled>'+
+            '</div>'+
+
+            '</div>'+
+    '</form>'+
     
     '</div>';
         
