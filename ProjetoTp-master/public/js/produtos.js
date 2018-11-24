@@ -41,7 +41,7 @@ function lerProduto(){
                             
                             '<div id="product_details_slider" class="carousel slide" data-ride="carousel">' +                                                     
                                 '<div class="carousel-item active">'+
-                                    '<a id="imagemProduto" class="gallery_img" href="'+ dados.data[0].caminhoImagem +'">'+
+                                    '<a id="imagemProduto" class="gallery_img">'+
                                         '<img class="d-block w-100"   height="20em" src="'+ dados.data[0].caminhoImagem +'">'+
                                     '</a>'+
                                 '</div>' +                               
@@ -64,7 +64,7 @@ function lerProduto(){
     
                             '<form class="cart clearfix" method="post">'+
                                 '<div class="cart-btn d-flex mb-50">'+
-                                    '<p id="testeee">Quantidade</p>'+
+                                    '<p id="prodquant">Quantidade</p>'+
                                     '<div class="quantity">'+
                                         '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-caret-down" aria-hidden="true"></i></span>'+
                                         '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">'+
