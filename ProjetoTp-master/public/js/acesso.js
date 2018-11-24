@@ -219,7 +219,7 @@ function redefinirSenha(id) {
 
 var dadosRedefinir =
 
-    '<div>'+
+    '<div class="formataPerfil">'+
         '<form id="formRedefineSenha" name="formRedefineSenha" action="#" method="post">'+
            '<div class="col-md-6 mb-3">'+
 
@@ -229,7 +229,7 @@ var dadosRedefinir =
             '</div>'+
         '</form>'+
 
- '<input type="button" class="button" name="redefineSenha" value="Redefinir Senha" onClick="redefineSenhaNoBD();"></input>'+
+ '<input type="button" class="button formataPerfilButton" name="redefineSenha" value="Redefinir Senha" onClick="redefineSenhaNoBD();"></input>'+
 
     '</div>';
 
@@ -245,7 +245,7 @@ function historicoCompra(id) {
     
     var dadosHistorico =
     
-    '<div>'+
+    '<div class="formataPerfil">'+
 
         '<h1>DADOS HISTORICO</h1>'+
     
@@ -271,7 +271,7 @@ function alterarDadosPessoais(id) {
     
     var dadosPessoais =
     
-    '<div>'+
+    '<div class="formataPerfil">'+
 
         '<div class="col-md-6 mb-3">' +
         '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário" >' +
@@ -294,11 +294,11 @@ function alterarDadosPessoais(id) {
         '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF" >' +
         '</div>' +     
 
-        '<div class="col-12 mb-3">'+
+        '<div class="col-md-6 mb-3">'+
         '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="" >'+
         '</div>'+
 
-        '<input type="button" class="button" name="alteraDadosPessoais" value="Alterar" onClick="alteraDadosPessoaisNoBD();"></input>'+
+        '<input type="button" class="button formataPerfilButton" name="alteraDadosPessoais" value="Alterar" onClick="alteraDadosPessoaisNoBD();"></input>'+
 
     '</div>';
         
@@ -321,7 +321,7 @@ function alterarDadosEntrega(id) {
     
     var dadosEntrega =
     
-    '<div>'+
+    '<div class="formataPerfil">'+
 
             '<div class="col-md-6 mb-3">'+
                 '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP" >'+
@@ -351,7 +351,7 @@ function alterarDadosEntrega(id) {
                 '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF" disabled>'+
             '</div>'+
 
-            '<input type="button" class="button" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>'+
+            '<input type="button" class="button formataPerfilButton" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>'+
 
        
     '</div>';
