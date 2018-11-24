@@ -204,3 +204,120 @@ function criaCarrinho() {
 
 
 }
+
+function redefinirSenha(id) {
+
+//atraves do id, pegar a senha atual da pessoa
+//exibir um formulario com 3 campos: senha atual, nova senha e confirmar nova senha
+//a pessoa digita a senha atual e comparamos com a senha que buscamos atraves do id, se igual, prosseguir
+//a pessoa digita a nova senha e depois confirma a nova senha. Comparamos se ambas são iguais, se sim, prosseguir
+//comparamos a nova senha com a senha atual para evitar que a pessoa cadastra a senha que ela ja tem, se diferentes prosseguir
+//um botao que inicialmente esta indisponivel se torna disponivel para clique
+//ao clicar no botao, redefinimos a senha da pessoa no bd e mostramos a ela uma mensagem falando que a troca foi feita
+//acontece o reload da pagina a fim de limpar a mesma e permitir que o usuario faça, se quiser, mais alteraçoes em seus dados.
+
+var dadosRedefinir =
+
+    '<div>'+
+        '<form id="formRedefineSenha" name="formRedefineSenha" action="#" method="post">'+
+           '<div class="col-md-6 mb-3">'+
+
+                '<input type="password" name="senhaAtual" class="form-control" id="senhaAtual" value="" placeholder="Digite sua senha atual" required ></input>'+
+                '<input type="password" name="novaSenha" class="form-control" id="novaSenha" value="" placeholder="Digite sua nova senha" required ></input>'+
+                '<input type="password" name="confirmaNovaSenha" class="form-control" id="confirmaNovaSenha" value="" placeholder="Confirme sua nova senha" required ></input>'+
+            '</div>'+
+        '</form>'+
+
+ '<input type="button" class="button" name="redefineSenha" value="Redefinir Senha" onClick="redefineSenhaNoBD();"></input>'+
+
+    '</div>';
+
+    document.getElementById('perfilPagina').innerHTML = dadosRedefinir;
+}
+
+function historicoCompra(id) {
+
+    //limpar página, para nao exibir em cima de outros dados
+    //no bd, retornar quantas compras um usuario fez
+    //fazer loop e printar cada uma das compras, contendo itens comprados e valor pago
+    
+    
+    var dadosHistorico =
+    
+    '<div>'+
+
+        '<h1>DADOS HISTORICO</h1>'+
+    
+    '</div>';
+        
+    
+        
+        document.getElementById('perfilPagina').innerHTML = dadosHistorico;
+}
+
+
+function alterarDadosPessoais(id) {
+
+    //limpar página, para nao exibir em cima de outros dados
+    //através do id, recuperar dados pessoais: usuario,nome,data de nascimento,celular,CPF e email.
+    //criar variavel mudanças e inicializá-la com 0
+    //colocar todos os dados em um form e disponibiliza-los para o usuario altera-los, se quiser
+    //se algum dado for alterado, variavel mudanca fica diferente de 0
+    //disponibilizar botao ALTERAR que so estara disponivel se mudanca !=0
+    //quando cliente clicar no batao, fazer respectivas alterações no bd  
+
+    
+    
+    var dadosPessoais =
+    
+    '<div>'+
+
+        '<h1>DADOS PESSOAIS</h1>'+
+    '</div>';
+        
+    
+        
+        document.getElementById('perfilPagina').innerHTML = dadosPessoais;
+}
+
+function alterarDadosEntrega(id) {
+
+    //limpar página, para nao exibir em cima de outros dados
+    //através do id, recuperar dados pessoais: cep,rua,numero,bairro,complemento,cidade,estado.
+    //criar variavel mudanças e inicializá-la com 0
+    //colocar todos os dados em um form e disponibiliza-los para o usuario altera-los, se quiser
+    //se algum dado for alterado, variavel mudanca fica diferente de 0
+    //disponibilizar botao ALTERAR que so estara disponivel se mudanca !=0
+    //quando cliente clicar no batao, fazer respectivas alterações no bd  
+
+    
+    
+    var dadosEntrega =
+    
+    '<div>'+
+
+        '<h1>DADOS ENTREGA</h1>'+
+    '</div>';
+        
+    
+        
+        document.getElementById('perfilPagina').innerHTML = dadosEntrega;
+}
+
+
+
+
+function exibirDados() {
+ 
+    var todosDados =
+    
+    '<div>'+
+
+        '<h1>DADOS INICIAIS</h1>'+
+    
+    '</div>';
+        
+    
+        
+        document.getElementById('perfilPagina').innerHTML = todosDados;
+}
