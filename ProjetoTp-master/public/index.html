@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="scss/style.scss">
     <!--<link rel="stylesheet" href="scss/style.scss">-->
 
-     <!-- Referencia JS -->
+    <!-- Referencia JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/cliente.js"></script>
     <script type="text/javascript" src="js/acesso.js"></script>
@@ -44,7 +44,7 @@
                         exibeProdutos(dados.data);
 
                         //var aux = window.localStorage.getItem("compraFinalizada");
-                        
+
                     }
 
                 }
@@ -54,10 +54,10 @@
 
     <script>
         $(document).ready(function () {
-                        if (window.localStorage.getItem("compraFinalizada") == "true") {
-                            alert("Compra finalizada, iniciando um novo carrinho de compras");
-                            criaCarrinho();
-                        }
+            if (window.localStorage.getItem("compraFinalizada") == "true") {
+                alert("Compra finalizada, iniciando um novo carrinho de compras");
+                criaCarrinho();
+            }
         });
 
     </script>
@@ -113,7 +113,7 @@
 
             <!-- Nome aparecendo depois do login -->
             <div id="nomeUsuario">
-                
+
             </div>
 
             <!-- Amado Nav -->
@@ -122,7 +122,7 @@
                     <li class="active"><a href="index.html">Home</a></li>
                     <li><a href="loja.html">Loja</a></li>
                     <li><a href="produtos.html"> Produtos</a></li>
-
+                    <li><a href="perfil.html"> Perfil</a></li>
 
                     <li class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
@@ -213,6 +213,9 @@
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="produtos.html">Produtos</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="perfil.html">Perfil</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
