@@ -38,7 +38,6 @@ function lerProduto(){
                             window.sessionStorage.valorProduto = dados.data[0].precoAtual;
                           var dados =  '<div class="col-12 col-lg-7">'+
                         '<div class="single_product_thumb">'+
-                            
                             '<div id="product_details_slider" class="carousel slide" data-ride="carousel">' +                                                     
                                 '<div class="carousel-item active">'+
                                     '<a id="imagemProduto" class="gallery_img" href="'+ dados.data[0].caminhoImagem +'">'+

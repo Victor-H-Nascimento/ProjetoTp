@@ -96,10 +96,46 @@ router.post('/criaCarrinho', function (req, res, next) {
 
 router.get('/idCarrinho', function (req, res, next) {
     if (req.session.logado) {
-  
         req.getConnection(function (err, connection) {
             connection.query('SELECT LAST_INSERT_ID() as id', function (err, rows) {
                 if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: rows });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.post('/alteraSenha', function (req, res, next) {
+    if (req.session.logado) {
+        var input = req.body;
+        console.log(input);
+        req.getConnection(function (err, connection) {
+            connection.query('UPDATE Usuarios SET senha = ? WHERE idUsuarios = ?',[input.senha, input.id], function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: "Senha alterada com sucesso!" });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.get('/pegaSenha', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        //console.log(id);
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT senha FROM Usuarios WHERE idUsuarios = ' + id, function (err, rows) {                if (err)
                     res.json({ status: 'ERRO', data: err });
                 res.json({ status: 'OK', data: rows });
             });
