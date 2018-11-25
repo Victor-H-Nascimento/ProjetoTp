@@ -168,4 +168,22 @@ router.get('/lerDadosPessoais', function (req, res, next) {
     }
 });
 
+router.post('/salvarDadosPessoais', function (req, res, next) {
+    if (req.session.logado) {
+        var input = req.body;
+        console.log(input);
+        req.getConnection(function (err, connection) {
+            connection.query('UPDATE Usuarios SET usuario = ?, nome = ?, celular = ?, CPF = ?, email = ?, dataNascimento = ?  WHERE idUsuarios = ? ', [input.usuario,input.nome,input.celular,input.cpf,input.email,input.dataNascimento, input.id], function (err, rows) {                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: "Dados pessoais alteraos com sucesso!" });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
 module.exports = router;
