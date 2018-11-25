@@ -1629,3 +1629,8 @@ p{
 .formataPerfilButton{
   margin-left: 15%;
 }
+
+#quantprod{
+  color: black;
+  margin-top: 4px;
+}

@@ -40,11 +40,11 @@ function lerProduto(){
                             '<div class="single_product_thumb">'+
                             
                             '<div id="product_details_slider" class="carousel slide" data-ride="carousel">' +                                                     
-                            '<div class="carousel-item active">'+
-                            '<a id="imagemProduto" class="gallery_img" href="'+ dados.data[0].caminhoImagem +'">'+
-                            '<img class="d-block w-100"   height="20em" src="'+ dados.data[0].caminhoImagem +'">'+
-                            '</a>'+
-                            '</div>' +                               
+                                '<div class="carousel-item active">'+
+                                    '<a id="imagemProduto" class="gallery_img">'+
+                                        '<img class="d-block w-100"   height="20em" src="'+ dados.data[0].caminhoImagem +'">'+
+                                    '</a>'+
+                                '</div>' +                               
                             '</div>'+
                             '</div>'+
                             '</div>'+
@@ -63,16 +63,16 @@ function lerProduto(){
                             '</div>'+
 
                             '<form class="cart clearfix" method="post">'+
-                            '<div class="cart-btn d-flex mb-50">'+
-                            '<p>Quantidade</p>'+
-                            '<div class="quantity">'+
-                            '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-caret-down" aria-hidden="true"></i></span>'+
-                            '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">'+
-                            '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-caret-up" aria-hidden="true"></i></span>'+
-                            '</div>'+
-                            '</div>'+
-                            '<input type="button" name="addtocart" value="Adicionar ao carrinho" onclick="adicionarCarrinho('+dados.data[0].idProdutos+');" class="button">'+
-                            '</form>'+
+                                '<div class="cart-btn d-flex mb-50">'+
+                                    '<p id="quantprod">Quantidade</p>'+
+                                    '<div class="quantity">'+
+                                        '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-caret-down" aria-hidden="true"></i></span>'+
+                                        '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">'+
+                                        '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-caret-up" aria-hidden="true"></i></span>'+
+                                    '</div>'+
+                                '</div>'+
+                                '<input type="button" name="addtocart" value="Adicionar ao carrinho" onclick="adicionarCarrinho('+dados.data[0].idProdutos+');" class="button">'+
+                           '</form>'+
 
                             '</div>'+
                             '</div>';
