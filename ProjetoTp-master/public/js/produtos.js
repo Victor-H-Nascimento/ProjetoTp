@@ -35,7 +35,6 @@ function lerProduto(){
                         if (dados.status === 'ERRO')
                             alert('Erro: 2 ' + dados.data);
                         else {
-                            window.sessionStorage.valorProduto = dados.data[0].precoAtual;
                           var dados =  '<div class="col-12 col-lg-7">'+
                         '<div class="single_product_thumb">'+
                             
@@ -71,7 +70,7 @@ function lerProduto(){
                                         '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-caret-up" aria-hidden="true"></i></span>'+
                                     '</div>'+
                                 '</div>'+
-                                '<input type="button" name="addtocart" value="Adicionar ao carrinho" onclick="adicionarCarrinho('+dados.data[0].idProdutos+');" class="button">'+
+                                '<input type="button" name="addtocart" value="Adicionar ao carrinho" onclick="adicionarCarrinho('+dados.data[0].idProdutos+', '+dados.data[0].precoAtual+');" class="button">'+
                            '</form>'+
 
                         '</div>'+
@@ -150,10 +149,9 @@ function diminuiQntd(){
 
 
 
-function adicionarCarrinho(id){
+function adicionarCarrinho(id, valor){
   
     var effect = document.getElementById('qty');// pego a quantidade de itens comprados
-    var valor = window.sessionStorage.getItem('valorProduto');//valor do produto
     var idComprasAux = window.localStorage.getItem("idCompras");//lista de compras
 
     var dadosProdutos = ({
