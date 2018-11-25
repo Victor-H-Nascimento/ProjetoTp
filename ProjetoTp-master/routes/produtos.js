@@ -68,6 +68,21 @@ router.post('/finalizaCompra', function (req, res, next) {
     }
 });
 
+router.post('/deletaProduto', function (req, res, next) {
+    var input = req.body;
+    console.log(input);
+    req.getConnection(function (err, connection) {
+        connection.query('DELETE FROM ProdutosComprados WHERE idProdutos = ? AND idCompras = ?', [input.idProdutos, input.idCompras], function (err, rows) {
+            if (err) {
+                res.json({ status: 'ERROR', data: err });
+            }
+            res.json({ status: 'OK', data: "Excluido com sucesso" });
+        });
+        if (err)
+            res.json({ status: 'ERROR', data: err });
+    });
+});
+
 router.get('/lerCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
