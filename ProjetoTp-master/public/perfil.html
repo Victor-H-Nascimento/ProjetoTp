@@ -180,20 +180,24 @@
                                         class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
+                                        <li class="nav-item">
                                             <a class="nav-link" href="index.html">Home</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="loja.html">Loja</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="produtos.html">Produtos</a>
-                                        </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item active">
                                             <a class="nav-link" href="perfil.html">Perfil</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="carrinho.html">Carrinho</a>
+                                            <a class="nav-link" href="#" onclick="historicoCompra(window.localStorage.getItem(id));">Histórico de compras</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" onclick="redefinirSenha(window.localStorage.getItem(id));">Redefinir Senha</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" onclick="alterarDadosPessoais(window.localStorage.getItem(id));">Alterar Dados Pessoais</a>
+                                        </li>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" onclick="alterarDadosEntrega(window.localStorage.getItem(id));">Alterar Dados de Entrega</a>
                                         </li>
 
                                     </ul>
