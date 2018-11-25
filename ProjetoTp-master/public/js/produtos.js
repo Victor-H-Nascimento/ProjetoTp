@@ -235,7 +235,7 @@ function exibeCarrinho(dados){
         '</td>' +
         '<td class="qty">' +
         '<div class="qty-btn d-flex">' +
-        '<button onclick="excluiProduto(' + dados[i].idProdutos + ', ' + dados.[i].precoAtual + ');">Remover</button>'+
+        '<button onclick="excluiProduto(' + dados[i].idProdutos + ', ' + dados[i].precoAtual + ');">Remover</button>'+
         '<p>Qtd</p>' +
         '<div class="quantity">' +
         '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
