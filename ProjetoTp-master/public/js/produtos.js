@@ -4,26 +4,26 @@ function exibeProdutos(produtos) {
         var dadosProdutos =
         
         '<div class="single-products-catagory clearfix" id="'+ produto.idImagensProdutos +'">'+
-                '<a href="detalheProduto.html?id='+ produto.idProdutos +'">'+
-                    '<img src="' + produto.caminhoImagem + '">'+
-                    '<div class="hover-content">'+
-                        '<div class="line"></div>'+
-                        '<p>R$'+produto.precoAtual+'</p>'+
-                        '<h4>'+produto.nome+'</h4>'+
-                    '</div>'+
-                '</a>'+
+        '<a href="detalheProduto.html?id='+ produto.idProdutos +'">'+
+        '<img src="' + produto.caminhoImagem + '">'+
+        '<div class="hover-content">'+
+        '<div class="line"></div>'+
+        '<p>R$'+produto.precoAtual+'</p>'+
+        '<h4>'+produto.nome+'</h4>'+
+        '</div>'+
+        '</a>'+
         '</div>';
-                    
-       document.getElementById('result').innerHTML += dadosProdutos;
+
+        document.getElementById('result').innerHTML += dadosProdutos;
     }
 }
 
 
 function lerProduto(){
     var param = new URLSearchParams
-        (window.location.search);
+    (window.location.search);
     //console.log(param);
-        if (param.has('id')) {
+    if (param.has('id')) {
             //$(document).ready(function () {
                 $.ajax({
                     url: '/produtos/lerProduto?id=' + param.get('id'),
@@ -35,48 +35,47 @@ function lerProduto(){
                         if (dados.status === 'ERRO')
                             alert('Erro: 2 ' + dados.data);
                         else {
-                            window.sessionStorage.valorProduto = dados.data[0].precoAtual;
-                          var dados =  '<div class="col-12 col-lg-7">'+
-                        '<div class="single_product_thumb">'+
+                            var dados =  '<div class="col-12 col-lg-7">'+
+                            '<div class="single_product_thumb">'+
                             
                             '<div id="product_details_slider" class="carousel slide" data-ride="carousel">' +                                                     
                                 '<div class="carousel-item active">'+
-                                    '<a id="imagemProduto" class="gallery_img" href="'+ dados.data[0].caminhoImagem +'">'+
+                                    '<a id="imagemProduto" class="gallery_img">'+
                                         '<img class="d-block w-100"   height="20em" src="'+ dados.data[0].caminhoImagem +'">'+
                                     '</a>'+
                                 '</div>' +                               
                             '</div>'+
-                        '</div>'+
-                    '</div>'+
+                            '</div>'+
+                            '</div>'+
 
-                    '<div class="col-12 col-lg-5">'+
-                        '<div class="single_product_desc">'+
+                            '<div class="col-12 col-lg-5">'+
+                            '<div class="single_product_desc">'+
                             '<div class="product-meta-data">'+
-                                '<div class="line"></div>'+
-                                '<p id="preco-produto" class="product-price">'+ dados.data[0].nome +'</p>' +                                
-                                '<p id="titulo-produto">R$ '+ dados.data[0].precoAtual +'</p>' +
-                                '<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>'+
+                            '<div class="line"></div>'+
+                            '<p id="preco-produto" class="product-price">'+ dados.data[0].nome +'</p>' +                                
+                            '<p id="titulo-produto">R$ '+ dados.data[0].precoAtual +'</p>' +
+                            '<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>'+
                             '</div>'+
 
                             '<div id="descricao-produtos" class="short_overview my-5">'+
-                                '<p>Descrição: '+ dados.data[0].descricao+'</p>'+
+                            '<p>Descrição: '+ dados.data[0].descricao+'</p>'+
                             '</div>'+
-    
+
                             '<form class="cart clearfix" method="post">'+
                                 '<div class="cart-btn d-flex mb-50">'+
-                                    '<p>Quantidade</p>'+
+                                    '<p id="quantprod">Quantidade</p>'+
                                     '<div class="quantity">'+
                                         '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-caret-down" aria-hidden="true"></i></span>'+
                                         '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300" name="quantity" value="1">'+
                                         '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-caret-up" aria-hidden="true"></i></span>'+
                                     '</div>'+
                                 '</div>'+
-                                '<input type="button" name="addtocart" value="Adicionar ao carrinho" onclick="adicionarCarrinho('+dados.data[0].idProdutos+');" class="button">'+
+                                '<input type="button" name="addtocart" value="Adicionar ao carrinho" onclick="adicionarCarrinho('+dados.data[0].idProdutos+', ' + dados.data[0].precoAtual + ');" class="button">'+
                            '</form>'+
 
-                        '</div>'+
-                    '</div>';
-                    document.getElementById('dadosProduto').innerHTML = dados;
+                            '</div>'+
+                            '</div>';
+                            document.getElementById('dadosProduto').innerHTML = dados;
 
 
                         }
@@ -84,7 +83,7 @@ function lerProduto(){
                 });
             //});
         }
-}
+    }
 
 //funções criadas para poder usar o innerHTML de cima
 function aumentaQntd(){
@@ -96,16 +95,16 @@ function aumentaQntd(){
             alert("Necessario pelo menos um produto!");
         else    
             effect.value--;
-    return false;
-}
+        return false;
+    }
 
-function diminuiQntd(){
-    var effect = document.getElementById('qty'); 
-    var qty = effect.value; 
-    if( !isNaN( qty )) 
-        effect.value++;
-    return false;
-}
+    function diminuiQntd(){
+        var effect = document.getElementById('qty'); 
+        var qty = effect.value; 
+        if( !isNaN( qty )) 
+            effect.value++;
+        return false;
+    }
 
 /*function criaCarrinho(){
     console.log(window.localStorage.getItem("id"));
@@ -150,10 +149,9 @@ function diminuiQntd(){
 
 
 
-function adicionarCarrinho(id){
-  
+function adicionarCarrinho(id, valor){
+
     var effect = document.getElementById('qty');// pego a quantidade de itens comprados
-    var valor = window.sessionStorage.getItem('valorProduto');//valor do produto
     var idComprasAux = window.localStorage.getItem("idCompras");//lista de compras
 
     var dadosProdutos = ({
@@ -195,13 +193,13 @@ function dadosCarrinho(){
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                  console.log(dados.data);
-                  exibeCarrinho(dados.data);
-                
-                }
-                  
-            }
-        });
+              console.log(dados.data);
+              exibeCarrinho(dados.data);
+
+          }
+
+      }
+  });
 
 
 
@@ -215,40 +213,41 @@ function dadosCarrinho(){
     document.getElementById("endereco").innerHTML = dadosEndereco;
 }
 
-    
+
 function exibeCarrinho(dados){
     var aux = dados.length;
     var valorTotal = 0;
     for(var i = 0; i < aux; i++){
 
         var dadosCarrinho =
-            '<tr>' +
-            '<td class="cart_product_img">' +
-            '<a href="#"><img src="'+ dados[i].caminhoImagem +'" alt="Product"></a>' +
-            '</td>' +
-            '<td class="price" id="idProdutos">' +
-            '<span>'+dados[i].idProdutos+'</span>' +
-            '</td>' +
-            '<td class="cart_product_desc">' +
-            '<h5>'+dados[i].nome+'</h5>' +
-            '</td>' +
-            '<td class="price">' +
-            ' <span>R$'+dados[i].precoAtual+'</span>' +
-            '</td>' +
-            '<td class="qty">' +
-            '<div class="qty-btn d-flex">' +
-            '<p>Qtd</p>' +
-            '<div class="quantity">' +
-            '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
-            '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="'+dados[i].quantidadeComprada+'">' +
-            '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
-            '</div>' +
-            '</div>' +
-            '</td>' +
-            '</tr>';
+        '<tr>' +
+        '<td class="cart_product_img">' +
+        '<a href="#"><img src="'+ dados[i].caminhoImagem +'" alt="Product"></a>' +
+        '</td>' +
+        '<td class="price" id="idProdutos">' +
+        '<span>'+dados[i].idProdutos+'</span>' +
+        '</td>' +
+        '<td class="cart_product_desc">' +
+        '<h5>'+dados[i].nome+'</h5>' +
+        '</td>' +
+        '<td class="price" id="idProdutoValor">' +
+        ' <span>R$'+dados[i].precoAtual+'</span>' +
+        '</td>' +
+        '<td class="qty">' +
+        '<div class="qty-btn d-flex">' +
+        '<button onclick="excluiProduto(' + dados[i].idProdutos + ', ' + dados.[i].precoAtual + ');">Remover</button>'+
+        '<p>Qtd</p>' +
+        '<div class="quantity">' +
+        '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
+        '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="'+dados[i].quantidadeComprada+'">' +
+        '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
+        '</div>' +
+        '</div>' +
+        '</td>' +
+        '</tr>';
 
-            document.getElementById("listaCarrinho").innerHTML += dadosCarrinho;
-            valorTotal += dados[i].precoAtual * dados[i].quantidadeComprada;
+        document.getElementById("listaCarrinho").innerHTML += dadosCarrinho;
+        valorTotal += dados[i].precoAtual * dados[i].quantidadeComprada;
     }
     window.localStorage.valorTotal = valorTotal;
     var dadosValor = 
@@ -293,16 +292,48 @@ function finalizaCompra(){
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                  alert(dados.data);
-                  window.localStorage.compraFinalizada = true;
-                  window.location.href = '/index.html'
-                }
-                  
-            }
-        });
+              alert(dados.data);
+              window.localStorage.compraFinalizada = true;
+              window.location.href = '/index.html'
+          }
+
+      }
+  });
 }
 
-function excluiProduto(){
-    var id = document.getElementById("id").textContent;
-    console.log(id);
+function excluiProduto(idProduto, precoAtual){
+    var dadosExclusao = ({
+        idProdutos: idProduto,
+        idCompras: window.localStorage.getItem('idCompras')
+    });
+
+    var valorProduto = document.getElementById("idProdutoValor").textContent;
+    console.log(valorProduto);
+
+    $.ajax({
+        url: '/produtos/deletaProduto',
+        dataType: 'json',
+        type: 'post',
+        data: dadosExclusao,
+        error: function (dados) {
+            alert('Erro: 1 ExcluiItem ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'ERRO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                window.localStorage.valorTotal = window.localStorage.valorTotal - precoAtual;
+                var dadosValor = '<h5 id="dadosValor" >R$'+ window.localStorage.valorTotal + '</h5>';    
+                document.getElementById("total").innerHTML = dadosValor;
+
+                if(window.localStorage.valorTotal === 0) {
+                    var dadosValor = 
+                    '<h5>R$ 0.00'+'</h5>';    
+                    document.getElementById("total").innerHTML = dadosValor;
+                }
+
+                window.location.href = '/carrinho.html'
+            }
+        }
+    });    
 }
