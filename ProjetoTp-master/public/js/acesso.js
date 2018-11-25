@@ -219,19 +219,19 @@ function redefinirSenha(id) {
 
     var dadosRedefinir =
 
-        '<div class="formataPerfil">' +
-        '<form id="formRedefineSenha" name="formRedefineSenha" action="#" method="post">' +
-        '<div class="col-md-6 mb-3">' +
+    '<div class="formataPerfil">' +
+    '<form id="formRedefineSenha" name="formRedefineSenha" action="#" method="post">' +
+    '<div class="col-md-6 mb-3">' +
 
-        '<input type="password" name="senhaAtual" class="form-control" id="senhaAtual" value="" placeholder="Digite sua senha atual" required ></input>' +
-        '<input type="password" name="novaSenha" class="form-control" id="novaSenha" value="" placeholder="Digite sua nova senha" required ></input>' +
-        '<input type="password" name="confirmaNovaSenha" class="form-control" id="confirmaNovaSenha" value="" placeholder="Confirme sua nova senha" required ></input>' +
-        '</div>' +
-        '</form>' +
+    '<input type="password" name="senhaAtual" class="form-control" id="senhaAtual" value="" placeholder="Digite sua senha atual" required ></input>' +
+    '<input type="password" name="novaSenha" class="form-control" id="novaSenha" value="" placeholder="Digite sua nova senha" required ></input>' +
+    '<input type="password" name="confirmaNovaSenha" class="form-control" id="confirmaNovaSenha" value="" placeholder="Confirme sua nova senha" required ></input>' +
+    '</div>' +
+    '</form>' +
 
-        '<input type="button" class="button formataPerfilButton" name="redefineSenha" value="Redefinir Senha" onClick="redefineSenhaNoBD();"></input>' +
+    '<input type="button" class="button formataPerfilButton" name="redefineSenha" value="Redefinir Senha" onClick="redefineSenhaNoBD();"></input>' +
 
-        '</div>';
+    '</div>';
 
     document.getElementById('perfilPagina').innerHTML = dadosRedefinir;
 
@@ -311,11 +311,11 @@ function historicoCompra(id) {
 
     var dadosHistorico =
 
-        '<div class="formataPerfil">' +
+    '<div class="formataPerfil">' +
 
-        '<h1>DADOS HISTORICO</h1>' +
+    '<h1>DADOS HISTORICO</h1>' +
 
-        '</div>';
+    '</div>';
 
 
 
@@ -346,45 +346,40 @@ function alterarDadosPessoais(id) {
                 console.log(dados.data[0]);
 
                 var dadosPessoais =
-                    '<form id="formDadosPessoais" name="formDadosPessoais" action="#" method="post">' +
-                    '<div class="formataPerfil">' +
+                '<form id="formDadosPessoais" name="formDadosPessoais" action="#" method="post">' +
+                '<div class="formataPerfil">' +
 
-                    '<div class="col-md-6 mb-3">' +
-                    '<input type="text" name="usuario" class="form-control" id="usuario" value="' + dados.data[0].usuario + '" placeholder="Usuário" >' +
-                    '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="usuario" class="form-control" id="usuario" value="' + dados.data[0].usuario + '" placeholder="Usuário" >' +
+                '</div>' +
 
-                    '<div class="col-md-6 mb-3">' +
-                    '<input type="text" name="nome" class="form-control" id="nome" value="' + dados.data[0].nome + '" placeholder="Nome Completo" >' +
-                    '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="nome" class="form-control" id="nome" value="' + dados.data[0].nome + '" placeholder="Nome Completo" >' +
+                '</div>' +
 
-                    '<div class="col-md-6 mb-3">' +
-                    '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="'+dados.data[0].dataNascimento+'" placeholder="Data de Nascimento" >' +
-                    '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="'+dados.data[0].dataNascimento+'" placeholder="Data de Nascimento" >' +
+                '</div>' +
 
-                    '<div class="col-md-6 mb-3">' +
-                    '<input type="text" name="celular" class="form-control" id="celular" value="' + dados.data[0].celular + '" placeholder="Celular" >' +
-                    '</div>' +
-
-
-                    '<div class="col-md-6 mb-3">' +
-                    '<input type="text" name="CPF" class="form-control" id="CPF" value="' + dados.data[0].CPF + '" placeholder="CPF" >' +
-                    '</div>' +
-
-                    '<div class="col-md-6 mb-3">' +
-                    '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="' + dados.data[0].email + '" >' +
-                    '</div>' +
-
-                    '<input type="button" class="button formataPerfilButton" name="alteraDadosPessoais" value="Alterar" onClick="alteraDadosPessoaisNoBD();"></input>' +
-
-                    '</div>' +
-                    '</form>';
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="celular" class="form-control" id="celular" value="' + dados.data[0].celular + '" placeholder="Celular" >' +
+                '</div>' +
 
 
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="CPF" class="form-control" id="CPF" value="' + dados.data[0].CPF + '" placeholder="CPF" >' +
+                '</div>' +
 
+                '<div class="col-md-6 mb-3">' +
+                '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="' + dados.data[0].email + '" >' +
+                '</div>' +
 
+                '<input type="button" class="button formataPerfilButton" name="alteraDadosPessoais" value="Alterar" onClick="alteraDadosPessoaisNoBD();"></input>' +
+
+                '</div>' +
+                '</form>';
 
                 document.getElementById('perfilPagina').innerHTML = dadosPessoais;
-
             }
         }
     });
@@ -421,7 +416,6 @@ function alteraDadosPessoaisNoBD() {
 }
 
 function alterarDadosEntrega(id) {
-
     //limpar página, para nao exibir em cima de outros dados
     //através do id, recuperar dados pessoais: cep,rua,numero,bairro,complemento,cidade,estado.
     //criar variavel mudanças e inicializá-la com 0
@@ -430,123 +424,160 @@ function alterarDadosEntrega(id) {
     //disponibilizar botao ALTERAR que so estara disponivel se mudanca !=0
     //quando cliente clicar no batao, fazer respectivas alterações no bd  
 
+    $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+        url: '/acesso/lerDadosEntrega?id=' + window.localStorage.getItem("id"),
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em ler dados pessoais ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO') {
+                alert('Erro: 2 ' + dados.data);
+            }
+            else {
+                var dadosEntrega =
 
+                '<div class="formataPerfil">' +
 
-    var dadosEntrega =
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="cep" class="form-control" id="cep" value="' + dados.data[0].CEP + '" placeholder="CEP" >' +
+                '</div>' +
 
-        '<div class="formataPerfil">' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="rua" class="form-control" id="rua" value="' + dados.data[0].rua + '" placeholder="Rua" >' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP" >' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="' + dados.data[0].numero + '" placeholder="Número" >' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="complemento" class="form-control" id="complemento" value="' + dados.data[0].complemento + '" placeholder="Complemento" >' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número" >' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="bairro" class="form-control" id="bairro" value="' + dados.data[0].bairro + '" placeholder="Bairro" >' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="complemento" class="form-control" id="complemento" value="" placeholder="Complemento" >' +
-        '</div>' +
+                ' <div class="col-md-6 mb-3">' +
+                '<input type="text" name="cidade" class="form-control" id="cidade" value="' + dados.data[0].cidade + '" placeholder="Cidade" >' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="bairro" class="form-control" id="bairro" value="" placeholder="Bairro" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="uf" class="form-control" id="uf" value="' + dados.data[0].estado + '" placeholder="UF" >' +
+                '</div>' +
 
-        ' <div class="col-md-6 mb-3">' +
-        '<input type="text" name="cidade" class="form-control" id="cidade" value="" placeholder="Cidade" disabled>' +
-        '</div>' +
+                '<input type="button" class="button formataPerfilButton" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>' +
+                '</div>';
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF" disabled>' +
-        '</div>' +
-
-        '<input type="button" class="button formataPerfilButton" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>' +
-
-
-        '</div>';
-
-
-
-    document.getElementById('perfilPagina').innerHTML = dadosEntrega;
+                document.getElementById('perfilPagina').innerHTML = dadosEntrega;
+            }
+        }
+    });
 }
 
+function alteraDadosEntregaNoBD() { 
+    var salvarDadosEntrega = ({ 
+        id: window.localStorage.getItem("id"),
+        cep: document.getElementById("cep").value,
+        rua: document.getElementById("rua").value,
+        numero: document.getElementById("numeroCasa").value,
+        complemento: document.getElementById("complemento").value,
+        bairro: document.getElementById("bairro").value,
+        cidade: document.getElementById("cidade").value,
+        estado: document.getElementById("uf").value
+    });
 
+    console.log(salvarDadosEntrega);
 
+    $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+        url: '/acesso/salvarDadosEntregaNoBD',
+        dataType: 'json',
+        type: 'post',
+        data: salvarDadosEntrega,
+        error: function (dados) {
+            alert('Erro em alterar dados pessoais ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                alert(dados.data);
+            }
+        }
+    });
+
+}
 
 function exibirDados() {
 
     var todosDados =
 
-        '<div>' +
+    '<div>' +
 
 
-        '<form id="formDados" name="formDados" action="#" method="post">' +
-        '<div class="row">' +
+    '<form id="formDados" name="formDados" action="#" method="post">' +
+    '<div class="row">' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário" disabled>' +
-        '</div>' +
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário" disabled>' +
+    '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Completo" disabled>' +
-        '</div>' +
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Completo" disabled>' +
+    '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento" disabled>' +
-        '</div>' +
+    '<div class="col-md-6 mb-3">' +
+    '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento" disabled>' +
+    '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="celular" class="form-control" id="celular" value="" placeholder="Celular" disabled>' +
-        '</div>' +
-
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF" disabled>' +
-        '</div>' +
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="celular" class="form-control" id="celular" value="" placeholder="Celular" disabled>' +
+    '</div>' +
 
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP" disabled>' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua" disabled>' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número" disabled>' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="complemento" class="form-control" id="complemento" value="" placeholder="Complemento" disabled>' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="bairro" class="form-control" id="bairro" value="" placeholder="Bairro" disabled>' +
-        '</div>' +
-
-        ' <div class="col-md-6 mb-3">' +
-        '<input type="text" name="cidade" class="form-control" id="cidade" value="" placeholder="Cidade" disabled>' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF" disabled>' +
-        '</div>' +
-
-        '<div class="col-12 mb-3">' +
-        '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="" disabled>' +
-        '</div>' +
-
-        '</div>' +
-        '</form>' +
-
-        '</div>';
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF" disabled>' +
+    '</div>' +
 
 
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP" disabled>' +
+    '</div>' +
+
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua" disabled>' +
+    '</div>' +
+
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número" disabled>' +
+    '</div>' +
+
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="complemento" class="form-control" id="complemento" value="" placeholder="Complemento" disabled>' +
+    '</div>' +
+
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="bairro" class="form-control" id="bairro" value="" placeholder="Bairro" disabled>' +
+    '</div>' +
+
+    ' <div class="col-md-6 mb-3">' +
+    '<input type="text" name="cidade" class="form-control" id="cidade" value="" placeholder="Cidade" disabled>' +
+    '</div>' +
+
+    '<div class="col-md-6 mb-3">' +
+    '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF" disabled>' +
+    '</div>' +
+
+    '<div class="col-12 mb-3">' +
+    '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="" disabled>' +
+    '</div>' +
+
+    '</div>' +
+    '</form>' +
+
+    '</div>';
 
     document.getElementById('perfilPagina').innerHTML = todosDados;
+
 }
