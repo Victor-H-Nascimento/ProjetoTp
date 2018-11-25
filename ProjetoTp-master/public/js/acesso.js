@@ -333,44 +333,58 @@ function alterarDadosPessoais(id) {
     //disponibilizar botao ALTERAR que so estara disponivel se mudanca !=0
     //quando cliente clicar no batao, fazer respectivas alterações no bd  
 
-    
-    
-    var dadosPessoais =
-    
-    '<div class="formataPerfil">'+
+    $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+        url: '/acesso/lerDadosPessoais?id=' + window.localStorage.getItem("id"),
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em criar o carrinho 2 ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                console.log(dados.data);
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário" >' +
-        '</div>' +
+                var dadosPessoais =
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Completo" >' +
-        '</div>' +
+                    '<div class="formataPerfil">' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento" >' +
-        '</div>' +
+                    '<div class="col-md-6 mb-3">' +
+                    '<input type="text" name="usuario" class="form-control" id="usuario" value="'+dados.data[0].usuario+'" placeholder="Usuário" >' +
+                    '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="celular" class="form-control" id="celular" value="" placeholder="Celular" >' +
-        '</div>' +
+                    '<div class="col-md-6 mb-3">' +
+                    '<input type="text" name="nome" class="form-control" id="nome" value="'+dados.data[0].nome+'" placeholder="Nome Completo" >' +
+                    '</div>' +
+
+                    '<div class="col-md-6 mb-3">' +
+                    '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="'+dados.data[0].dataNascimento+'" placeholder="Data de Nascimento" >' +
+                    '</div>' +
+
+                    '<div class="col-md-6 mb-3">' +
+                    '<input type="text" name="celular" class="form-control" id="celular" value="'+dados.data[0].celular+'" placeholder="Celular" >' +
+                    '</div>' +
 
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF" >' +
-        '</div>' +     
+                    '<div class="col-md-6 mb-3">' +
+                    '<input type="text" name="CPF" class="form-control" id="CPF" value="'+dados.data[0].CPF+'" placeholder="CPF" >' +
+                    '</div>' +
 
-        '<div class="col-md-6 mb-3">'+
-        '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="" >'+
-        '</div>'+
+                    '<div class="col-md-6 mb-3">' +
+                    '<input type="email" name="email" class="form-control" id="email" placeholder="Email" value="'+dados.data[0].email+'" >' +
+                    '</div>' +
 
-        '<input type="button" class="button formataPerfilButton" name="alteraDadosPessoais" value="Alterar" onClick="alteraDadosPessoaisNoBD();"></input>'+
+                    '<input type="button" class="button formataPerfilButton" name="alteraDadosPessoais" value="Alterar" onClick="alteraDadosPessoaisNoBD();"></input>' +
 
-    '</div>';
-        
-    
-        
-        document.getElementById('perfilPagina').innerHTML = dadosPessoais;
+                    '</div>';
+
+
+
+                document.getElementById('perfilPagina').innerHTML = dadosPessoais;
+
+            }
+        }
+    });
 }
 
 function alterarDadosEntrega(id) {
