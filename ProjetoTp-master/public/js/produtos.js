@@ -201,17 +201,33 @@ function dadosCarrinho(){
       }
   });
 
+  $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+    url: '/acesso/lerDadosPessoais?id=' + window.localStorage.getItem("id"),
+    dataType: 'json',
+    error: function (dados) {
+        alert('Erro em endereco do cliente ' + dados.data);
+    },
+    success: function (dados) {
+        if (dados.status === 'SEMACESSO')
+            alert('Erro: 2 ' + dados.data);
+        else {
 
+            var dadosEndereco = 
+            '<h5>'
+            +dados.data[0].rua + ',' 
+            +dados.data[0].numero + ',' 
+            +dados.data[0].cidade  + ',' 
+            +dados.data[0].estado  + '</h5>';    
+            console.log(dadosEndereco);
+            document.getElementById("endereco").innerHTML = dadosEndereco;
 
-    dadosEndereco = 
-    '<h5>'
-    +window.localStorage.getItem("rua") + ',' 
-    +window.localStorage.getItem("numero") + ',' 
-    +window.localStorage.getItem("cidade") + ',' 
-    +window.localStorage.getItem("estado") + '</h5>';    
-    console.log(dadosEndereco);
-    document.getElementById("endereco").innerHTML = dadosEndereco;
+        }
+    }
+});
 }
+
+    
+
 
 
 function exibeCarrinho(dados){
@@ -233,16 +249,16 @@ function exibeCarrinho(dados){
         '<td class="price" id="idProdutoValor">' +
         ' <span>R$'+dados[i].precoAtual+'</span>' +
         '</td>' +
-        '<td class="qty">' +
+        '<td class="qty"  >' +
         '<div class="qty-btn d-flex">' +
-        '<button onclick="excluiProduto(' + dados[i].idProdutos + ', ' + dados[i].precoAtual + ');">Remover</button>'+
         '<p>Qtd</p>' +
-        '<div class="quantity">' +
+        '<div class="quantity" >' +
         '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
         '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="'+dados[i].quantidadeComprada+'">' +
         '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
         '</div>' +
         '</div>' +
+        '<button  onclick="excluiProduto(' + dados[i].idProdutos + ', ' + dados[i].precoAtual + ');">Remover</button>'+
         '</td>' +
         '</tr>';
 

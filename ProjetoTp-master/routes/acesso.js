@@ -155,7 +155,8 @@ router.get('/lerDadosPessoais', function (req, res, next) {
         var id = req.query.id;
         console.log(id);
         req.getConnection(function (err, connection) {
-            connection.query('SELECT * FROM Usuarios WHERE idUsuarios = ' + id, function (err, rows) {                if (err)
+            connection.query('SELECT * FROM Usuarios WHERE idUsuarios = ' + id, function (err, rows) {                
+                if (err)
                     res.json({ status: 'ERRO', data: err });
                 res.json({ status: 'OK', data: rows });
             });
