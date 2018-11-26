@@ -28,7 +28,16 @@
     <!-- Referencia JS -->
     <script type="text/javascript" src="js/script.js"></script>
 
-   
+<!--Máscaras para campos do Formulário-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>   
+
+<script type=text/javascript>
+$("#celular").mask("(00) 0-0000-0000");
+$("#CPF").mask("000-000-000-00");
+$("#cep").mask("00000-000");
+</script>
+
 </head>
 
 <body onload=" verificaLogin(), exibirDados();">
