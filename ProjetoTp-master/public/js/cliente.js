@@ -74,18 +74,8 @@ function confirmaSenhas() {
     var senhaConfirmacao = document.formCliente.confirmaSenha.value;
 
     if(senha != senhaConfirmacao){
-        bordaVermelha();
-        //  ou
-        //  mostraMensagemDeValidacao();
+        
     }
-}
-
-//  function mostraMensagemDeValidacao() {
-//      innerHTML   "As senhas devem ser iguais"
-//  }
-
-function bordaVermelha() {
-    document.getElementById("confirmaSenha").style.borderColor == "red";
 }
 
 function validaFormularioVazio(){
@@ -117,8 +107,31 @@ function verificaCampoEstaVazio(campoEstaVazio){
     if(campoEstaVazio){
         alert("Há campos obrigatório sem preencher");
     } else {
+        formularioValido();
+    }
+}
+
+function formularioValido() {
+    if(testaSenha){
         salvaCliente();
     }
+}
+
+function testaSenha(){
+    var senha1 = document.formCliente.senha.value;
+    var confirmaSenha1 = document.formCliente.confirmaSenha.value;
+
+    if(senha1 == confirmaSenha1){
+        console.log("Senhas iguais");
+        document.getElementById("confirmaSenha").classList.remove("errado");
+        document.getElementById("confirmaSenha").classList.add('correta');
+        return true;
+    } else {
+        console.log("Senhas Diferentes");
+        document.getElementById("confirmaSenha").classList.remove("correta");
+        document.getElementById("confirmaSenha").classList.add('errado');
+        return false;
+    }   
 }
 
 function alterarCliente(id) {

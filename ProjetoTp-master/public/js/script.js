@@ -162,7 +162,7 @@ $(document).ready(function () {
 });
 
 //comparar se as senhas sao iguais
-function testaSenha(){
+/*function testaSenha(){
     var senha1 = document.formCliente.senha.value;
     var confirmaSenha1 = document.formCliente.confirmaSenha.value;
 
@@ -170,14 +170,12 @@ function testaSenha(){
         console.log("Senhas iguais");
         document.getElementById("confirmaSenha").classList.remove("errado");
         document.getElementById("confirmaSenha").classList.add('correta');
-    }
-    else{
+    } else {
         console.log("Senhas Diferentes");
         document.getElementById("confirmaSenha").classList.remove("correta");
         document.getElementById("confirmaSenha").classList.add('errado');
-    }
-    
-}
+    }   
+}*/
 
 
 //verificar se o usuario esta logado para mostrar login/logout
