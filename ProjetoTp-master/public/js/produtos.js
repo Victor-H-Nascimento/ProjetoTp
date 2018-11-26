@@ -299,8 +299,6 @@ function finalizaCompra(){
             else {
               alert(dados.data);
               window.localStorage.compraFinalizada = true;
-              window.localStorage.valorTotal = 0;
-              window.localStorage.idCompras = 0;
               window.location.href = '/index.html'
           }
 
