@@ -495,7 +495,6 @@ function alteraDadosEntregaNoBD() {
             }
         }
     });
-
 }
 
 function exibirDados() {
@@ -510,87 +509,145 @@ function exibirDados() {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
+
                 console.log(dados.data[0]);
                 var d = new Date(dados.data[0].dataNascimento);
                 console.log(d);
 
                 var todosDados =
 
-        '<div>' +
+                '<div>' +
 
 
-    '<form id="formDados" name="formDados" action="#" method="post">' +
-    '<div class="row">' +
+                '<form id="formDados" name="formDados" action="#" method="post">' +
+                '<div class="row">' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário: ' + dados.data[0].usuario + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="usuario" class="form-control" id="usuario" value="" placeholder="Usuário: ' + dados.data[0].usuario + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Completo: ' + dados.data[0].nome + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="nome" class="form-control" id="nome" value="" placeholder="Nome Completo: ' + dados.data[0].nome + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento: ' + dados.data[0].dataNascimento + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento: ' + dados.data[0].dataNascimento + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="celular" class="form-control" id="celular" value="" placeholder="Celular: ' + dados.data[0].celular + '" disabled>' +
-        '</div>' +
-
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF: ' + dados.data[0].CPF + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="celular" class="form-control" id="celular" value="" placeholder="Celular: ' + dados.data[0].celular + '" disabled>' +
+                '</div>' +
 
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP: ' + dados.data[0].CEP + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="CPF" class="form-control" id="CPF" value="" placeholder="CPF: ' + dados.data[0].CPF + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua: ' + dados.data[0].rua + '" disabled>' +
-        '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número: ' + dados.data[0].nuemro + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="cep" class="form-control" id="cep" value="" placeholder="CEP: ' + dados.data[0].CEP + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="complemento" class="form-control" id="complemento" value="" placeholder="Complemento: ' + dados.data[0].complemento + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua: ' + dados.data[0].rua + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="bairro" class="form-control" id="bairro" value="" placeholder="Bairro: ' + dados.data[0].bairro + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número: ' + dados.data[0].nuemro + '" disabled>' +
+                '</div>' +
 
-        ' <div class="col-md-6 mb-3">' +
-        '<input type="text" name="cidade" class="form-control" id="cidade" value="" placeholder="Cidade: ' + dados.data[0].cidade + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="complemento" class="form-control" id="complemento" value="" placeholder="Complemento: ' + dados.data[0].complemento + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF: ' + dados.data[0].estado + '" disabled>' +
-        '</div>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="bairro" class="form-control" id="bairro" value="" placeholder="Bairro: ' + dados.data[0].bairro + '" disabled>' +
+                '</div>' +
 
-        '<div class="col-12 mb-3">' +
-        '<input type="email" name="email" class="form-control" id="email" placeholder="Email: ' + dados.data[0].email+ '" value="" disabled>' +
-        '</div>' +
+                ' <div class="col-md-6 mb-3">' +
+                '<input type="text" name="cidade" class="form-control" id="cidade" value="" placeholder="Cidade: ' + dados.data[0].cidade + '" disabled>' +
+                '</div>' +
 
-    '</div>' +
-    '</form>' +
+                '<div class="col-md-6 mb-3">' +
+                '<input type="text" name="uf" class="form-control" id="uf" value="" placeholder="UF: ' + dados.data[0].estado + '" disabled>' +
+                '</div>' +
 
-    '</div>';
+                '<div class="col-12 mb-3">' +
+                '<input type="email" name="email" class="form-control" id="email" placeholder="Email: ' + dados.data[0].email+ '" value="" disabled>' +
+                '</div>' +
 
-    document.getElementById('perfilPagina').innerHTML = todosDados;
+                '</div>' +
+                '</form>' +
 
-}
+                '</div>';
 
-    document.getElementById('perfilPagina').innerHTML = todosDados;
-
+                document.getElementById('perfilPagina').innerHTML = todosDados;
             }
         }
     });
-
-
-    
 }
+
+function historicoCompra(id) {
+    $.ajax ({
+        url: '/acesso/exibirHistoricoCompras?id=' + window.localStorage.getItem("id"),
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em ler historico de compras ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                exibeHistorico(dados.data);
+            }
+        }
+    });
+}
+
+function exibeHistorico(dados) {
+    console.log(dados);
+    for(var i = 0; i < dados.length; i++){
+
+        var dadosHistoricoCompras = 
+
+        '<div class="formataPerfil">' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="notaFiscal" class="form-control" id="notaFiscal" value="" placeholder="Nota Fiscal: ' + dados[i].notaFiscal + '" >' +
+        '</div>' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="dataCompra" class="form-control" id="dataCompra" value="" placeholder="Data da compra: ' + dados[i].dataCompra + '" >' +
+        '</div>' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="valorTotal" class="form-control" id="valorTotal" value="" placeholder="Valor Total: ' + dados[i].valorTotal + '" >' +
+        '</div>' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="frete" class="form-control" id="frete" value="" placeholder="Frete: ' + dados[i].frete + '" >' +
+        '</div>' +
+
+        '<div class="col-md-6 mb-3">' +
+        '<input type="text" name="percentualDesconto" class="form-control" id="percentualDesconto" value="" placeholder="Percentual Desconto: ' + dados[i].percentualDesconto + '" >' +
+        '</div>' +
+
+        ' <div class="col-md-6 mb-3">' +
+        '<input type="text" name="valorDaCompra" class="form-control" id="valorDaCompra" value="" placeholder="Valor da Compra: ' + dados[i].valorDaCompra + '" >' +
+        '</div>' +
+
+        '</div>';
+
+        document.getElementById('perfilPagina').innerHTML = dadosHistoricoCompras;
+    }   
+}
+
+
+
+
+
+
+
+
+
+
