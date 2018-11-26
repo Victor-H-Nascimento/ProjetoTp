@@ -193,4 +193,59 @@ router.post('/salvarDadosPessoais', function (req, res, next) {
     }
 });
 
+router.get('/lerDadosEntrega', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        console.log(id);
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM Usuarios WHERE idUsuarios = ' + id, function (err, rows) {               
+             if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: rows });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.post('/salvarDadosEntregaNoBD', function (req, res, next) {
+    if (req.session.logado) {
+        var input = req.body;
+        console.log(input);
+        req.getConnection(function (err, connection) {
+            connection.query('UPDATE Usuarios SET cep = ?, rua = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?  WHERE idUsuarios = ? ', [input.cep, input.rua, input.numero, input.complemento, input.cidade, input.bairro, input.estado, input.id], function (err, rows) {                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: "Dados de entrega alterados com sucesso!" });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.get('/exibirHistoricoCompras', function (req, res, next) { 
+    if (req.session.logado) {
+        var id = req.query.id;
+        console.log(id);
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM Compras WHERE idUsuario = ' + id, function(err, rows) {
+                if(err)
+                    res.json({ status: 'ERRO', data: err});
+                res.json({ status: 'OK', data: rows });
+            });
+            if(err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    } else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
 module.exports = router;
