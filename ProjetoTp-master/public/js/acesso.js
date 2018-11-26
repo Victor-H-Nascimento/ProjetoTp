@@ -553,7 +553,7 @@ function exibirDados() {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número: ' + dados.data[0].nuemro + '" disabled>' +
+                '<input type="text" name="numeroCasa" class="form-control" id="numeroCasa" value="" placeholder="Número: ' + dados.data[0].numero + '" disabled>' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
