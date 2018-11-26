@@ -84,7 +84,12 @@
                     <li><a href="shop.html">Loja</a></li>
                     <li><a href="produtos.html">Produtos</a></li>
                     <li class="active"><a href="carrinho.html">Carrinho</a></li>
-                    <li><a href="checkout.html">Cadastro</a></li>
+                    <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
+                        <span class="popuptext" id="myPopUp1">
+                            <form name="formCupom" class="centralizar" method="post">
+                                <input class="centralizar" type="text" name="cupom" placeholder="Digite o cupom"><br>
+                             </form>
+                        </span></li>
                     <li id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
                             <form name="formLogin" class="centralizar" method="post">
@@ -98,12 +103,7 @@
                             </form>
                         </span></li>
                     <li id="botaoLogout"><a href="#" onClick="logoutUsuario();"> Logout</a></li>    
-                    <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
-                        <span class="popuptext" id="myPopUp1">
-                            <form name="formCupom" class="centralizar" method="post">
-                                <input class="centralizar" type="text" name="cupom" placeholder="Digite o cupom"><br>
-                             </form>
-                        </span></li>
+                    
                 </ul>
             </nav>
 
@@ -214,9 +214,7 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cadastro.html">Cadastro</a>
-                                        </li>
+                                      
                                     </ul>
                                 </div>
                             </nav>

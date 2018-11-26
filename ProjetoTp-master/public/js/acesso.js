@@ -289,25 +289,6 @@ function redefineSenhaNoBD() {
 
 
 
-function historicoCompra(id) {
-
-    //limpar página, para nao exibir em cima de outros dados
-    //no bd, retornar quantas compras um usuario fez
-    //fazer loop e printar cada uma das compras, contendo itens comprados e valor pago
-
-
-    var dadosHistorico =
-
-    '<div class="formataPerfil">' +
-
-    '<h1>DADOS HISTORICO</h1>' +
-
-    '</div>';
-
-
-
-    document.getElementById('perfilPagina').innerHTML = dadosHistorico;
-}
 
 
 function alterarDadosPessoais(id) {
@@ -399,6 +380,7 @@ function alteraDadosPessoaisNoBD() {
                 alert('Erro: 2 ' + dados.data);
             else {
                 alert(dados.data);
+                window.location = "perfil.html";
             }
         }
     });
@@ -492,6 +474,7 @@ function alteraDadosEntregaNoBD() {
                 alert('Erro: 2 ' + dados.data);
             else {
                 alert(dados.data);
+                window.location = "perfil.html";
             }
         }
     });
@@ -599,6 +582,7 @@ function historicoCompra(id) {
                 alert('Erro: 2 ' + dados.data);
             else {
                 exibeHistorico(dados.data);
+                
             }
         }
     });
@@ -606,39 +590,34 @@ function historicoCompra(id) {
 
 function exibeHistorico(dados) {
     console.log(dados);
+    document.getElementById('perfilPagina').innerHTML = null;
     for(var i = 0; i < dados.length; i++){
 
         var dadosHistoricoCompras = 
 
-        '<div class="formataPerfil">' +
+        '<tr>' +
+        '<td class="cart_product_img">' +
+        '<span>Nota Fiscal: '+ dados[i].notaFiscal +'</span>' +
+        '</td>' +
+        '<td class="price" id="idProdutos">' +
+        '<span>Data da compra: '+dados[i].dataCompra+'</span>' +
+        '</td>' +
+        '<td class="cart_product_desc">' +
+        '<h5>'+dados[i].valorTotal+'</h5>' +
+        '</td>' +
+        '<td class="price" id="idProdutoValor">' +
+        '<span>R$'+dados[i].frete+'</span>' +
+        '</td>' +
+        '<td class="price" id="idProdutoValor">' +
+        ' <span>R$'+dados[i].percentualDesconto+'</span>' +
+        '</td>' +
+        '<td class="price" id="idProdutoValor">' +
+        ' <span>R$'+dados[i].valorTotal+'</span>' +
+        '</td>' +
+        '</tr>'
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="notaFiscal" class="form-control" id="notaFiscal" value="" placeholder="Nota Fiscal: ' + dados[i].notaFiscal + '" >' +
-        '</div>' +
+        document.getElementById('perfilPagina').innerHTML += dadosHistoricoCompras;
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="dataCompra" class="form-control" id="dataCompra" value="" placeholder="Data da compra: ' + dados[i].dataCompra + '" >' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="valorTotal" class="form-control" id="valorTotal" value="" placeholder="Valor Total: ' + dados[i].valorTotal + '" >' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="frete" class="form-control" id="frete" value="" placeholder="Frete: ' + dados[i].frete + '" >' +
-        '</div>' +
-
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="percentualDesconto" class="form-control" id="percentualDesconto" value="" placeholder="Percentual Desconto: ' + dados[i].percentualDesconto + '" >' +
-        '</div>' +
-
-        ' <div class="col-md-6 mb-3">' +
-        '<input type="text" name="valorDaCompra" class="form-control" id="valorDaCompra" value="" placeholder="Valor da Compra: ' + dados[i].valorDaCompra + '" >' +
-        '</div>' +
-
-        '</div>';
-
-        document.getElementById('perfilPagina').innerHTML = dadosHistoricoCompras;
     }   
 }
 
