@@ -25,43 +25,9 @@ function loginUsuario() {
                 alert('Logado com sucesso!');
                 colocarUsuario();
                 verificaLogin();
+                criaCarrinho();
                 //window.location.href = '/index.html';
 
-                $.ajax({//cria um carrinho para o cliente qnd ele loga
-                    url: '/acesso/criaCarrinho?id=' + dados.data.idUsuarios,
-                    dataType: 'json',
-                    type: 'post',
-                    error: function (dados) {
-                        alert('Erro em criar o carrinho 1 ' + dados.data);
-                    },
-                    success: function (dados) {
-                        if (dados.status === 'SEMACESSO')
-                            alert('Erro: 2 ' + dados.data);
-                        else {
-                            alert(dados.data);
-                            $.ajax({//idCarrinho para pegar o id do carrinho do usuario
-                                url: '/acesso/idCarrinho',
-                                dataType: 'json',
-                                error: function (dados) {
-                                    alert('Erro em criar o carrinho 2 ' + dados.data);
-                                },
-                                success: function (dados) {
-                                    if (dados.status === 'SEMACESSO')
-                                        alert('Erro: 2 ' + dados.data);
-                                    else {
-                                        console.log(dados.data[0].id);
-                                        window.localStorage.idCompras = dados.data[0].id;
-
-
-                                    }
-                                }
-                            });
-
-
-
-                        }
-                    }
-                });
             }
         }
     });
@@ -153,7 +119,7 @@ function retiraLocalStorage() {
 
 
 function criaCarrinho() {
-    console.log("Teste " + window.localStorage.getItem("id"));
+    //zconsole.log("Teste " + window.localStorage.getItem("id"));
     $.ajax({//cria um carrinho para o cliente qnd ele loga
         url: '/acesso/criaCarrinho?id=' + window.localStorage.getItem("id"),
         dataType: 'json',
@@ -165,27 +131,8 @@ function criaCarrinho() {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                alert(dados.data);
-                $.ajax({//idCarrinho para pegar o id do carrinho do usuario
-                    url: '/acesso/idCarrinho',
-                    dataType: 'json',
-                    error: function (dados) {
-                        alert('Erro em criar o carrinho 2 ' + dados.data);
-                    },
-                    success: function (dados) {
-                        if (dados.status === 'SEMACESSO')
-                            alert('Erro: 2 ' + dados.data);
-                        else {
-                            console.log(dados.data[0].id);
-                            window.localStorage.idCompras = dados.data[0].id;
-                            window.localStorage.compraFinalizada = false;
-
-                        }
-                    }
-                });
-
-
-
+                window.localStorage.idCompras = dados.data;
+                window.localStorage.compraFinalizada = false;
             }
         }
     });

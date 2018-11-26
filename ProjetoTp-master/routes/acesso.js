@@ -83,7 +83,14 @@ router.post('/criaCarrinho', function (req, res, next) {
             connection.query('INSERT INTO Compras SET idUsuario = '+ id, function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: err });
-                res.json({ status: 'OK', data: "Deu Bom 2 ..." });
+                else{
+                    //;
+                    res.json({ status: 'OK', data: rows.insertId });
+                    //connection.query('INSERT INTO Compras SET idUsuario = '+ id, function (err, rows) {
+                        
+                }
+                    
+                
             });
             if (err)
                 res.json({ status: 'ERRO', data: "Deu bom ..." });
@@ -96,7 +103,6 @@ router.post('/criaCarrinho', function (req, res, next) {
 
 router.get('/idCarrinho', function (req, res, next) {
     if (req.session.logado) {
-  
         req.getConnection(function (err, connection) {
             connection.query('SELECT LAST_INSERT_ID() as id', function (err, rows) {
                 if (err)
