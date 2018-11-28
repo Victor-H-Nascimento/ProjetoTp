@@ -593,6 +593,17 @@ function exibeHistorico(dados) {
     document.getElementById('perfilPagina').innerHTML = null;
     for(var i = 0; i < dados.length; i++){
 
+        var date = new Date(dados[i].dataCompra);
+        
+        var hours = date.getHours() + 2;
+        var minutes = date.getMinutes();
+        var seconds = date.getSeconds();
+        var years = date.getFullYear();
+        var months = date.getMonth() + 1;
+        var days = date.getDate();
+       
+
+
         var dadosHistoricoCompras = 
 
 '<div class="formataPerfil">' +
@@ -607,7 +618,8 @@ function exibeHistorico(dados) {
                                         
                                         '<th>Nota Fiscal</th>' +
                                         '<th>Valor Total</th>' +
-                                        '<th>Compra Realizada em:</th>' +
+                                        '<th>Data da Compra</th>' +
+                                        '<th>Hora da Compra</th>' +
                                         '<th>Produto</th>' +
                                         '<th>Preço</th>' +
                                         '<th>Quantidade</th>' +
@@ -631,8 +643,12 @@ function exibeHistorico(dados) {
 
                                 //Data da Compra
                                 '<td>' +  
-                                
-                                '<span>' +dados[i].dataCompra+'</span>' + '</br>'+
+                                '<span>' + days + "/" + months + "/" + years + '</span>' + '</br>'+
+                                '</td>' +
+
+                                //Hora da Compra
+                                '<td>' +  
+                                '<span>' + hours + ":" + minutes + ":" + seconds + '</span>' + '</br>'+
                                 '</td>' +
 
                                  //Loop Produtos,Preco e Quantidade
