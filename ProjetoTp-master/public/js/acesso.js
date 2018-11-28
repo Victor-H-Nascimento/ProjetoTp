@@ -607,6 +607,7 @@ function exibeHistorico(dados) {
                                         
                                         '<th>Nota Fiscal</th>' +
                                         '<th>Valor Total</th>' +
+                                        '<th>Compra Realizada em:</th>' +
                                         '<th>Produto</th>' +
                                         '<th>Preço</th>' +
                                         '<th>Quantidade</th>' +
@@ -626,6 +627,12 @@ function exibeHistorico(dados) {
                                 //Valor total pago
                                 '<td>' +
                                 ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Data da Compra
+                                '<td>' +  
+                                
+                                '<span>' +dados[i].dataCompra+'</span>' + '</br>'+
                                 '</td>' +
 
                                  //Loop Produtos,Preco e Quantidade
