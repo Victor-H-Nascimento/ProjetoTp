@@ -595,26 +595,58 @@ function exibeHistorico(dados) {
 
         var dadosHistoricoCompras = 
 
-        '<tr>' +
-        '<td class="cart_product_img">' +
-        '<span>Nota Fiscal: '+ dados[i].notaFiscal +'</span>' +
-        '</td>' +
-        '<td class="price" id="idProdutos">' +
-        '<span>Data da compra: '+dados[i].dataCompra+'</span>' +
-        '</td>' +
-        '<td class="cart_product_desc">' +
-        '<h5>'+dados[i].valorTotal+'</h5>' +
-        '</td>' +
-        '<td class="price" id="idProdutoValor">' +
-        '<span>R$'+dados[i].frete+'</span>' +
-        '</td>' +
-        '<td class="price" id="idProdutoValor">' +
-        ' <span>R$'+dados[i].percentualDesconto+'</span>' +
-        '</td>' +
-        '<td class="price" id="idProdutoValor">' +
-        ' <span>R$'+dados[i].valorTotal+'</span>' +
-        '</td>' +
-        '</tr>'
+'<div class="formataPerfil">' +
+            '<div class="container-fluid">' +
+                '<div class="row">' +
+                    '<div class="col-12 col-lg-8">' +
+
+                        '<div class="cart-table clearfix">' +
+                            '<table class="table table-responsive">' +
+                                '<thead>' +
+                                    '<tr>' +
+                                        
+                                        '<th>Nota Fiscal</th>' +
+                                        '<th>Valor Total</th>' +
+                                        '<th>Produto</th>' +
+                                        '<th>Preço</th>' +
+                                        '<th>Quantidade</th>' +
+                                        
+         
+                                    '</tr>'+
+                                '</thead>' +
+                                '<tbody>' +
+                                //inicio da Tabela
+                                '<tr>' +
+
+                                 //Nº nota fiscal
+                                 '<td>' +
+                                '<span>' + dados[i].notaFiscal +'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Valor total pago
+                                '<td>' +
+                                ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
+                                '</td>' +
+
+                                 //Loop Produtos,Preco e Quantidade
+
+                                 
+                                 '</tr>' + 
+                                 //fim da Tabela
+                                '</tbody>' +
+                            '</table>' +
+                        '</div>'+
+                    '</div>' +
+
+                    
+                    
+                '</div>' +
+                '</div>' +
+                '</div>';
+
+
+
+      
 
         document.getElementById('perfilPagina').innerHTML += dadosHistoricoCompras;
 
