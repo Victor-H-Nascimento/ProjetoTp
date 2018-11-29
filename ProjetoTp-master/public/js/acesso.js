@@ -287,10 +287,6 @@ function redefineSenhaNoBD() {
     }
 }
 
-
-
-
-
 function alterarDadosPessoais(id) {
 
     //limpar página, para nao exibir em cima de outros dados
@@ -494,14 +490,10 @@ function exibirDados() {
             else {
 
                 var date = new Date(dados.data[0].dataNascimento);
-                
-               
+                               
                 var years = date.getFullYear();
                 var months = date.getMonth() + 1;
                 var days = date.getDate();
-
-                
-        
 
                 var todosDados =
 
@@ -588,14 +580,12 @@ function historicoCompra(id) {
                 alert('Erro: 2 ' + dados.data);
             else {
                 exibeHistorico(dados.data);
-                
             }
         }
     });
 }
 
 function exibeHistorico(dados) {
-    console.log(dados);
     document.getElementById('perfilPagina').innerHTML = null;
     for(var i = 0; i < dados.length; i++){
 
@@ -607,8 +597,8 @@ function exibeHistorico(dados) {
         var years = date.getFullYear();
         var months = date.getMonth() + 1;
         var days = date.getDate();
-       
 
+        produtosHistoricoCompra(dados[i].idCompras);
 
         var dadosHistoricoCompras = 
 
@@ -629,7 +619,6 @@ function exibeHistorico(dados) {
                                         '<th>Produto</th>' +
                                         '<th>Preço</th>' +
                                         '<th>Quantidade</th>' +
-                                        
          
                                     '</tr>'+
                                 '</thead>' +
@@ -638,7 +627,7 @@ function exibeHistorico(dados) {
                                 '<tr>' +
 
                                  //Nº nota fiscal
-                                 '<td>' +
+                                '<td>' +
                                 '<span>' + dados[i].notaFiscal +'</span>' + '</br>'+
                                 '</td>' +
 
@@ -658,8 +647,8 @@ function exibeHistorico(dados) {
                                 '</td>' +
 
                                  //Loop Produtos,Preco e Quantidade
-
                                  
+
                                  '</tr>' + 
                                  //fim da Tabela
                                 '</tbody>' +
@@ -667,22 +656,31 @@ function exibeHistorico(dados) {
                         '</div>'+
                     '</div>' +
 
-                    
-                    
                 '</div>' +
-                '</div>' +
-                '</div>';
-
-
-
-      
+            '</div>' +
+        '</div>';
 
         document.getElementById('perfilPagina').innerHTML += dadosHistoricoCompras;
 
     }   
 }
 
-
+function produtosHistoricoCompra(id) {
+    $.ajax ({
+        url: '/acesso/exibirProdutosComprados?id=' + id,
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em ler produtos comprados ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                return(dados.data);
+            }
+        }
+    });
+}
 
 
 
