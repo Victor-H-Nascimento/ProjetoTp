@@ -82,9 +82,14 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="shop.html">Loja</a></li>
-                    <li><a href="produtos.html">Produtos</a></li>
                     <li class="active"><a href="carrinho.html">Carrinho</a></li>
-                    <li><a href="checkout.html">Cadastro</a></li>
+                    <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
+                        <span class="popuptext" id="myPopUp1">
+                            <form name="formCupom" class="centralizar" method="post">
+                                <input class="centralizar" type="text" name="cupom" placeholder="Digite o cupom"><br>
+                             </form>
+                        </span></li>
+                    <li><a href="contatos.html">Contatos</a></li>
                     <li id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
                             <form name="formLogin" class="centralizar" method="post">
@@ -98,12 +103,7 @@
                             </form>
                         </span></li>
                     <li id="botaoLogout"><a href="#" onClick="logoutUsuario();"> Logout</a></li>    
-                    <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
-                        <span class="popuptext" id="myPopUp1">
-                            <form name="formCupom" class="centralizar" method="post">
-                                <input class="centralizar" type="text" name="cupom" placeholder="Digite o cupom"><br>
-                             </form>
-                        </span></li>
+                    
                 </ul>
             </nav>
 
@@ -145,6 +145,8 @@
                             </table>
                         </div>
                     </div>
+
+                    
                     <div class="col-12 col-lg-4">
                         <div class="cart-summary">
                             <h5>Valor Total</h5>
@@ -202,21 +204,19 @@
                                         class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
+                                        <li class="nav-item ">
                                             <a class="nav-link" href="index.html">Home</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="loja.html">Loja</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="produtos.html">Produtos</a>
+                                            <a class="nav-link" href="contatos.html">Contatos</a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item active">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cadastro.html">Cadastro</a>
-                                        </li>
+                                      
                                     </ul>
                                 </div>
                             </nav>

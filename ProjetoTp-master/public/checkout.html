@@ -92,9 +92,9 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="loja.html">Loja</a></li>
-                    <li><a href="product-details.html">Produtos</a></li>
                     <li><a href="carrinho.html">Carrinho</a></li>
                     <li class="active"><a href="checkout.html">Cadastro</a></li>
+                    <li><a href="contatos.html">Contatos</a></li>
                 </ul>
             </nav>
 
@@ -124,7 +124,7 @@
                                         <input type="password" name="senha" class="form-control" id="senha" value="" placeholder="Senha" onkeyup="testaSenha();" required >       
                                         
                                         <div class="showpassword">
-                                        <input type="button" id="mostrarSenha" value="Mostrar Senha" class="button" />  
+                                        <input type="button" id="mostrarSenha" value="Mostrar Senha" class="button" onclick="mostrarEsconderSenha();" />  
                                         </div>
                                         
                                         <span title='Força da senha' class='password-strength'></span>    
@@ -160,7 +160,7 @@
 
                                     <div class="col-md-6 mb-3">
                                         <input type="text" name="cep" class="form-control" id="cep" value=""
-                                            placeholder="CEP" required>
+                                            placeholder="CEP" onblur="preencheCEP();" required>
                                         <a href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank">&nbsp;&nbsp;&nbsp;&nbsp;Não sei meu CEP.</a>
                                     </div>
 
@@ -251,20 +251,21 @@
                                         class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item active">
+                                        <li class="nav-item ">
                                             <a class="nav-link" href="index.html">Home</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="loja.html">Loja</a>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="product-details.html">Produtos</a>
-                                        </li>
+                                
                                         <li class="nav-item">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
                                         </li>
-                                        <li class="nav-item">
+                                        <li class="nav-item active">
                                             <a class="nav-link" href="checkout.html">Cadastro</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="contatos.html">Contatos</a>
                                         </li>
                                     </ul>
                                 </div>

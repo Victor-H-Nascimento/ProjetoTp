@@ -149,4 +149,132 @@ router.get('/pegaSenha', function (req, res, next) {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
     }
 });
+
+router.get('/lerDadosPessoais', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        console.log(id);
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM Usuarios WHERE idUsuarios = ' + id, function (err, rows) {                
+                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: rows });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.post('/salvarDadosPessoais', function (req, res, next) {
+    if (req.session.logado) {
+        var input = req.body;
+        console.log(input);
+        req.getConnection(function (err, connection) {
+            connection.query('UPDATE Usuarios SET usuario = ?, nome = ?, celular = ?, CPF = ?, email = ?, dataNascimento = ?  WHERE idUsuarios = ? ', [input.usuario,input.nome,input.celular,input.cpf,input.email,input.dataNascimento, input.id], function (err, rows) {                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: "Dados pessoais alteraos com sucesso!" });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.get('/lerDadosEntrega', function (req, res, next) {
+    if (req.session.logado) {
+        var id = req.query.id;
+        console.log(id);
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM Usuarios WHERE idUsuarios = ' + id, function (err, rows) {               
+             if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: rows });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.post('/salvarDadosEntregaNoBD', function (req, res, next) {
+    if (req.session.logado) {
+        var input = req.body;
+        console.log(input);
+        req.getConnection(function (err, connection) {
+            connection.query('UPDATE Usuarios SET cep = ?, rua = ?, numero = ?, complemento = ?, bairro = ?, cidade = ?, estado = ?  WHERE idUsuarios = ? ', [input.cep, input.rua, input.numero, input.complemento, input.cidade, input.bairro, input.estado, input.id], function (err, rows) {                if (err)
+                    res.json({ status: 'ERRO', data: err });
+                res.json({ status: 'OK', data: "Dados de entrega alterados com sucesso!" });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.get('/exibirHistoricoCompras', function (req, res, next) { 
+    if (req.session.logado) {
+        var id = req.query.id;
+        console.log(id);
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM Compras WHERE idUsuario = ' + id, function(err, rows) {
+                if(err)
+                    res.json({ status: 'ERRO', data: err});
+                res.json({ status: 'OK', data: rows });
+            });
+            if(err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    } else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.get('/exibirProdutosComprados', function (req, res, next) { 
+    if (req.session.logado) {
+        var id = req.query.id;
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM ProdutosComprados WHERE idCompras = ' + id, function(err, rows) {
+                if(err)
+                    res.json({ status: 'ERRO', data: err});
+                res.json({ status: 'OK', data: rows });
+            });
+            if(err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    } else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.get('/exibirNomeProduto', function (req, res, next) { 
+    if (req.session.logado) {
+        var id = req.query.id;
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM Produtos WHERE idProdutos = ' + id, function(err, rows) {
+                if(err)
+                    res.json({ status: 'ERRO', data: err});
+                res.json({ status: 'OK', data: rows });
+            });
+            if(err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    } else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+
 module.exports = router;
