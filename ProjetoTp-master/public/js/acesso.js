@@ -307,9 +307,14 @@ function alterarDadosPessoais(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                console.log(dados.data[0]);
-                var d = new Date(dados.data[0].dataNascimento);
-                console.log(d);
+                
+                
+                 var date = new Date(dados.data[0].dataNascimento);
+                
+               
+                var years = date.getFullYear();
+                var months = date.getMonth() + 1;
+                var days = date.getDate();
 
                 var dadosPessoais =
                 '<form id="formDadosPessoais" name="formDadosPessoais" action="#" method="post">' +
@@ -324,7 +329,7 @@ function alterarDadosPessoais(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="'+dados.data[0].dataNascimento+'" placeholder="Data de Nascimento" >' +
+                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="'+years +"-"  +months +"-" +days +'" placeholder="Data de Nascimento" >' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
@@ -530,7 +535,7 @@ function exibirDados() {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua: ' + dados.data[0].rua + '" disabled>' +
+                '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="' + dados.data[0].rua + '" disabled>' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
