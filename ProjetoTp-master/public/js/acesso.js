@@ -681,7 +681,24 @@ function produtosHistoricoCompra(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                return(dados.data);
+                pegaNomeProduto(dados.data.idProdutos);
+            }
+        }
+    });
+}
+
+function pegaNomeProduto(id) {
+    $.ajax ({
+        url: '/acesso/exibirNomeProduto?id=' + id,
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em ler produtos comprados ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                console.log(dados.data);
             }
         }
     });
