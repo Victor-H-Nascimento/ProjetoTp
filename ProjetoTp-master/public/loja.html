@@ -31,10 +31,12 @@
     <script>
         $(document).ready(function () {
             var carlos = document.getElementById("ordenar").options[document.getElementById("ordenar").options.selectedIndex].value;
+            var lauro = ({ opcao: carlos });
             alert(carlos);
+            alert(lauro);
             $.ajax({
-                url: '/produtos/listaLoja?value=' + carlos,
-                
+                url: '/produtos/listaLoja',
+                data: lauro,
                 dataType: 'json',
                 error: function (dados) {
                     alert('Erro: 1 ' + dados.data);
@@ -67,7 +69,7 @@
 
 </head>
 
-<body onload="verificaLogin();">
+<body onload="verificaLogin(); colocaTamanhoCarrinho();">
     <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -163,9 +165,9 @@
                 <input class="button" type="button" name="enviar" value="Novidades">
             </div>
             <!-- Cart Menu -->
-            <div class="cart-fav-search mb-100">
-                <a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>
+            <div id="carrinhoTamanho" class="cart-fav-search mb-100">
+                <!--<a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
+                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>-->
             </div>
 
         </header>
