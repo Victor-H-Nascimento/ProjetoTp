@@ -52,13 +52,9 @@ function loginUsuario() {
                                         console.log(dados.data[0].id);
                                         window.localStorage.idCompras = dados.data[0].id;
 
-
                                     }
                                 }
                             });
-
-
-
                         }
                     }
                 });
@@ -127,12 +123,7 @@ function logoutUsuario() {
             }
         }
     });
-
-
 }
-
-
-
 
 function retiraUsuario() {
     if (!window.localStorage) {
@@ -149,8 +140,6 @@ function retiraLocalStorage() {
         console.log('O browser NÃO suporta localStorage');
     }
 }
-
-
 
 function criaCarrinho() {
     console.log("Teste " + window.localStorage.getItem("id"));
@@ -603,11 +592,12 @@ function exibeHistorico(dados) {
         var months = date.getMonth() + 1;
         var days = date.getDate();
 
-        produtosHistoricoCompra(dados[i].idCompras);
+        
+        //console.log(dados[i].idCompras);
 
         var dadosHistoricoCompras = 
 
-'<div class="formataPerfil">' +
+        '<div class="formataPerfil">' +
             '<div class="container-fluid">' +
                 '<div class="row">' +
                     '<div class="col-12 col-lg-8">' +
@@ -651,9 +641,20 @@ function exibeHistorico(dados) {
                                 '<span>' + hours + ":" + minutes + ":" + seconds + '</span>' + '</br>'+
                                 '</td>' +
 
-                                 //Loop Produtos,Preco e Quantidade
-                                 
+                                '<td>' +  
+                                '<span>' + pegaProdutosHistoricoCompra(dados[i].idCompras); + '</span>' + '</br>'+
+                                '</td>' +
 
+
+
+
+
+                                 //Loop Produtos,Preco e Quantidade
+                                // '<td>' +
+                                //    '<button onClick="pegaProdutosHistoricoCompra(' + dados[i].idCompras + ')">Detalhes</button>'+
+                                // '</td>' +
+                                 
+                                 
                                  '</tr>' + 
                                  //fim da Tabela
                                 '</tbody>' +
@@ -670,7 +671,8 @@ function exibeHistorico(dados) {
     }   
 }
 
-function produtosHistoricoCompra(id) {
+function pegaProdutosHistoricoCompra(id) {
+    console.log('id do carrinho que gerou a NF: ' + id);
     $.ajax ({
         url: '/acesso/exibirProdutosComprados?id=' + id,
         dataType: 'json',
@@ -681,10 +683,68 @@ function produtosHistoricoCompra(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                pegaNomeProduto(dados.data.idProdutos);
+                return(exibeProdutosHistoricoCompra(dados.data));
             }
         }
     });
+}
+
+function exibeProdutosHistoricoCompra(dados) {
+
+   // document.getElementById('perfilPagina').innerHTML = null;
+
+    for(var i = 0; i < dados.length; i++) {
+
+                    var infoProdutosComprados = 
+
+                    '<div class="formataPerfil">' +
+                        '<div class="container-fluid">' +
+                            '<div class="row">' +
+                                '<div class="col-12 col-lg-8">' +
+
+                                    '<div class="cart-table clearfix">' +
+                                        '<table class="table table-responsive">' +
+                                            '<thead>' +
+                                                '<tr>' +
+                                                    
+                                                    '<th>Produto</th>' +
+                                                    '<th>Quantidade</th>' +
+                                                    '<th>Valor</th>' +
+                     
+                                                '</tr>'+
+                                            '</thead>' +
+                                            '<tbody>' +
+                                            //inicio da Tabela
+                                            '<tr>' +
+
+                                             // Produto
+                                            '<td>' +
+                                                '<span>' + pegaNomeProduto(dados[i].idProdutos) +'</span>' + '</br>'+
+                                            '</td>' +
+
+                                            // Quantidade do produto
+                                            '<td>' +
+                                                '<span>' +dados[i].quantidadeComprada+'</span>' + '</br>'+
+                                            '</td>' +
+
+                                            // Valor do produto
+                                            '<td>' +
+                                                '<span>'+ 'R$ ' +dados[i].valorUnitario+'</span>' + '</br>'+
+                                            '</td>' +
+
+                                             '</tr>' + 
+                                             //fim da Tabela
+                                            '</tbody>' +
+                                        '</table>' +
+                                    '</div>'+
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                    
+                    return infoProdutosComprados;
+                    //document.getElementById('perfilPagina').innerHTML += infoProdutosComprados;
+    }
 }
 
 function pegaNomeProduto(id) {
@@ -692,19 +752,28 @@ function pegaNomeProduto(id) {
         url: '/acesso/exibirNomeProduto?id=' + id,
         dataType: 'json',
         error: function (dados) {
-            alert('Erro em ler produtos comprados ' + dados.data);
+            alert('Erro em ler nome do produto ' + dados.data);
         },
         success: function (dados) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                console.log(dados.data);
+                return(exibeNomeProduto(dados.data));
             }
         }
     });
 }
 
-
+function exibeNomeProduto(dados) {
+    //console.log('nomes dos produtos:' + dados);
+    for(var i = 0; i < dados.length; i++) {
+        var nomeProdutoExibe = 
+            dados[i].nome;
+            console.log(dados[i].nome);
+    }
+    console.log(nomeProdutoExibe);
+    return nomeProdutoExibe;
+}
 
 
 
