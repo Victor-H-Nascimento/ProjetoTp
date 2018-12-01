@@ -624,12 +624,25 @@ function exibeHistorico(dados) {
 
         var date = new Date(dados[i].dataCompra);
         
-        var hours = date.getHours() + 2;
+        var hours = date.getHours() + 1;
         var minutes = date.getMinutes();
-        var seconds = date.getSeconds();
         var years = date.getFullYear();
         var months = date.getMonth() + 1;
         var days = date.getDate();
+        var zero = "0";
+
+        if(months <= 9)
+        {
+            var resultadoMes = zero.concat(months);
+            months = resultadoMes;
+        }
+
+        if(days <= 9)
+        {
+            var resultadoDias = zero.concat(days);
+            days = resultadoDias;
+        }
+           
 
         produtosHistoricoCompra(dados[i].idCompras);
        
@@ -676,7 +689,7 @@ function exibeHistorico(dados) {
 
                                 //Hora da Compra
                                 '<td>' +  
-                                '<span>' + hours + ":" + minutes + ":" + seconds + '</span>' + '</br>'+
+                                '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
                                 '</td>' +
 
                                  //Loop Produtos,Preco e Quantidade
