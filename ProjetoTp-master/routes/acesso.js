@@ -40,7 +40,7 @@ router.post('/logout', function (req, res, next) {
     });
 });
 
-router.post('/destroiProdutosComprados', function (req, res, next) {
+/*router.post('/destroiProdutosComprados', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
         //console.log("PUDIM 7 " + id)
@@ -55,13 +55,13 @@ router.post('/destroiProdutosComprados', function (req, res, next) {
     else {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
     }
-});
+});*/
 
 
-router.post('/destruirCompras', function (req, res, next) {
+/*router.post('/destruirCompras', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
-        //console.log("PUDIM 6 " + id)
+        
         req.getConnection(function (err, connection) {
             connection.query('DELETE FROM Compras WHERE idCompras =' + id, function (err, rows) {
                 if (err)
@@ -73,9 +73,10 @@ router.post('/destruirCompras', function (req, res, next) {
     else {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
     }
-});//SELECT * FROM ProdutosComprados as p INNER JOIN Compras c ON c.idCompras = p.idCompras
+});*/
 
-router.post('/criaCarrinho', function (req, res, next) {
+
+/*router.post('/criaCarrinho', function (req, res, next) {
     if (req.session.logado) {
         var id = req.query.id;
         //console.log("PUDIM 6 " + id)
@@ -92,7 +93,7 @@ router.post('/criaCarrinho', function (req, res, next) {
     else {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
     }
-});
+});*/
 
 router.get('/idCarrinho', function (req, res, next) {
     if (req.session.logado) {
@@ -164,9 +165,7 @@ router.get('/lerDadosPessoais', function (req, res, next) {
                 res.json({ status: 'ERRO', data: rows });
         });
     }
-    else {
-        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
-    }
+    
 });
 
 router.post('/salvarDadosPessoais', function (req, res, next) {

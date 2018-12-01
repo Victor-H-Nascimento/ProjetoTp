@@ -25,49 +25,12 @@ function loginUsuario() {
                 alert('Logado com sucesso!');
                 colocarUsuario();
                 verificaLogin();
-                //window.location.href = '/index.html';
-
-                $.ajax({//cria um carrinho para o cliente qnd ele loga
-                    url: '/acesso/criaCarrinho?id=' + dados.data.idUsuarios,
-                    dataType: 'json',
-                    type: 'post',
-                    error: function (dados) {
-                        alert('Erro em criar o carrinho 1 ' + dados.data);
-                    },
-                    success: function (dados) {
-                        if (dados.status === 'SEMACESSO')
-                            alert('Erro: 2 ' + dados.data);
-                        else {
-                            alert(dados.data);
-                            $.ajax({//idCarrinho para pegar o id do carrinho do usuario
-                                url: '/acesso/idCarrinho',
-                                dataType: 'json',
-                                error: function (dados) {
-                                    alert('Erro em criar o carrinho 2 ' + dados.data);
-                                },
-                                success: function (dados) {
-                                    if (dados.status === 'SEMACESSO')
-                                        alert('Erro: 2 ' + dados.data);
-                                    else {
-                                        console.log(dados.data[0].id);
-                                        window.localStorage.idCompras = dados.data[0].id;
-
-
-                                    }
-                                }
-                            });
-
-
-
-                        }
-                    }
-                });
             }
         }
     });
 }
 
-/**/
+
 
 
 function colocarUsuario() {
@@ -77,8 +40,19 @@ function colocarUsuario() {
     }
 }
 
+function colocaTamanhoCarrinho(){
+    if (window.sessionStorage) {
+        var produtos = Object.keys(sessionStorage);
+        var dados =  
+        '<a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>('+ produtos.length +')</span></a>'+
+        '<a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>';
+        document.getElementById('carrinhoTamanho').innerHTML = dados;
+    }
+}
+
+
 function logoutUsuario() {
-    //TEMOS QUE TIRAR PRIMEIRO OS PRODUTOSCOMPRADOS DPS COMPRAS 
+    /*//TEMOS QUE TIRAR PRIMEIRO OS PRODUTOSCOMPRADOS DPS COMPRAS 
     //PQ POSSUEM UMA DEPENDENCIA
     $.ajax({//tira a linha da tabela produtos comprados
         url: '/acesso/destroiProdutosComprados?id=' + window.localStorage.getItem("idCompras"),
@@ -91,47 +65,18 @@ function logoutUsuario() {
                 alert('Erro: ' + dados.data);
             else {
                 alert(dados.data);
-
-                $.ajax({//tira a linha da tabela compras
-                    url: '/acesso/destruirCompras?id=' + window.localStorage.getItem("idCompras"),
-                    dataType: 'json',
-                    type: 'post',
-                    error: function (dados) {
-                        alert('Erro em destruir compras ' + dados.data);
-                    },
-                    success: function (dados) {
-                        if (dados.status === 'ERRO')
-                            alert('Erro: ' + dados.data);
-                        else {
-                            alert(dados.data);
-
-                            $.ajax({//ENCERRA A SESSAO DO USURIO
-                                url: '/acesso/logout',
-                                type: 'post',
-                                error: function (dados) {
-                                    alert('Erro em logout' + dados.data);
-                                },
-                                success: function (dados) {
-                                    if (dados.status === 'ERRO')
-                                        alert('Erro: ' + dados.data);
-                                    else {
-                                        alert(dados.data);
-                                        window.localStorage.clear();
-                                        window.location.href = '/index.html';
-                                    }
-                                }
-                            });
-                        }
-                    }
-                });
+                window.localStorage.clear();
+                window.location.href = '/index.html';
             }
         }
-    });
+    });*/
+    alert("Logout realizado com sucesso!");
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+                window.location.href = '/index.html';
 
 
 }
-
-
 
 
 function retiraUsuario() {
@@ -141,18 +86,10 @@ function retiraUsuario() {
     }
 }
 
-function retiraLocalStorage() {
-    //localStorage
-    if (window.localStorage.clear()) {
-        console.log('O browser suporta localStorage');
-    } else {
-        console.log('O browser NÃO suporta localStorage');
-    }
-}
 
 
 
-function criaCarrinho() {
+/*function criaCarrinho() {
     console.log("Teste " + window.localStorage.getItem("id"));
     $.ajax({//cria um carrinho para o cliente qnd ele loga
         url: '/acesso/criaCarrinho?id=' + window.localStorage.getItem("id"),
@@ -191,7 +128,7 @@ function criaCarrinho() {
     });
 
 
-}
+}*/
 
 function redefinirSenha(id) {
 
@@ -315,6 +252,20 @@ function alterarDadosPessoais(id) {
                 var years = date.getFullYear();
                 var months = date.getMonth() + 1;
                 var days = date.getDate();
+                var zero = "0";
+
+            if(months <= 9)
+            {
+                var resultadoMes = zero.concat(months);
+                months = resultadoMes;
+            }
+
+            if(days <= 9)
+            {
+                var resultadoDias = zero.concat(days);
+                days = resultadoDias;
+            }   
+                
 
                 var dadosPessoais =
                 '<form id="formDadosPessoais" name="formDadosPessoais" action="#" method="post">' +
@@ -416,7 +367,7 @@ function alterarDadosEntrega(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="rua" class="form-control" id="rua" value="' + dados.data[0].rua + '" placeholder="Rua" disabled>' +
+                '<input type="text" name="rua" class="form-control" id="rua" value="' + dados.data[0].rua + '" placeholder="Rua" >' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
@@ -428,15 +379,15 @@ function alterarDadosEntrega(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="bairro" class="form-control" id="bairro" value="' + dados.data[0].bairro + '" placeholder="Bairro" disabled>' +
+                '<input type="text" name="bairro" class="form-control" id="bairro" value="' + dados.data[0].bairro + '" placeholder="Bairro" >' +
                 '</div>' +
 
                 ' <div class="col-md-6 mb-3">' +
-                '<input type="text" name="cidade" class="form-control" id="cidade" value="' + dados.data[0].cidade + '" placeholder="Cidade" disabled>' +
+                '<input type="text" name="cidade" class="form-control" id="cidade" value="' + dados.data[0].cidade + '" placeholder="Cidade" >' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="uf" class="form-control" id="uf" value="' + dados.data[0].estado + '" placeholder="UF" disabled>' +
+                '<input type="text" name="uf" class="form-control" id="uf" value="' + dados.data[0].estado + '" placeholder="UF" >' +
                 '</div>' +
 
                 '<input type="button" class="button formataPerfilButton" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>' +
@@ -499,6 +450,20 @@ function exibirDados() {
                 var years = date.getFullYear();
                 var months = date.getMonth() + 1;
                 var days = date.getDate();
+                var zero = "0";
+
+                if(months <= 9)
+                {
+                    var resultadoMes = zero.concat(months);
+                    months = resultadoMes;
+                }
+    
+                if(days <= 9)
+                {
+                    var resultadoDias = zero.concat(days);
+                    days = resultadoDias;
+                }   
+
 
                 var todosDados =
 
@@ -596,15 +561,28 @@ function exibeHistorico(dados) {
 
         var date = new Date(dados[i].dataCompra);
         
-        var hours = date.getHours() + 2;
+        var hours = date.getHours() + 1;
         var minutes = date.getMinutes();
-        var seconds = date.getSeconds();
         var years = date.getFullYear();
         var months = date.getMonth() + 1;
         var days = date.getDate();
+        var zero = "0";
+
+        if(months <= 9)
+        {
+            var resultadoMes = zero.concat(months);
+            months = resultadoMes;
+        }
+
+        if(days <= 9)
+        {
+            var resultadoDias = zero.concat(days);
+            days = resultadoDias;
+        }
+           
 
         produtosHistoricoCompra(dados[i].idCompras);
-
+       
         var dadosHistoricoCompras = 
 
 '<div class="formataPerfil">' +
@@ -648,7 +626,7 @@ function exibeHistorico(dados) {
 
                                 //Hora da Compra
                                 '<td>' +  
-                                '<span>' + hours + ":" + minutes + ":" + seconds + '</span>' + '</br>'+
+                                '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
                                 '</td>' +
 
                                  //Loop Produtos,Preco e Quantidade
@@ -681,24 +659,7 @@ function produtosHistoricoCompra(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                pegaNomeProduto(dados.data.idProdutos);
-            }
-        }
-    });
-}
-
-function pegaNomeProduto(id) {
-    $.ajax ({
-        url: '/acesso/exibirNomeProduto?id=' + id,
-        dataType: 'json',
-        error: function (dados) {
-            alert('Erro em ler produtos comprados ' + dados.data);
-        },
-        success: function (dados) {
-            if (dados.status === 'SEMACESSO')
-                alert('Erro: 2 ' + dados.data);
-            else {
-                console.log(dados.data);
+                return(dados.data);
             }
         }
     });
