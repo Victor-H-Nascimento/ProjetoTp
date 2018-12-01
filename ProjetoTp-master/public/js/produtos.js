@@ -128,9 +128,38 @@ function adicionarCarrinho(valor, id) {
     });
 
     console.log((dadosProdutos));
-    window.sessionStorage.setItem("produtoCarrinho" + id, JSON.stringify(dadosProdutos));
+    var produtos = Object.keys(sessionStorage);
+    var existe = "false";//variavel para validar a alteração
+    for (var i = 0; i < produtos.length; i++) {
+        if("produtoCarrinho" + id == produtos[i]){
+            var aux = (JSON.parse(window.sessionStorage.getItem(produtos[i])).qntdProd);
+            aux = JSON.parse(aux);
+            var qntd = JSON.parse(effect.value);
+            
+            aux += qntd;
+            existe = "true";
+
+            var dadosProdutos = ({
+                nome: nome,
+                imagem: resultado_str,
+                idProd: id,
+                valorProd: valor,
+                qntdProd: aux
+            });
+
+            window.sessionStorage.setItem("produtoCarrinho" + id, JSON.stringify(dadosProdutos));
     alert("Produto adicionado no carrinho com sucesso!");
     window.location.href = '/index.html';
+        }
+    }
+
+    if(existe === "false"){
+        window.sessionStorage.setItem("produtoCarrinho" + id, JSON.stringify(dadosProdutos));
+    alert("Produto adicionado no carrinho com sucesso!");
+    window.location.href = '/index.html';
+    }
+
+    
 
 
 }
@@ -188,6 +217,7 @@ function exibeCarrinho() {
 
             '<td class="cart_product_img">' +
             '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
+           
             '</td>' +
             
             '<td class="price" id="idProdutos">' +
@@ -210,7 +240,7 @@ function exibeCarrinho() {
             '<span> '+ aux.qntdProd +'  </span>' +  
             
 
-            '<button  onclick="excluiProduto(' + aux.idProd + ', ' + aux.valorProd + ');">Remover</button>' +
+            '<button class="button"  onclick="excluiProduto(' + aux.idProd + ', ' + aux.valorProd + ');">Remover</button>' +
             '</div>' +
             '</td>' +
             
