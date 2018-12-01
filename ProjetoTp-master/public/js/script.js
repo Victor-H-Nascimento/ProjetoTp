@@ -125,40 +125,40 @@ function mostrarEsconderSenha()
     // Get the password field
     var passwordField = document.getElementById("senha");
     var confirmPasswordField = document.getElementById("confirmaSenha");
-    alert("Entrou aqui");
-
+    var textoBotao = document.getElementById("mostrarSenha");
 
     // Get the current type of the password field will be password or text
-    var passwordFieldType = passwordField.attr('type');
-    var confirmPasswordFieldType = confirmPasswordField.attr('type');
+    var passwordFieldType = passwordField.getAttribute('type');
+    
+    var confirmPasswordFieldType = confirmPasswordField.getAttribute('type');
 
     // Check to see if the type is a password field
     if (passwordFieldType == 'password') {
         // Change the password field to text
-        passwordField.attr('type', 'text');
+        passwordField.setAttribute('type', 'text');
 
         // Change the Text on the show password button to Hide
-        $(this).val('Esconder senha');
+        textoBotao.setAttribute('value','Esconder senha');
     } else {
         // If the password field type is not a password field then set it to password
-        passwordField.attr('type', 'password');
+        passwordField.setAttribute('type', 'password');
 
         // Change the value of the show password button to Show
-        $(this).val('Mostrar senha');
+        textoBotao.setAttribute('value','Mostrar senha');
     }
 
     if (confirmPasswordFieldType == 'password') {
         // Change the password field to text
-        confirmPasswordField.attr('type', 'text');
+        confirmPasswordField.setAttribute('type', 'text');
 
         // Change the Text on the show password button to Hide
-        $(this).val('Esconder senha');
+        textoBotao.setAttribute('value','Esconder senha');
     } else {
         // If the password field type is not a password field then set it to password
-        confirmPasswordField.attr('type', 'password');
+        confirmPasswordField.setAttribute('type', 'password');
 
         // Change the value of the show password button to Show
-        $(this).val('Mostrar senha');
+        textoBotao.setAttribute('value','Mostrar senha');
     }
 
 
@@ -219,14 +219,15 @@ function testaSenha(){
     var senha1 = document.formCliente.senha.value;
     var confirmaSenha1 = document.formCliente.confirmaSenha.value;
 
-    if(senha1 == confirmaSenha1){
+
+    if(senha1 === confirmaSenha1){
         console.log("Senhas iguais");
-        document.getElementById("confirmaSenha").classList.remove("errado");
+        document.getElementById("confirmaSenha").classList.remove('errado');
         document.getElementById("confirmaSenha").classList.add('correta');
     }
     else{
         console.log("Senhas Diferentes");
-        document.getElementById("confirmaSenha").classList.remove("correta");
+        document.getElementById("confirmaSenha").classList.remove('correta');
         document.getElementById("confirmaSenha").classList.add('errado');
     }
     

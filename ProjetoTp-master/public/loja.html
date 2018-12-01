@@ -31,10 +31,12 @@
     <script>
         $(document).ready(function () {
             var carlos = document.getElementById("ordenar").options[document.getElementById("ordenar").options.selectedIndex].value;
+            var lauro = ({ opcao: carlos });
             alert(carlos);
+            alert(lauro);
             $.ajax({
-                url: '/produtos/listaLoja?value=' + carlos,
-                
+                url: '/produtos/listaLoja',
+                data: lauro,
                 dataType: 'json',
                 error: function (dados) {
                     alert('Erro: 1 ' + dados.data);
