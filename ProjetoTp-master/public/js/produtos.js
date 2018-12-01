@@ -185,29 +185,35 @@ function exibeCarrinho() {
         console.log("typeof(aux) " +typeof(aux));
         var dadosCarro =
             '<tr>' +
+
             '<td class="cart_product_img">' +
             '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
             '</td>' +
+            
             '<td class="price" id="idProdutos">' +
             '<span>' + aux.idProd + '</span>' +
             '</td>' +
+            
             '<td class="cart_product_desc">' +
             '<h5>' + aux.nome + '</h5>' +
             '</td>' +
+            
             '<td class="price" id="idProdutoValor">' +
             ' <span>R$' + aux.valorProd + '</span>' +
             '</td>' +
+            
+            
+
             '<td class="qty"  >' +
+
             '<div class="qty-btn d-flex">' +
-            '<p>Qtd</p>' +
-            '<div class="quantity" >' +
-            '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
-            '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="' + aux.qntdProd + '">' +
-            '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
-            '</div>' +
-            '</div>' +
+            '<span> '+ aux.qntdProd +'  </span>' +  
+            
+
             '<button  onclick="excluiProduto(' + aux.idProd + ', ' + aux.valorProd + ');">Remover</button>' +
+            '</div>' +
             '</td>' +
+            
             '</tr>';
 
         document.getElementById("listaCarrinho").innerHTML += dadosCarro;
