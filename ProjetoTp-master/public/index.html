@@ -63,7 +63,7 @@
     </script>
 </head>
 
-<body onload="verificaLogin();">
+<body onload="verificaLogin(); colocaTamanhoCarrinho();">
     <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -150,9 +150,9 @@
                 <input class="button" type="button" name="enviar" value="Novidades">
             </div>
             <!-- Cart Menu -->
-            <div class="cart-fav-search mb-100">
-                <a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>
+            <div id="carrinhoTamanho" class="cart-fav-search mb-100">
+                <!--<a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
+                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>-->
             </div>
 
         </header>

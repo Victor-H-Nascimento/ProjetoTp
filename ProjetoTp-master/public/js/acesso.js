@@ -40,8 +40,19 @@ function colocarUsuario() {
     }
 }
 
+function colocaTamanhoCarrinho(){
+    if (window.sessionStorage) {
+        var produtos = Object.keys(sessionStorage);
+        var dados =  
+        '<a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>('+ produtos.length +')</span></a>'+
+        '<a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>';
+        document.getElementById('carrinhoTamanho').innerHTML = dados;
+    }
+}
+
+
 function logoutUsuario() {
-    //TEMOS QUE TIRAR PRIMEIRO OS PRODUTOSCOMPRADOS DPS COMPRAS 
+    /*//TEMOS QUE TIRAR PRIMEIRO OS PRODUTOSCOMPRADOS DPS COMPRAS 
     //PQ POSSUEM UMA DEPENDENCIA
     $.ajax({//tira a linha da tabela produtos comprados
         url: '/acesso/destroiProdutosComprados?id=' + window.localStorage.getItem("idCompras"),
@@ -58,7 +69,11 @@ function logoutUsuario() {
                 window.location.href = '/index.html';
             }
         }
-    });
+    });*/
+    alert("Logout realizado com sucesso!");
+    window.localStorage.clear();
+    window.sessionStorage.clear();
+                window.location.href = '/index.html';
 
 
 }
@@ -352,7 +367,7 @@ function alterarDadosEntrega(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="rua" class="form-control" id="rua" value="' + dados.data[0].rua + '" placeholder="Rua" disabled>' +
+                '<input type="text" name="rua" class="form-control" id="rua" value="' + dados.data[0].rua + '" placeholder="Rua" >' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
@@ -364,15 +379,15 @@ function alterarDadosEntrega(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="bairro" class="form-control" id="bairro" value="' + dados.data[0].bairro + '" placeholder="Bairro" disabled>' +
+                '<input type="text" name="bairro" class="form-control" id="bairro" value="' + dados.data[0].bairro + '" placeholder="Bairro" >' +
                 '</div>' +
 
                 ' <div class="col-md-6 mb-3">' +
-                '<input type="text" name="cidade" class="form-control" id="cidade" value="' + dados.data[0].cidade + '" placeholder="Cidade" disabled>' +
+                '<input type="text" name="cidade" class="form-control" id="cidade" value="' + dados.data[0].cidade + '" placeholder="Cidade" >' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="uf" class="form-control" id="uf" value="' + dados.data[0].estado + '" placeholder="UF" disabled>' +
+                '<input type="text" name="uf" class="form-control" id="uf" value="' + dados.data[0].estado + '" placeholder="UF" >' +
                 '</div>' +
 
                 '<input type="button" class="button formataPerfilButton" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>' +

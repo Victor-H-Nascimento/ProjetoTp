@@ -38,7 +38,7 @@
 
 </head>
 
-<body onload="verificaLogin();">
+<body onload="verificaLogin(); colocaTamanhoCarrinho();">
     <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -84,6 +84,10 @@
             <div class="logo">
                 <a href="index.html"><img src="img/etiqueta_2_.jpg" alt=""></a>
             </div>
+            <!-- Nome aparecendo depois do login -->
+            <div id="nomeUsuario">
+
+            </div>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
@@ -118,9 +122,9 @@
             </div>
 
             <!-- Cart Menu -->
-              <div class="cart-fav-search mb-100">
-                <a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>
+            <div id="carrinhoTamanho" class="cart-fav-search mb-100">
+                <!--<a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
+                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>-->
             </div>
             
         </header>

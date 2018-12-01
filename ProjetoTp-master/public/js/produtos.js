@@ -130,6 +130,8 @@ function adicionarCarrinho(valor, id) {
     console.log((dadosProdutos));
     window.sessionStorage.setItem("produtoCarrinho" + id, JSON.stringify(dadosProdutos));
     alert("Produto adicionado no carrinho com sucesso!");
+    window.location.href = '/index.html';
+
 
 }
 
