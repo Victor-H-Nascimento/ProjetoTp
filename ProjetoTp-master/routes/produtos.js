@@ -50,57 +50,59 @@ router.get('/lerProduto', function (req, res, next) {
 
 
 
-router.post('/adicionarCarrinho', function (req, res, next) {
-    /*if (req.session.logado) {
-        var input = req.query.id;
-        console.log(JSON.parse(input).idProd);
-        console.log(JSON.parse(input).valorProd);
-    
-        req.getConnection(function (err, connection) {
-            connection.query('INSERT INTO ProdutosComprados SET idCompras = ?, idProdutos = ?, valorUnitario = ?, quantidadeComprada = ? ',[ id,input.idProd, input.valorProd, input.qntdProd], function (err, rows) {
-            //verificar se o produto a ser inserido no carrinho já não está presente, em caso positivo, avisar o cliente / apenas aumentar qtde no carrinho
-            connection.query('INSERT INTO ProdutosComprados SET idCompras = ?, idProdutos = ?, valorUnitario = ?, quantidadeComprada = ? ',[ input.idCompras ,input.idProd, input.valorProd, input.qntdProd], function (err, rows) {
-                if (err)
-                    res.json({ status: 'ERRO', data: err });
-                //console.log("PUDIM@");    
-                res.json({ status: 'OK', data: "Produto adicionado com sucesso no carrinho" });
-            });
-        });
-    }*/
-   // else {
-     //   res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
-    //}
-    
-    var input = req.body;
-    console.log("PUDIM " + JSON.parse(input));
-    res.json({ status: 'OK', data: "deu bom !" });
-});
-
 
 router.post('/finalizaCompra', function (req, res, next) {
     if (req.session.logado) {
         var produtos = JSON.parse(req.query.teste);
         var dados = req.body;
-        console.log(produtos);
-        console.log(dados);
+        //console.log(produtos);
+        //console.log(dados);
         req.getConnection(function (err, connection) {
             connection.query('INSERT INTO Compras SET valorTotal = ?, idUsuario = ?', [dados.valor, dados.id], function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: "err" });
                 else{
                     
-                    for(var i = 0; i < produtos.length; i++){
+                    /*for(var i = 0; i < produtos.length; i++){
                         req.getConnection(function (err, connection) {
+                            console.log("Teste " + rows.insertId, produtos[i].idProd, produtos[i].valor, produtos[i].qntd);
                             connection.query('INSERT INTO ProdutosComprados SET idCompras = ?, idProdutos = ?, valorTotal = ?, quantidadeComprada = ? ', [rows.insertId, produtos[i].idProd, produtos[i].valor, produtos[i].qntd] , function (err, rows) {
-                                if (err)
+                                if (err){
+                                    console.log("PUDIM#");  
                                     res.json({ status: 'ERRO', data: "err1" });
+                                }
+                                else{
                                 console.log("PUDIM@");    
                                 res.json({ status: 'OK', data: "Compra Finalizada com sucesso!" });
+                                }
+                                
                             });
                             if (err)
                                 res.json({ status: 'ERRO', data: "err2" });
                         });
-                    }
+                    }*/
+                    var i = 0;
+                    var aux = 0;
+                    do {
+                        req.getConnection(function (err, connection) {
+                            console.log("Teste " + rows.insertId, produtos[i].idProd, produtos[i].valor, produtos[i].qntd);
+                            connection.query('INSERT INTO ProdutosComprados SET idCompras = ?, idProdutos = ?, valorTotal = ?, quantidadeComprada = ? ', [rows.insertId, produtos[i].idProd, produtos[i].valor, produtos[i].qntd] , function (err, rows) {
+                                if (err){
+                                    console.log("PUDIM#");  
+                                    res.json({ status: 'ERRO', data: "err1" });
+                                }
+                                else{
+                                console.log("PUDIM@");    
+                                }
+                                
+                            });
+                            if (err)
+                                res.json({ status: 'ERRO', data: "err2" });
+                        });
+                        i++;
+                        //console.log("teste 2 " + i + aux);
+                    }while(i < produtos.length)
+                    res.json({ status: 'OK', data: "Compra Finalizada com sucesso! " + i   });
                     //res.json({ status: 'OK', data: "Compra Finalizada com sucesso!" });
                 }    
                 
