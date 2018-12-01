@@ -128,9 +128,38 @@ function adicionarCarrinho(valor, id) {
     });
 
     console.log((dadosProdutos));
-    window.sessionStorage.setItem("produtoCarrinho" + id, JSON.stringify(dadosProdutos));
+    var produtos = Object.keys(sessionStorage);
+    var existe = "false";//variavel para validar a alteração
+    for (var i = 0; i < produtos.length; i++) {
+        if("produtoCarrinho" + id == produtos[i]){
+            var aux = (JSON.parse(window.sessionStorage.getItem(produtos[i])).qntdProd);
+            aux = JSON.parse(aux);
+            var qntd = JSON.parse(effect.value);
+            
+            aux += qntd;
+            existe = "true";
+
+            var dadosProdutos = ({
+                nome: nome,
+                imagem: resultado_str,
+                idProd: id,
+                valorProd: valor,
+                qntdProd: aux
+            });
+
+            window.sessionStorage.setItem("produtoCarrinho" + id, JSON.stringify(dadosProdutos));
     alert("Produto adicionado no carrinho com sucesso!");
     window.location.href = '/index.html';
+        }
+    }
+
+    if(existe === "false"){
+        window.sessionStorage.setItem("produtoCarrinho" + id, JSON.stringify(dadosProdutos));
+    alert("Produto adicionado no carrinho com sucesso!");
+    window.location.href = '/index.html';
+    }
+
+    
 
 
 }
@@ -187,6 +216,7 @@ function exibeCarrinho() {
             '<tr>' +
             '<td class="cart_product_img">' +
             '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
+           
             '</td>' +
             '<td class="price" id="idProdutos">' +
             '<span>' + aux.idProd + '</span>' +
@@ -199,14 +229,12 @@ function exibeCarrinho() {
             '</td>' +
             '<td class="qty"  >' +
             '<div class="qty-btn d-flex">' +
-            '<p>Qtd</p>' +
             '<div class="quantity" >' +
-            '<span class="qty-minus" onclick="aumentaQntd();"><i class="fa fa-minus"aria-hidden="true"></i></span>' +
-            '<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="' + aux.qntdProd + '">' +
-            '<span class="qty-plus" onclick="diminuiQntd();"><i class="fa fa-plus" aria-hidden="true"></i></span>' +
+            ' <span>' + aux.qntdProd + '</span>' +
+            //'<input type="number" class="qty-text" id="qty" step="1" min="1" max="300"name="quantity" value="' + aux.qntdProd + '">' +
             '</div>' +
             '</div>' +
-            '<button  onclick="excluiProduto(' + aux.idProd + ', ' + aux.valorProd + ');">Remover</button>' +
+            '<button class="button" onclick="excluiProduto(' + aux.idProd + ', ' + aux.valorProd + '); style="margin-top:0.4;"">Remover</button>' +
             '</td>' +
             '</tr>';
 
