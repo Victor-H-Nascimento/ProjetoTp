@@ -9,24 +9,66 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Carrinho</title>
+    <title>Patchwork Feliz</title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="img/core-img/cart.png">
+    <link rel="icon" href="img/etiqueta.ico"> <!-- icone do site (logo em miniatura)  -->
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scss/style.scss">
+    <!--<link rel="stylesheet" href="scss/style.scss">-->
 
+    <!-- Referencia JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="js/cliente.js"></script>
-    <script type="text/javascript" src="js/produtos.js"></script>
     <script type="text/javascript" src="js/acesso.js"></script>
+    <script type="text/javascript" src="js/produtos.js"></script>
+    <!-- Referencia JS -->
     <script type="text/javascript" src="js/script.js"></script>
 
-    
+    <script>
+        $(document).ready(function () {
+            var carlos = document.getElementById("ordenar").options[document.getElementById("ordenar").options.selectedIndex].value;
+            alert(carlos);
+            $.ajax({
+                url: '/produtos/listaLoja?value=' + carlos,
+                
+                dataType: 'json',
+                error: function (dados) {
+                    alert('Erro: 1 ' + dados.data);
+                },
+                success: function (dados) {
+                    if (dados.status === 'ERRO')
+                        alert('Erro: ' + dados.data);
+                    else {
+                        console.log(dados.data);
+                        exibeProdutos(dados.data);
+
+                        //var aux = window.localStorage.getItem("compraFinalizada");
+
+                    }
+
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            if (window.localStorage.getItem("compraFinalizada") == "true") {
+                alert("Compra finalizada, iniciando um novo carrinho de compras");
+                criaCarrinho();
+            }
+        });
+
+    </script>
+
 </head>
 
-<body onload="verificaLogin(), dadosCarrinho();">
-    <!-- Search Wrapper Area Start -->
+<body onload="verificaLogin();">
+    <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
             <i class="fa fa-close" aria-hidden="true"></i>
@@ -44,7 +86,7 @@
             </div>
         </div>
     </div>
-    <!-- Search Wrapper Area End -->
+    <!-- busca -->
 
     <!-- ##### Main Content Wrapper Start ##### -->
     <div class="main-content-wrapper d-flex clearfix">
@@ -61,117 +103,90 @@
             </div>
         </div>
 
-        <!-- Header Area Start -->
-        <header class="header-area clearfix">
+        <!-- menu lateral -->
+        <header class="header-area">
             <!-- Close Icon -->
             <div class="nav-close">
                 <i class="fa fa-close" aria-hidden="true"></i>
             </div>
+
             <!-- Logo -->
             <div class="logo">
                 <a href="index.html"><img src="img/etiqueta_2_.jpg" alt=""></a>
             </div>
+            
+            <select id="ordenar" class="ordenar" name="ordem">
+                    <option value=" p.nome">Ordenar por</option>
+                    <option value=" p.nome">Nome</option>
+                    <option value=" p.precoAtual">Preço crescente</option>
+                    <option value=" p.precoatual DESC">Preço decrescente</option>
+                    <option value=" vendas">Mais populares</option>
+            </select>
 
-             <!-- Nome aparecendo depois do login -->
-             <div id="nomeUsuario">
-                    
+            <!-- Nome aparecendo depois do login -->
+            <div id="nomeUsuario">
+
             </div>
 
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Loja</a></li>
-                    <li class="active"><a href="carrinho.html">Carrinho</a></li>
-                    <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
-                        <span class="popuptext" id="myPopUp1">
-                            <form name="formCupom" class="centralizar" method="post">
-                                <input class="centralizar" type="text" name="cupom" placeholder="Digite o cupom"><br>
-                             </form>
-                        </span></li>
-                    <li><a href="contatos.html">Contatos</a></li>
-                    <li id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
+                    <li class="active"><a href="loja.html">Loja</a></li>
+                    <li><a href="produtos.html"> Produtos</a></li>
+                    <li><a href="perfil.html"> Perfil</a></li>
+
+                    <li  id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
                             <form name="formLogin" class="centralizar" method="post">
-                                <span class="xis" onclick="abrePopUp();">X</span> 
-                                <span id="usuarioForm"> Usuário:</span><br>
-                                    <input type="text" name="login" required><br>
-                                    Senha: <br><input type="password" name="senha" required><br><br>
-                                    <div><input class="button" type="button" name="enviar" value="Login" onClick="loginUsuario();"></div><br>
-                                    <p>Ainda não tem conta?<br>
-                                <span class="callCheckout" onclick="teste();">&nbsp;Cadastre-se</span></p>
+                                <span class="xis" onclick="abrePopUp();">X</span>
+                                <span id="usuarioForm"> Usuário:</span> <br><input type="text" name="login" required><br>
+
+                                Senha: <br><input type="password" name="senha" required><br>
+                                <br>
+
+                                <div>
+                                    <input class="button" type="button" name="enviar" value="Login" onClick="loginUsuario();">
+                                </div>
+                                <br>
+                                <p>Ainda não tem conta?<br><span class="callCheckout" onclick="teste();">&nbsp;Cadastre-se</span></p>
+
                             </form>
-                        </span></li>
-                    <li id="botaoLogout"><a href="#" onClick="logoutUsuario();"> Logout</a></li>    
-                    
+                        </span>
+                    </li>
+
+                    <li  id="botaoLogout"><a href="#" onClick="logoutUsuario();"> Logout</a></li>
                 </ul>
             </nav>
-
-           
+            <!-- Button Group -->
+            <div class="amado-btn-group mt-30 mb-100">
+                <input class="button" type="button" name="enviar" value="Novidades">
+            </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
                 <a href="carrinho.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Carrinho <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favoritos</a>
-                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Busca</a>
+                <a href="#" class="search-nav"><img src="img/core-img/search.png" alt="">Busca</a>
             </div>
 
         </header>
-        <!-- Header Area End -->
+        <!-- Fim do menu lateral -->
 
-        <div class="cart-table-area section-padding-100">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <div class="cart-title mt-50">
-                            <h2>Carrinho de Compras</h2>
-                        </div>
+        
 
-                        <div class="cart-table clearfix">
-                            <table class="table table-responsive">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>Código do Produto</th>
-                                        <th>Nome</th>
-                                        <th>Preço</th>
-                                        <th>Quantidade</th>
- 
-
-                                    </tr>
-                                </thead>
-                                <tbody id="listaCarrinho">
-                                    
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    
-                    <div class="col-12 col-lg-4">
-                        <div class="cart-summary">
-                            <h5>Valor Total</h5>
-                            <ul class="summary-table">
-                                <li><span>Subtotal:</span> <span id="total"></span></li>
-                                <li><span>Frete:</span> <span>R$0.00</span></li>
-                                <li><span>Endereço de entrega:</span> <span id="endereco"></span></li>
-                                <li><span>Desconto:</span> <span>Desconto</span></li>
-                                <li><span>total:</span> <span>R$140.00</span></li>
-                            </ul>
-                            <div class="cart-btn mt-100">
-                                <a href="#" onClick="finalizaCompra();" class="btn amado-btn w-100">Finalizar Compra</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- Product Catagories Area Start -->
+        <div class="products-catagories-area clearfix">
+            <div class="amado-pro-catagory clearfix">
+                <div id="result"></div>
             </div>
         </div>
+        <!-- Product Catagories Area End -->
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
 
 
 
 
-    <!-- ##### Footer Area Start ##### -->
+    <!-- ##### Rodapé ##### -->
     <footer class="footer_area clearfix">
         <div class="container">
             <div class="row align-items-center">
@@ -180,7 +195,7 @@
                     <div class="single_widget_area">
                         <!-- Logo -->
                         <div class="footer-logo mr-50">
-                            <a href="index.html"><img src="img/Tag_frente.jpg" alt=""></a>
+                            <a href="index.html"><img src="img/etiqueta_2_.jpg " alt="Patchwork feliz"></a>
                         </div>
                         <!-- Copywrite Text -->
                         <p class="copywrite">
@@ -196,7 +211,7 @@
                 <!-- Single Widget Area -->
                 <div class="col-12 col-lg-8">
                     <div class="single_widget_area">
-                        <!-- Footer Menu -->
+                        <!-- menu rodapé -->
                         <div class="footer_menu">
                             <nav class="navbar navbar-expand-lg justify-content-end">
                                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#footerNavContent"
@@ -204,19 +219,22 @@
                                         class="fa fa-bars"></i></button>
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
-                                        <li class="nav-item ">
+                                        <li class="nav-item active">
                                             <a class="nav-link" href="index.html">Home</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="loja.html">Loja</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="contatos.html">Contatos</a>
+                                            <a class="nav-link" href="produtos.html">Produtos</a>
                                         </li>
-                                        <li class="nav-item active">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="perfil.html">Perfil</a>
+                                        </li>
+                                        <li class="nav-item">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
                                         </li>
-                                      
+
                                     </ul>
                                 </div>
                             </nav>

@@ -241,4 +241,39 @@ router.get('/exibirHistoricoCompras', function (req, res, next) {
     }
 });
 
+router.get('/exibirProdutosComprados', function (req, res, next) { 
+    if (req.session.logado) {
+        var id = req.query.id;
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM ProdutosComprados WHERE idCompras = ' + id, function(err, rows) {
+                if(err)
+                    res.json({ status: 'ERRO', data: err});
+                res.json({ status: 'OK', data: rows });
+            });
+            if(err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    } else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+router.get('/exibirNomeProduto', function (req, res, next) { 
+    if (req.session.logado) {
+        var id = req.query.id;
+        req.getConnection(function (err, connection) {
+            connection.query('SELECT * FROM Produtos WHERE idProdutos = ' + id, function(err, rows) {
+                if(err)
+                    res.json({ status: 'ERRO', data: err});
+                res.json({ status: 'OK', data: rows });
+            });
+            if(err)
+                res.json({ status: 'ERRO', data: rows });
+        });
+    } else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+});
+
+
 module.exports = router;

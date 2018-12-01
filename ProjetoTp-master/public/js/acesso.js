@@ -209,29 +209,6 @@ function redefineSenhaNoBD() {
     }
 }
 
-
-
-function historicoCompra(id) {
-
-    //limpar página, para nao exibir em cima de outros dados
-    //no bd, retornar quantas compras um usuario fez
-    //fazer loop e printar cada uma das compras, contendo itens comprados e valor pago
-
-
-    var dadosHistorico =
-
-    '<div class="formataPerfil">' +
-
-    '<h1>DADOS HISTORICO</h1>' +
-
-    '</div>';
-
-
-
-    document.getElementById('perfilPagina').innerHTML = dadosHistorico;
-}
-
-
 function alterarDadosPessoais(id) {
 
     //limpar página, para nao exibir em cima de outros dados
@@ -252,9 +229,28 @@ function alterarDadosPessoais(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                console.log(dados.data[0]);
-                var d = new Date(dados.data[0].dataNascimento);
-                console.log(d);
+                
+                
+                 var date = new Date(dados.data[0].dataNascimento);
+                
+               
+                var years = date.getFullYear();
+                var months = date.getMonth() + 1;
+                var days = date.getDate();
+                var zero = "0";
+
+            if(months <= 9)
+            {
+                var resultadoMes = zero.concat(months);
+                months = resultadoMes;
+            }
+
+            if(days <= 9)
+            {
+                var resultadoDias = zero.concat(days);
+                days = resultadoDias;
+            }   
+                
 
                 var dadosPessoais =
                 '<form id="formDadosPessoais" name="formDadosPessoais" action="#" method="post">' +
@@ -269,7 +265,7 @@ function alterarDadosPessoais(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="'+dados.data[0].dataNascimento+'" placeholder="Data de Nascimento" >' +
+                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="'+years +"-"  +months +"-" +days +'" placeholder="Data de Nascimento" >' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
@@ -321,6 +317,7 @@ function alteraDadosPessoaisNoBD() {
                 alert('Erro: 2 ' + dados.data);
             else {
                 alert(dados.data);
+                window.location = "perfil.html";
             }
         }
     });
@@ -414,6 +411,7 @@ function alteraDadosEntregaNoBD() {
                 alert('Erro: 2 ' + dados.data);
             else {
                 alert(dados.data);
+                window.location = "perfil.html";
             }
         }
     });
@@ -432,9 +430,25 @@ function exibirDados() {
                 alert('Erro: 2 ' + dados.data);
             else {
 
-                console.log(dados.data[0]);
-                var d = new Date(dados.data[0].dataNascimento);
-                console.log(d);
+                var date = new Date(dados.data[0].dataNascimento);
+                               
+                var years = date.getFullYear();
+                var months = date.getMonth() + 1;
+                var days = date.getDate();
+                var zero = "0";
+
+                if(months <= 9)
+                {
+                    var resultadoMes = zero.concat(months);
+                    months = resultadoMes;
+                }
+    
+                if(days <= 9)
+                {
+                    var resultadoDias = zero.concat(days);
+                    days = resultadoDias;
+                }   
+
 
                 var todosDados =
 
@@ -453,7 +467,7 @@ function exibirDados() {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="date" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento: ' + dados.data[0].dataNascimento + '" disabled>' +
+                '<input type="text" name="dataNascimento" class="form-control" id="dataNascimento" value="" placeholder="Data de Nascimento: ' + days + "/" + months + "/" + years + '" disabled>' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
@@ -471,7 +485,7 @@ function exibirDados() {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="Rua: ' + dados.data[0].rua + '" disabled>' +
+                '<input type="text" name="rua" class="form-control" id="rua" value="" placeholder="' + dados.data[0].rua + '" disabled>' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
@@ -527,44 +541,114 @@ function historicoCompra(id) {
 }
 
 function exibeHistorico(dados) {
-    console.log(dados);
+    document.getElementById('perfilPagina').innerHTML = null;
     for(var i = 0; i < dados.length; i++){
 
+        var date = new Date(dados[i].dataCompra);
+        
+        var hours = date.getHours() + 1;
+        var minutes = date.getMinutes();
+        var years = date.getFullYear();
+        var months = date.getMonth() + 1;
+        var days = date.getDate();
+        var zero = "0";
+
+        if(months <= 9)
+        {
+            var resultadoMes = zero.concat(months);
+            months = resultadoMes;
+        }
+
+        if(days <= 9)
+        {
+            var resultadoDias = zero.concat(days);
+            days = resultadoDias;
+        }
+           
+
+        produtosHistoricoCompra(dados[i].idCompras);
+       
         var dadosHistoricoCompras = 
 
-        '<div class="formataPerfil">' +
+'<div class="formataPerfil">' +
+            '<div class="container-fluid">' +
+                '<div class="row">' +
+                    '<div class="col-12 col-lg-8">' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="notaFiscal" class="form-control" id="notaFiscal" value="" placeholder="Nota Fiscal: ' + dados[i].notaFiscal + '" >' +
-        '</div>' +
+                        '<div class="cart-table clearfix">' +
+                            '<table class="table table-responsive">' +
+                                '<thead>' +
+                                    '<tr>' +
+                                        
+                                        '<th>Nota Fiscal</th>' +
+                                        '<th>Valor Total</th>' +
+                                        '<th>Data da Compra</th>' +
+                                        '<th>Hora da Compra</th>' +
+                                        '<th>Produto</th>' +
+                                        '<th>Preço</th>' +
+                                        '<th>Quantidade</th>' +
+         
+                                    '</tr>'+
+                                '</thead>' +
+                                '<tbody>' +
+                                //inicio da Tabela
+                                '<tr>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="dataCompra" class="form-control" id="dataCompra" value="" placeholder="Data da compra: ' + dados[i].dataCompra + '" >' +
-        '</div>' +
+                                 //Nº nota fiscal
+                                '<td>' +
+                                '<span>' + dados[i].notaFiscal +'</span>' + '</br>'+
+                                '</td>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="valorTotal" class="form-control" id="valorTotal" value="" placeholder="Valor Total: ' + dados[i].valorTotal + '" >' +
-        '</div>' +
+                                //Valor total pago
+                                '<td>' +
+                                ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
+                                '</td>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="frete" class="form-control" id="frete" value="" placeholder="Frete: ' + dados[i].frete + '" >' +
-        '</div>' +
+                                //Data da Compra
+                                '<td>' +  
+                                '<span>' + days + "/" + months + "/" + years + '</span>' + '</br>'+
+                                '</td>' +
 
-        '<div class="col-md-6 mb-3">' +
-        '<input type="text" name="percentualDesconto" class="form-control" id="percentualDesconto" value="" placeholder="Percentual Desconto: ' + dados[i].percentualDesconto + '" >' +
-        '</div>' +
+                                //Hora da Compra
+                                '<td>' +  
+                                '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
+                                '</td>' +
 
-        ' <div class="col-md-6 mb-3">' +
-        '<input type="text" name="valorDaCompra" class="form-control" id="valorDaCompra" value="" placeholder="Valor da Compra: ' + dados[i].valorDaCompra + '" >' +
-        '</div>' +
+                                 //Loop Produtos,Preco e Quantidade
+                                 
 
+                                 '</tr>' + 
+                                 //fim da Tabela
+                                '</tbody>' +
+                            '</table>' +
+                        '</div>'+
+                    '</div>' +
+
+                '</div>' +
+            '</div>' +
         '</div>';
 
-        document.getElementById('perfilPagina').innerHTML = dadosHistoricoCompras;
+        document.getElementById('perfilPagina').innerHTML += dadosHistoricoCompras;
+
     }   
 }
 
-
+function produtosHistoricoCompra(id) {
+    $.ajax ({
+        url: '/acesso/exibirProdutosComprados?id=' + id,
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em ler produtos comprados ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                return(dados.data);
+            }
+        }
+    });
+}
 
 
 

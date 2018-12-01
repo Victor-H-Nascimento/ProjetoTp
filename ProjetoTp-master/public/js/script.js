@@ -279,3 +279,4 @@ function trocaPagina() {
     abrePopUp1();
     window.open("carrinho.html", "_self");
 }
+
