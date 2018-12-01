@@ -210,39 +210,49 @@ function exibeCarrinho() {
         console.log("PUDIM " + i + produtos[i]);
         console.log(JSON.parse(window.sessionStorage.getItem(produtos[i])));
         var aux = JSON.parse(window.sessionStorage.getItem(produtos[i]));
+        var zero = "0";
+
+        if(aux.idProd <= 9)
+        {
+            var resultado = zero.concat(aux.idProd);
+            aux.idProd = resultado;
+        }
+
+
+        if(aux.qntdProd <= 9)
+        {
+            var resultado = zero.concat(aux.qntdProd);
+            aux.qntdProd = resultado;
+        }
+
 
         console.log("typeof(aux) " +typeof(aux));
         var dadosCarro =
             '<tr>' +
 
             '<td class="cart_product_img">' +
-            '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
-           
+                '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
             '</td>' +
             
             '<td class="price" id="idProdutos">' +
-            '<span>' + aux.idProd + '</span>' +
+                '<span>' + aux.idProd + '</span>' +
             '</td>' +
             
             '<td class="cart_product_desc">' +
-            '<h5>' + aux.nome + '</h5>' +
+                '<h5>' + aux.nome + '</h5>' +
             '</td>' +
             
             '<td class="price" id="idProdutoValor">' +
-            ' <span>R$' + aux.valorProd + '</span>' +
+                ' <span>R$ ' + aux.valorProd + '</span>' +
             '</td>' +
             
-            
-
             '<td class="qty"  >' +
-
-            '<div class="qty-btn d-flex">' +
-            '<span> '+ aux.qntdProd +'  </span>' +  
-            
-
-            '<button class="button"  onclick="excluiProduto(' + aux.idProd + ', ' + aux.valorProd + ');">Remover</button>' +
-            '</div>' +
+                '<div class="qty-btn d-flex">' +
+                    '<span> '+ aux.qntdProd +'  </span>' +  
+                '</div>' +
             '</td>' +
+
+            '<a href="#" onclick="excluiProduto(' + aux.idProd + ', ' + aux.valorProd + ');"  >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Remover</a>' +
             
             '</tr>';
 
