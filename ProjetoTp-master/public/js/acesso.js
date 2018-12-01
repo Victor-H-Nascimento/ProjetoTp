@@ -25,49 +25,12 @@ function loginUsuario() {
                 alert('Logado com sucesso!');
                 colocarUsuario();
                 verificaLogin();
-                //window.location.href = '/index.html';
-
-                $.ajax({//cria um carrinho para o cliente qnd ele loga
-                    url: '/acesso/criaCarrinho?id=' + dados.data.idUsuarios,
-                    dataType: 'json',
-                    type: 'post',
-                    error: function (dados) {
-                        alert('Erro em criar o carrinho 1 ' + dados.data);
-                    },
-                    success: function (dados) {
-                        if (dados.status === 'SEMACESSO')
-                            alert('Erro: 2 ' + dados.data);
-                        else {
-                            alert(dados.data);
-                            $.ajax({//idCarrinho para pegar o id do carrinho do usuario
-                                url: '/acesso/idCarrinho',
-                                dataType: 'json',
-                                error: function (dados) {
-                                    alert('Erro em criar o carrinho 2 ' + dados.data);
-                                },
-                                success: function (dados) {
-                                    if (dados.status === 'SEMACESSO')
-                                        alert('Erro: 2 ' + dados.data);
-                                    else {
-                                        console.log(dados.data[0].id);
-                                        window.localStorage.idCompras = dados.data[0].id;
-
-
-                                    }
-                                }
-                            });
-
-
-
-                        }
-                    }
-                });
             }
         }
     });
 }
 
-/**/
+
 
 
 function colocarUsuario() {
@@ -91,47 +54,14 @@ function logoutUsuario() {
                 alert('Erro: ' + dados.data);
             else {
                 alert(dados.data);
-
-                $.ajax({//tira a linha da tabela compras
-                    url: '/acesso/destruirCompras?id=' + window.localStorage.getItem("idCompras"),
-                    dataType: 'json',
-                    type: 'post',
-                    error: function (dados) {
-                        alert('Erro em destruir compras ' + dados.data);
-                    },
-                    success: function (dados) {
-                        if (dados.status === 'ERRO')
-                            alert('Erro: ' + dados.data);
-                        else {
-                            alert(dados.data);
-
-                            $.ajax({//ENCERRA A SESSAO DO USURIO
-                                url: '/acesso/logout',
-                                type: 'post',
-                                error: function (dados) {
-                                    alert('Erro em logout' + dados.data);
-                                },
-                                success: function (dados) {
-                                    if (dados.status === 'ERRO')
-                                        alert('Erro: ' + dados.data);
-                                    else {
-                                        alert(dados.data);
-                                        window.localStorage.clear();
-                                        window.location.href = '/index.html';
-                                    }
-                                }
-                            });
-                        }
-                    }
-                });
+                window.localStorage.clear();
+                window.location.href = '/index.html';
             }
         }
     });
 
 
 }
-
-
 
 
 function retiraUsuario() {
@@ -141,18 +71,10 @@ function retiraUsuario() {
     }
 }
 
-function retiraLocalStorage() {
-    //localStorage
-    if (window.localStorage.clear()) {
-        console.log('O browser suporta localStorage');
-    } else {
-        console.log('O browser NÃO suporta localStorage');
-    }
-}
 
 
 
-function criaCarrinho() {
+/*function criaCarrinho() {
     console.log("Teste " + window.localStorage.getItem("id"));
     $.ajax({//cria um carrinho para o cliente qnd ele loga
         url: '/acesso/criaCarrinho?id=' + window.localStorage.getItem("id"),
@@ -191,7 +113,7 @@ function criaCarrinho() {
     });
 
 
-}
+}*/
 
 function redefinirSenha(id) {
 
