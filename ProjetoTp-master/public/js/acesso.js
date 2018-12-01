@@ -581,7 +581,7 @@ function exibeHistorico(dados) {
         }
            
 
-        produtosHistoricoCompra(dados[i].idCompras);
+        //produtosHistoricoCompra(dados[i].idCompras);
        
         var dadosHistoricoCompras = 
 
@@ -630,7 +630,7 @@ function exibeHistorico(dados) {
                                 '</td>' +
 
                                 '<td>' +  
-                                '<span>' + pegaProdutosHistoricoCompra(dados[i].idCompras); + '</span>' + '</br>'+
+                                '<span>' + pegaProdutosHistoricoCompra(124); + '</span>' + '</br>'+
                                 '</td>' +
 
 
@@ -671,6 +671,7 @@ function pegaProdutosHistoricoCompra(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
+                //console.log(JSON.parse(dados.data));
                 return(exibeProdutosHistoricoCompra(dados.data));
             }
         }
@@ -678,6 +679,7 @@ function pegaProdutosHistoricoCompra(id) {
 }
 
 function exibeProdutosHistoricoCompra(dados) {
+    console.log('exibe produtos:' + dados);
 
    // document.getElementById('perfilPagina').innerHTML = null;
 
@@ -707,7 +709,7 @@ function exibeProdutosHistoricoCompra(dados) {
 
                                              // Produto
                                             '<td>' +
-                                                '<span>' + pegaNomeProduto(dados[i].idProdutos) +'</span>' + '</br>'+
+                                                '<span>' + pegaNomeProduto(2); + '</span>' + '</br>'+
                                             '</td>' +
 
                                             // Quantidade do produto
@@ -746,13 +748,15 @@ function pegaNomeProduto(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                return(exibeNomeProduto(dados.data));
+                console.log('pega nome ajax 2 :' + JSON.parse(dados.data.nome));
+                return(dados.data.nome);
             }
         }
     });
 }
 
 function exibeNomeProduto(dados) {
+    console.log('exibe nome:' + dados);
     //console.log('nomes dos produtos:' + dados);
     for(var i = 0; i < dados.length; i++) {
         var nomeProdutoExibe = 
