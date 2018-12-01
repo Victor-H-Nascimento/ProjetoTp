@@ -28,34 +28,6 @@
     <!-- Referencia JS -->
     <script type="text/javascript" src="js/script.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            var carlos = document.getElementById("ordenar").options[document.getElementById("ordenar").options.selectedIndex].value;
-            var lauro = ({ opcao: carlos });
-            alert(carlos);
-            alert(lauro);
-            $.ajax({
-                url: '/produtos/listaLoja',
-                data: lauro,
-                dataType: 'json',
-                error: function (dados) {
-                    alert('Erro: 1 ' + dados.data);
-                },
-                success: function (dados) {
-                    if (dados.status === 'ERRO')
-                        alert('Erro: ' + dados.data);
-                    else {
-                        console.log(dados.data);
-                        exibeProdutos(dados.data);
-
-                        //var aux = window.localStorage.getItem("compraFinalizada");
-
-                    }
-
-                }
-            });
-        });
-    </script>
 
     <script>
         $(document).ready(function () {
@@ -69,7 +41,7 @@
 
 </head>
 
-<body onload="verificaLogin(); colocaTamanhoCarrinho();">
+<body onload="verificaLogin(); colocaTamanhoCarrinho(); atualizaOrdem();">
     <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -117,12 +89,12 @@
                 <a href="index.html"><img src="img/etiqueta_2_.jpg" alt=""></a>
             </div>
             
-            <select id="ordenar" class="ordenar" name="ordem">
+            <select id="ordenar" class="ordenar" name="ordem" onChange="atualizaOrdem();"> 
                     <option value=" p.nome">Ordenar por</option>
                     <option value=" p.nome">Nome</option>
-                    <option value=" p.precoAtual">Preço crescente</option>
+                    <option value=" p.precoAtual" >Preço crescente</option>
                     <option value=" p.precoatual DESC">Preço decrescente</option>
-                    <option value=" vendas">Mais populares</option>
+                    <!--<option value=" dataLancamento">Mais recentes</option>-->
             </select>
 
             <!-- Nome aparecendo depois do login -->
