@@ -315,6 +315,20 @@ function alterarDadosPessoais(id) {
                 var years = date.getFullYear();
                 var months = date.getMonth() + 1;
                 var days = date.getDate();
+                var zero = "0";
+
+            if(months <= 9)
+            {
+                var resultadoMes = zero.concat(months);
+                months = resultadoMes;
+            }
+
+            if(days <= 9)
+            {
+                var resultadoDias = zero.concat(days);
+                days = resultadoDias;
+            }   
+                
 
                 var dadosPessoais =
                 '<form id="formDadosPessoais" name="formDadosPessoais" action="#" method="post">' +
@@ -499,6 +513,20 @@ function exibirDados() {
                 var years = date.getFullYear();
                 var months = date.getMonth() + 1;
                 var days = date.getDate();
+                var zero = "0";
+
+                if(months <= 9)
+                {
+                    var resultadoMes = zero.concat(months);
+                    months = resultadoMes;
+                }
+    
+                if(days <= 9)
+                {
+                    var resultadoDias = zero.concat(days);
+                    days = resultadoDias;
+                }   
+
 
                 var todosDados =
 
@@ -604,7 +632,7 @@ function exibeHistorico(dados) {
         var days = date.getDate();
 
         produtosHistoricoCompra(dados[i].idCompras);
-
+       
         var dadosHistoricoCompras = 
 
 '<div class="formataPerfil">' +
@@ -681,24 +709,7 @@ function produtosHistoricoCompra(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                pegaNomeProduto(dados.data.idProdutos);
-            }
-        }
-    });
-}
-
-function pegaNomeProduto(id) {
-    $.ajax ({
-        url: '/acesso/exibirNomeProduto?id=' + id,
-        dataType: 'json',
-        error: function (dados) {
-            alert('Erro em ler produtos comprados ' + dados.data);
-        },
-        success: function (dados) {
-            if (dados.status === 'SEMACESSO')
-                alert('Erro: 2 ' + dados.data);
-            else {
-                console.log(dados.data);
+                return(dados.data);
             }
         }
     });
