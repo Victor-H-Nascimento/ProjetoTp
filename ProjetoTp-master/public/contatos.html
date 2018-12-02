@@ -28,39 +28,6 @@
     <!-- Referencia JS -->
     <script type="text/javascript" src="js/script.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: '/produtos/lista',
-                dataType: 'json',
-                error: function (dados) {
-                    alert('Erro: 1 ' + dados.data);
-                },
-                success: function (dados) {
-                    if (dados.status === 'ERRO')
-                        alert('Erro: ' + dados.data);
-                    else {
-                        console.log(dados.data);
-                        exibeProdutos(dados.data);
-
-                        //var aux = window.localStorage.getItem("compraFinalizada");
-
-                    }
-
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            if (window.localStorage.getItem("compraFinalizada") == "true") {
-                alert("Compra finalizada, iniciando um novo carrinho de compras");
-                criaCarrinho();
-            }
-        });
-
-    </script>
 </head>
 
 <body onload="verificaLogin(); colocaTamanhoCarrinho();">
@@ -161,13 +128,29 @@
         <!-- Product Catagories Area Start -->
         <div class="products-catagories-area clearfix">
             <div class="amado-pro-catagory clearfix">
-                <h1>Entre em contato conosco!</h1>
-                <form name="contato">
-                    <input type="text" placeholder="Digite seu nome:">
-                    <input type="text" placeholder="Digite seu email">
-                    <input type="text" placeholder="Assunto">
-                    <input type="textbox" placeholder="Sua mensagem">
-                </form>
+                <div class="formulario">
+                    <h1 id="titulo">Entre em contato conosco!</h1>
+                
+                    <form id="formContato" name="formContato" action="#" method="post">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" name="nome" class="form-control" id="nomeform" value="" placeholder="Digite seu nome"
+                                required>
+                            <input type="text" name="email" class="form-control" id="emailform" value="" placeholder="Digite seu email"
+                                required>
+                            <input type="text" name="assunto" class="form-control" id="assuntoform" value=""
+                                placeholder="Digite o assunto do seu contato">
+                            <textarea name="mensagem" class="form-control" id="mensagemform" value="" 
+                            placeholder="Sua mensagem:" rows="4" cols="50"></textarea>
+                        </div>
+                    </form>
+                
+                    <input type="button" class="button botaocontato" name="enviar" value="enviar" onClick="enviaFormulario();">
+                
+                </div>
+                <div class="facebook">
+                    <h1> Também estamos no Facebook! </h1>
+                    <a href="https://www.facebook.com/helenafavara.favara" target="_blank"><img id="logofb" src="img/fblogo.png"></a>
+                </div>
             </div>
         </div>
         <!-- Product Catagories Area End -->
