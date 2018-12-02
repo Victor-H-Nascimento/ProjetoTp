@@ -86,7 +86,9 @@ function lerProduto() {
                         '<p id="titulo-produto">' + dados.data[0].nome + '</p>' +
                         '<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>' +
                         '</div>' +
-
+                        '<div id= "categoria">' +
+                        '<span id="categoria-produto"> Categoria:' + dados.data[0].idCategoria + '</span>' +
+                        '</div>' +
                         '<div id="descricao-produtos" class="short_overview my-5">' +
                         '<p>Descrição: ' + dados.data[0].descricao + '</p>' +
                         '</div>' +
