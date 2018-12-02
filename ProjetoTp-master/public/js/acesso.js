@@ -199,43 +199,61 @@ function redefineSenhaNoBD() {
                 if (dados.status === 'SEMACESSO')
                     alert('Erro: 2 ' + dados.data);
                 else {
-                    console.log(dados.data[0]);
-                    if (dados.data[0].senha != senhaNova && dados.data[0].senha == senhaAtual) {
-                        var dadosSenha = ({
-                            id: window.localStorage.getItem("id"),
-                            senha: senhaNova
-                        });
 
-                        console.log(dadosSenha);
-                        $.ajax({//SAlva a senha nova 
-                            url: '/acesso/alteraSenha',
-                            dataType: "json",
-                            type: 'post',
-                            data: dadosSenha,
-                            error: function (dados) {
-                                alert('Erro em redefinir senha' + dados.data);
-                            },
-                            success: function (dados) {
-                                if (dados.status === 'ERRO')
-                                    alert('Erro: ' + dados.data);
-                                else {
-                                    //alert(dados.data);
-                                    window.location.href = '/perfil.html';
-                                }
-                            }
-                        });
+
+                    if (dados.data[0].senha != senhaAtual) {
+                        alert("Senha atual incorreta!");
                     }
 
                     else {
-                        alert("Senha atual incorreta!");
+                        console.log(dados.data[0]);
+                        if (dados.data[0].senha != senhaNova) {
+                            var dadosSenha = ({
+                                id: window.localStorage.getItem("id"),
+                                senha: senhaNova
+                            });
+
+                            console.log(dadosSenha);
+                            $.ajax({//SAlva a senha nova 
+                                url: '/acesso/alteraSenha',
+                                dataType: "json",
+                                type: 'post',
+                                data: dadosSenha,
+                                error: function (dados) {
+                                    alert('Erro em redefinir senha' + dados.data);
+                                },
+                                success: function (dados) {
+                                    if (dados.status === 'ERRO')
+                                        alert('Erro: ' + dados.data);
+                                    else {
+                                        alert("Senha alterada!");
+                                        window.location.href = '/perfil.html';
+                                    }
+                                }
+                            });
+                        }
+
+                        else {
+                            alert("Não é permitido redefenir para a senha atual!");
+                        }
                     }
+
+
+
+
+
+
+
+
+
+
                 }
             }
         });
     }
 
     else {
-        alert("Senha Nova e Confimação de Senha Nova não são iguais")
+        alert("Nova senha e confirmação devem ser iguais")
     }
 }
 
@@ -633,7 +651,7 @@ function exibeHistorico(dados) {
 
                                  //Nº nota fiscal
                                 '<td>' +
-                                '<span>' + dados[i].notaFiscal +'</span>' + '</br>'+
+                                '<span>' + dados[i].idCompras +'</span>' + '</br>'+
                                 '</td>' +
 
                                  //valor Total da Compra
