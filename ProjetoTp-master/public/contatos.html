@@ -28,39 +28,6 @@
     <!-- Referencia JS -->
     <script type="text/javascript" src="js/script.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                url: '/produtos/lista',
-                dataType: 'json',
-                error: function (dados) {
-                    alert('Erro: 1 ' + dados.data);
-                },
-                success: function (dados) {
-                    if (dados.status === 'ERRO')
-                        alert('Erro: ' + dados.data);
-                    else {
-                        console.log(dados.data);
-                        exibeProdutos(dados.data);
-
-                        //var aux = window.localStorage.getItem("compraFinalizada");
-
-                    }
-
-                }
-            });
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            if (window.localStorage.getItem("compraFinalizada") == "true") {
-                alert("Compra finalizada, iniciando um novo carrinho de compras");
-                criaCarrinho();
-            }
-        });
-
-    </script>
 </head>
 
 <body onload="verificaLogin(); colocaTamanhoCarrinho();">
