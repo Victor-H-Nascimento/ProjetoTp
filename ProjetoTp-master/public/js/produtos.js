@@ -293,6 +293,8 @@ function exibeCarrinho() {
     var dadosValor =
         '<h5 id="dadosValor" >R$' + valorTotal + '</h5>';
     document.getElementById("total").innerHTML = dadosValor;
+    document.getElementById("totalFinal").innerHTML = dadosValor;
+
     //console.log(valorTotal);
 
 
@@ -300,12 +302,14 @@ function exibeCarrinho() {
         var dadosValor =
             '<h5>R$ 0.00' + '</h5>';
         document.getElementById("total").innerHTML = dadosValor;
+        document.getElementById("totalFinal").innerHTML = dadosValor;
     }
 
     else {
         var dadosValor =
             '<h5>R$' + valorTotal + '</h5>';
         document.getElementById("total").innerHTML = dadosValor;
+        document.getElementById("totalFinal").innerHTML = dadosValor;
     }
 }
 

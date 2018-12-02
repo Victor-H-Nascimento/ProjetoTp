@@ -255,8 +255,24 @@ function verificaLogin(){
 }
 
 function enviaFormulario(){
-    alert('funcionando botão bls');
+
+    alert('oba');
+    var nome = document.getElementById("nomeForm");
+    var email = document.getElementById("emailForm");
+    var assunto = document.getElementById("assuntoForm");
+    var mensagem = document.getElementById("mensagemForm");
+
+    if(!nome.value || !email.value || !assunto.value || !mensagme.value) {
+        alertify.error('Por favor verifique se os campos estão preenchidos');
+    } else {
+        var link = "mailto:mrrodrigookada@gmail.com"
+             + "?cc=myCCaddress@example.com"
+             + "&subject=" + escape(assunto)
+             + "&body=" + escape(mensagem);
+             window.location.href = link;
+    }
 }
+
 
 //Login novo
 
