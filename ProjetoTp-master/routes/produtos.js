@@ -73,7 +73,7 @@ router.get('/lerProduto', function (req, res, next) {
 
 
 router.post('/finalizaCompra', function (req, res, next) {
-    if (req.session.logado) {
+    if (req.local.logado) {
         var produtos = JSON.parse(req.query.teste);
         var dados = req.body;
         //console.log(produtos);
@@ -81,7 +81,7 @@ router.post('/finalizaCompra', function (req, res, next) {
         req.getConnection(function (err, connection) {
             connection.query('INSERT INTO Compras SET valorDaCompra = ?, idUsuario = ?', [dados.valor, dados.id], function (err, rows) {
                 if (err)
-                    res.json({ status: 'ERRO', data: "err" });
+                    res.json({ status: 'ERRO', data: "Erro pq nao esta logado!" });
                 else{
                     
                     /*for(var i = 0; i < produtos.length; i++){
