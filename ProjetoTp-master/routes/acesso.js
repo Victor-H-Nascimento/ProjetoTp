@@ -6,8 +6,7 @@ router.post('/login', function (req, res, next) {
     var input = req.body;
 
     req.getConnection(function (err, connection) {
-        var query = "SELECT * FROM Usuarios " +
-            "WHERE usuario = '" + input.login + "' AND" + " senha = '" + input.senha + "'";
+        var query = "SELECT * FROM Usuarios WHERE usuario = '" + input.login + "' AND" + " senha = '" + input.senha + "'";
         connection.query(query, function (err, rows) {
             if (err)
                 res.json({ status: 'ERRO', data: + err });
@@ -38,6 +37,16 @@ router.post('/logout', function (req, res, next) {
         else
             res.json({ status: 'OK', data: 'Logout com sucesso!' });
     });
+});
+
+router.get('/testeLogin', function (req, res, next) {
+    if (req.session.logado) {
+        res.json({ status: 'ok', data: "ok!" });
+    }
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }
+
 });
 
 /*router.post('/destroiProdutosComprados', function (req, res, next) {
@@ -113,7 +122,11 @@ router.get('/idCarrinho', function (req, res, next) {
     }
 });
 
-+
+/*if (req.session.logado) {
+
+    else {
+        res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
+    }*/ 
 router.post('/alteraSenha', function (req, res, next) {
     if (req.session.logado) {
         var input = req.body;
@@ -242,7 +255,7 @@ router.get('/exibirHistoricoCompras', function (req, res, next) {
     }
 });
 
-router.get('/exibirProdutosComprados', function (req, res, next) { 
+/*router.get('/exibirProdutosComprados', function (req, res, next) { 
     if (req.session.logado) {
         var id = req.query.id;
         console.log('teste: ' + id);
@@ -275,7 +288,7 @@ router.get('/exibirNomeProduto', function (req, res, next) {
     } else {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });
     }
-});
+});*/
 
 
 module.exports = router;

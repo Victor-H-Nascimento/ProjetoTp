@@ -30,6 +30,26 @@ function loginUsuario() {
     });
 }
 
+function logoutUsuario() {
+    $.ajax({
+        url: '/acesso/logout',
+        type: 'post',
+        error: function (dados) {
+            alert('Erro: ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'ERRO')
+        alert('Erro: ' + dados.data);
+            else {
+                //alert(dados.data);
+                alert("Logout realizado com sucesso!");
+                window.localStorage.clear();
+                window.sessionStorage.clear();
+                window.location.href = '/index.html';
+            }
+        }
+    });
+}
 
 
 
@@ -51,39 +71,34 @@ function colocaTamanhoCarrinho(){
 }
 
 
-function logoutUsuario() {
-    /*//TEMOS QUE TIRAR PRIMEIRO OS PRODUTOSCOMPRADOS DPS COMPRAS 
-    //PQ POSSUEM UMA DEPENDENCIA
-    $.ajax({//tira a linha da tabela produtos comprados
-        url: '/acesso/destroiProdutosComprados?id=' + window.localStorage.getItem("idCompras"),
-        type: 'post',
-        error: function (dados) {
-            alert('Erro em logout' + dados.data);
-        },
-        success: function (dados) {
-            if (dados.status === 'ERRO')
-                alert('Erro: ' + dados.data);
-            else {
-                alert(dados.data);
-                window.localStorage.clear();
-                window.location.href = '/index.html';
-            }
-        }
-    });*/
-    alert("Logout realizado com sucesso!");
-    window.localStorage.clear();
-    window.sessionStorage.clear();
-                window.location.href = '/index.html';
-
-
-}
-
-
 function retiraUsuario() {
     if (!window.localStorage) {
         var dados = '<h1>Faça o login</h1>';
         document.getElementById('login').innerHTML = dados;
     }
+}
+
+
+function testaLogin(){
+    $.ajax({
+        url: '/acesso/testeLogin',
+        //type: 'post',
+        error: function (dados) {
+            alert('Erro testaLogin' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO'){
+                alert(dados.data);
+            }
+            else {
+                //alert(dados.data);
+                //alert("Logout realizado com sucesso!");
+                //window.localStorage.clear();
+                //window.sessionStorage.clear();
+                window.location.href = '/perfil.html';
+            }
+        }
+    });
 }
 
 
@@ -618,7 +633,7 @@ function exibeHistorico(dados) {
 
                                  //Nº nota fiscal
                                 '<td>' +
-                                '<span>' + dados[i].idCompras +'</span>' + '</br>'+
+                                '<span>' + dados[i].notaFiscal +'</span>' + '</br>'+
                                 '</td>' +
 
                                  //valor Total da Compra
@@ -734,7 +749,7 @@ function exibeHistorico(dados) {
             }
 
             else{
-                console.log("Entrou aqui 3 -> " + i);
+                //console.log("Entrou aqui 3 -> " + i);
                 var dadosHistoricoCompras =  
         '<div class="formataPerfil">' +
             '<div class="container-fluid">' +

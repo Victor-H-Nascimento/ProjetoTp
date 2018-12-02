@@ -92,7 +92,8 @@ router.get('/lerProduto', function (req, res, next) {
 
 
 router.post('/finalizaCompra', function (req, res, next) {
-    if (req.session.logado) {
+    console.log("Teste: " + req.session.logado);
+    if (req.session.logado){
         var produtos = JSON.parse(req.query.teste);
         var dados = req.body;
         //console.log(produtos);
@@ -121,7 +122,7 @@ router.post('/finalizaCompra', function (req, res, next) {
                                 res.json({ status: 'ERRO', data: "err2" });
                         });
                     }*/
-                    var i = 0;
+                   var i = 0;
                     var aux = 0;
                     do {
                         req.getConnection(function (err, connection) {
@@ -149,7 +150,10 @@ router.post('/finalizaCompra', function (req, res, next) {
             });
             if (err)
                 res.json({ status: 'ERRO', data: "err3" });
+
         });
+
+       // res.json({ status: 'Ok', data: 'Teste req.session.logado!' });
     }
     else {
         res.json({ status: 'SEMACESSO', data: 'Usuário precisa estar logado!' });

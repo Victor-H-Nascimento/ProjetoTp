@@ -13,8 +13,6 @@ var usersRouter = require('./routes/users');
 var cliente = require('./routes/cliente');
 var acesso = require('./routes/acesso');
 
-
-
 var app = express();
 
 // view engine setup
