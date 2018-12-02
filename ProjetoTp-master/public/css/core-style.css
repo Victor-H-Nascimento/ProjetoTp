@@ -1642,5 +1642,28 @@ p{
 
 h4{
   color:white;
-  text-decoration: wavy;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
+
+#titulo{
+  margin-left: 1%;
+  margin-bottom: 2%;
+}
+
+.formulario{
+  margin-top: 15%;
+  margin-left: 10%;
+}
+.textform{
+  color: black;
+}
+
+#mensagemform{
+  margin-left: 0.5%;
+}
+
+.botaocontato{
+  margin-left: 40%;
+}
+
