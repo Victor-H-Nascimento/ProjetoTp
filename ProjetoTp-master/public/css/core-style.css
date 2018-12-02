@@ -1031,7 +1031,7 @@ img {
       margin-bottom: 15px; }
     .single-products-catagory .hover-content p {
       font-size: 16px;
-      color: #6d6d6d;
+      color: #fbb710;
       line-height: 1;
       margin-bottom: 5px;
       -webkit-transition-duration: 250ms;
@@ -1638,4 +1638,50 @@ p{
 .ordenar{
   margin-top: -30%;
   margin-bottom: 20%;  
+}
+
+h4{
+  color:white;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
+
+#titulo{
+  margin-left: 1%;
+  margin-bottom: 2%;
+}
+
+.formulario{
+  margin-top: 10%;
+  margin-left: 10%;
+}
+.textform{
+  color: black;
+}
+
+#mensagemform{
+  margin-left: 0.5%;
+}
+
+.botaocontato{
+  margin-left: 40%;
+}
+
+.facebook{
+  margin-top: 2%;
+  margin-left: 11%;
+}
+
+#logofb{
+  max-width: 15%;
+  min-width: 15%;
+  margin-left: 15%; 
+}
+
+#categoria{
+  margin-top: 10%;
+
+}
+#categoria-produto{
+  color: black;
 }

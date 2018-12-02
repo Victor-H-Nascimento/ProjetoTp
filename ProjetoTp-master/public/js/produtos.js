@@ -1,5 +1,13 @@
 function exibeProdutos(produtos) {
-    for (var i = 0; i < produtos.length; i++) {
+    var qtde;
+    //verificação para exibir no maximo nove produtos na pagina inicial
+    if(produtos.length <= 9){
+        qtde = produtos.length;
+    }
+    else{
+        qtde = 9;
+    }
+    for (var i = 0; i < qtde; i++) {
         var produto = produtos[i];
         var dadosProdutos =
 
@@ -56,7 +64,7 @@ function lerProduto() {
                 if (dados.status === 'ERRO')
                     alert('Erro: 2 ' + dados.data);
                 else {
-
+                    console.log(dados.data);
                     var dados = '<div class="col-12 col-lg-7">' +
                         '<div class="single_product_thumb">' +
 
@@ -76,9 +84,11 @@ function lerProduto() {
                         '<div class="line"></div>' +
                         '<p id="preco-produto"  class="product-price">R$ ' + dados.data[0].precoAtual + '</p>' +
                         '<p id="titulo-produto">' + dados.data[0].nome + '</p>' +
-                        '<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>' +
+                        //'<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>' +
                         '</div>' +
-
+                        '<div id= "categoria">' +
+                        '<span id="categoria-produto"> Categoria:' + dados.data[0].categoriaProduto + '</span>' +
+                        '</div>' +
                         '<div id="descricao-produtos" class="short_overview my-5">' +
                         '<p>Descrição: ' + dados.data[0].descricao + '</p>' +
                         '</div>' +
@@ -179,10 +189,6 @@ function adicionarCarrinho(valor, id) {
     alert("Produto adicionado no carrinho com sucesso!");
     window.location.href = '/index.html';
     }
-
-    
-
-
 }
 
 function dadosCarrinho() {
@@ -252,7 +258,7 @@ function exibeCarrinho() {
             '<tr>' +
 
             '<td class="cart_product_img">' +
-                '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
+                '<a href="/detalheProduto.html?id=' + aux.idProd +'"><img src="' + aux.imagem + '" alt="Product"></a>' +
             '</td>' +
             
             '<td class="price" id="idProdutos">' +
@@ -301,6 +307,18 @@ function exibeCarrinho() {
     }
 }
 
+function validaCarrinhoVazio() {
+
+    valorCarrinho = window.localStorage.getItem("valorTotal");
+    console.log('valor que ta no carrinho:' + valorCarrinho);
+    
+    if(valorCarrinho > 0) {
+        finalizaCompra();
+    } else {
+        alert("O carrinho está vazio");
+    }
+}
+
 function finalizaCompra() {
 
     var produtos = Object.keys(sessionStorage);
@@ -309,7 +327,7 @@ function finalizaCompra() {
         valor: window.localStorage.getItem("valorTotal")
     })
 
-    console.log("teste " + (dadosFinalizaCompra));
+    //console.log("teste " + (dadosFinalizaCompra));
     //console.log((dadosFinalizaCompra));
     var dadosAddCarrinho = new Array(produtos.length);
     for (var i = 0; i < produtos.length; i++) {
@@ -317,8 +335,6 @@ function finalizaCompra() {
         var aux = JSON.parse(window.sessionStorage.getItem(produtos[i]));
         console.log(aux);
 
-        
-      
         dadosAddCarrinho[i] = ({ 
             idProd: aux.idProd, 
             valor: aux.valorProd, 
@@ -326,9 +342,6 @@ function finalizaCompra() {
          });
 
          console.log("teste 2 " + typeof(dadosAddCarrinho));
-
-       
-    
     }
     
     //console.log(dadosAddCarrinho);

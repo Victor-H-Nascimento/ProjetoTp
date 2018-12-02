@@ -28,20 +28,9 @@
     <!-- Referencia JS -->
     <script type="text/javascript" src="js/script.js"></script>
 
-
-    <script>
-        $(document).ready(function () {
-            if (window.localStorage.getItem("compraFinalizada") == "true") {
-                alert("Compra finalizada, iniciando um novo carrinho de compras");
-                criaCarrinho();
-            }
-        });
-
-    </script>
-
 </head>
 
-<body onload="verificaLogin(); colocaTamanhoCarrinho(); atualizaOrdem();">
+<body onload="verificaLogin(); colocaTamanhoCarrinho();">
     <!-- Busca -->
     <div class="search-wrapper section-padding-100">
         <div class="search-close">
@@ -88,16 +77,6 @@
             <div class="logo">
                 <a href="index.html"><img src="img/etiqueta_2_.jpg" alt=""></a>
             </div>
-            
-            <select id="ordenar" class="ordenar" name="ordem" onChange="atualizaOrdem();"> 
-                    <option value=" p.nome">Ordenar por</option>
-                    <option value=" p.nome">Nome</option>
-                    <option value=" p.precoAtual" >Preço crescente</option>
-                    <option value=" p.precoatual DESC">Preço decrescente</option>
-                    <option value="vendidos">Mais Vendidos</option>
-                    <option value="dataLancamento">Mais Recentes</option>
-                    <option value=" p.idCategoria">Categoria</option>
-            </select>
 
             <!-- Nome aparecendo depois do login -->
             <div id="nomeUsuario">
@@ -108,10 +87,9 @@
             <nav class="amado-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li class="active"><a href="loja.html">Loja</a></li>
-                   
+                    <li><a href="loja.html">Loja</a></li>
                     <li><a href="perfil.html"> Perfil</a></li>
-
+                    <li  class="active"><a href="contatos.html"> Contatos</a></li>
                     <li  id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">
                             <form name="formLogin" class="centralizar" method="post">
@@ -147,12 +125,32 @@
         </header>
         <!-- Fim do menu lateral -->
 
-        
-
         <!-- Product Catagories Area Start -->
         <div class="products-catagories-area clearfix">
             <div class="amado-pro-catagory clearfix">
-                <div id="result"></div>
+                <div class="formulario">
+                    <h1 id="titulo">Entre em contato conosco!</h1>
+                
+                    <form id="formContato" name="formContato" action="#" method="post">
+                        <div class="col-md-6 mb-3">
+                            <input type="text" name="nome" class="form-control" id="nomeform" value="" placeholder="Digite seu nome"
+                                required>
+                            <input type="text" name="email" class="form-control" id="emailform" value="" placeholder="Digite seu email"
+                                required>
+                            <input type="text" name="assunto" class="form-control" id="assuntoform" value=""
+                                placeholder="Digite o assunto do seu contato">
+                            <textarea name="mensagem" class="form-control" id="mensagemform" value="" 
+                            placeholder="Sua mensagem:" rows="4" cols="50"></textarea>
+                        </div>
+                    </form>
+                
+                    <input type="button" class="button botaocontato" name="enviar" value="enviar" onClick="enviaFormulario();">
+                
+                </div>
+                <div class="facebook">
+                    <h1> Também estamos no Facebook! </h1>
+                    <a href="https://www.facebook.com/helenafavara.favara" target="_blank"><img id="logofb" src="img/fblogo.png"></a>
+                </div>
             </div>
         </div>
         <!-- Product Catagories Area End -->
@@ -201,14 +199,16 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="loja.html">Loja</a>
                                         </li>
-                                       
+                                        
                                         <li class="nav-item">
                                             <a class="nav-link" href="perfil.html">Perfil</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="carrinho.html">Carrinho</a>
                                         </li>
-
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="contatos.html">Contatos</a>
+                                        </li>
                                     </ul>
                                 </div>
                             </nav>

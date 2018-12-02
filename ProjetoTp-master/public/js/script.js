@@ -254,6 +254,10 @@ function verificaLogin(){
     }
 }
 
+function enviaFormulario(){
+    alert('funcionando botão bls');
+}
+
 //Login novo
 
 function openwindow() {
