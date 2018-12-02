@@ -1031,7 +1031,7 @@ img {
       margin-bottom: 15px; }
     .single-products-catagory .hover-content p {
       font-size: 16px;
-      color: #6d6d6d;
+      color: #fbb710;
       line-height: 1;
       margin-bottom: 5px;
       -webkit-transition-duration: 250ms;
@@ -1638,4 +1638,9 @@ p{
 .ordenar{
   margin-top: -30%;
   margin-bottom: 20%;  
+}
+
+h4{
+  color:white;
+  text-decoration: wavy;
 }
