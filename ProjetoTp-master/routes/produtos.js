@@ -38,20 +38,40 @@ router.get('/listaLoja', function (req, res, next) {
         });
     }
 
-else{
+    else{
+        if(ordem === "dataLancamento" ){
 
-   req.getConnection(function (err, connection) {
-        
-        connection.query("SELECT p.nome, p.idProdutos, p.precoAtual,i.idImagensProdutos, i.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos ORDER BY " + ordem, function (err, rows) {
-            if (err)
-                res.json({ status: 'ERRO', data: "TEste3" });
-            else
-                res.json({ status: 'OK', data: rows });
-        });
-        if (err)
-            res.json({ status: 'ERRO', data: "TESTE2" });
-    });
-}
+
+            req.getConnection(function (err, connection) {
+            
+                connection.query("SELECT p.nome, p.idProdutos, p.precoAtual,ImagensProdutos.idImagensProdutos, ImagensProdutos.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos ON p.idProdutos = ImagensProdutos.idProdutos order by p.dataLancamento DESC" , function (err, rows) {
+                    if (err)
+                        res.json({ status: 'ERRO', data: "TEste1" });
+                    else
+                        res.json({ status: 'OK', data: rows });
+                });
+                if (err)
+                    res.json({ status: 'ERRO', data: "TESTE2" });
+            });
+        }
+
+        else{
+
+            req.getConnection(function (err, connection) {
+                 
+                 connection.query("SELECT p.nome, p.idProdutos, p.precoAtual,i.idImagensProdutos, i.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos ORDER BY " + ordem, function (err, rows) {
+                     if (err)
+                         res.json({ status: 'ERRO', data: "TEste3" });
+                     else
+                         res.json({ status: 'OK', data: rows });
+                 });
+                 if (err)
+                     res.json({ status: 'ERRO', data: "TESTE2" });
+             });
+         }
+    }
+
+
 
 });
 
