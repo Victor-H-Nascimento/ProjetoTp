@@ -45,7 +45,7 @@ function salvaCliente() {
         urlAcao = '/cliente/altera?id=' + param.get('id');
     }
     else {
-        alert("Entrou aqui!");
+        //alert("Entrou aqui!");
         console.log(input);
         urlAcao = '/cliente/insere';
     }
@@ -62,7 +62,7 @@ function salvaCliente() {
             if (dados.status === 'ERRO')
                 alert('Erro:' + dados.data);
             else {
-                alert(dados.data);
+                //alert(dados.data);
                 window.location.href = '/index.html'
             }
         }

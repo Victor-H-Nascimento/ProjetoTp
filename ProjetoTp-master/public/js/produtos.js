@@ -64,7 +64,7 @@ function lerProduto() {
                 if (dados.status === 'ERRO')
                     alert('Erro: 2 ' + dados.data);
                 else {
-
+                    console.log(dados.data);
                     var dados = '<div class="col-12 col-lg-7">' +
                         '<div class="single_product_thumb">' +
 
@@ -84,9 +84,11 @@ function lerProduto() {
                         '<div class="line"></div>' +
                         '<p id="preco-produto"  class="product-price">R$ ' + dados.data[0].precoAtual + '</p>' +
                         '<p id="titulo-produto">' + dados.data[0].nome + '</p>' +
-                        '<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>' +
+                        //'<p id="tempo-produto" class="avaibility"><i class="fa fa-circle"></i></p>' +
                         '</div>' +
-
+                        '<div id= "categoria">' +
+                        '<span id="categoria-produto"> Categoria:' + dados.data[0].categoriaProduto + '</span>' +
+                        '</div>' +
                         '<div id="descricao-produtos" class="short_overview my-5">' +
                         '<p>Descrição: ' + dados.data[0].descricao + '</p>' +
                         '</div>' +
@@ -187,10 +189,6 @@ function adicionarCarrinho(valor, id) {
     alert("Produto adicionado no carrinho com sucesso!");
     window.location.href = '/index.html';
     }
-
-    
-
-
 }
 
 function dadosCarrinho() {
@@ -260,7 +258,7 @@ function exibeCarrinho() {
             '<tr>' +
 
             '<td class="cart_product_img">' +
-                '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
+                '<a href="/detalheProduto.html?id=' + aux.idProd +'"><img src="' + aux.imagem + '" alt="Product"></a>' +
             '</td>' +
             
             '<td class="price" id="idProdutos">' +

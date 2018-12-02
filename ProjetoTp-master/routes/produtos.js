@@ -77,9 +77,9 @@ router.get('/listaLoja', function (req, res, next) {
 
 router.get('/lerProduto', function (req, res, next) {
     var id = req.query.id;
-    //console.log(id);
+    console.log(id);
     req.getConnection(function (err, connection) {
-        connection.query('SELECT * FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos WHERE p.idProdutos=' + id, function (err, rows) {
+        connection.query('SELECT p.nome, p.idProdutos, p.precoAtual, p.descricao, i.idImagensProdutos, i.caminhoImagem, Categoria.nome as categoriaProduto FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos  and p.idProdutos = ? INNER JOIN Categoria ON p.idCategoria = Categoria.idCategoria', id, function (err, rows) {
             if (err)
                 res.json({ status: 'ERRO', data: err });
             //console.log("PUDIM@");    
