@@ -187,10 +187,6 @@ function adicionarCarrinho(valor, id) {
     alert("Produto adicionado no carrinho com sucesso!");
     window.location.href = '/index.html';
     }
-
-    
-
-
 }
 
 function dadosCarrinho() {
@@ -260,7 +256,7 @@ function exibeCarrinho() {
             '<tr>' +
 
             '<td class="cart_product_img">' +
-                '<a href="#"><img src="' + aux.imagem + '" alt="Product"></a>' +
+                '<a href="/detalheProduto.html?id=' + aux.idProd +'"><img src="' + aux.imagem + '" alt="Product"></a>' +
             '</td>' +
             
             '<td class="price" id="idProdutos">' +
