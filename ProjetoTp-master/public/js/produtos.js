@@ -311,6 +311,50 @@ function exibeCarrinho() {
     }
 }
 
+function atribuiDesconto(){
+    var valorTotal = window.localStorage.getItem("valorTotal");
+    alert("PUDIM...");
+    var nomeCumpom = document.formCupom.cupom.value;
+    console.log(nomeCumpom);
+
+    $.ajax({//idCarrinho para pegar o id do carrinho do usuario
+        url: '/produtos/cumpomDescomto?porCento= '+ nomeCumpom,
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro ao inserir desconto ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+              /*   alert(dados.data);
+                console.log(dados.data[0].percentualDesconto);
+                console.log(typeof(dados.data[0].percentualDesconto)); */
+                var dadosDesconto =
+                '<h5>' + dados.data[0].percentualDesconto + '%</h5>';
+            document.getElementById("desconto").innerHTML = dadosDesconto;
+
+                var aux = valorTotal * (1 - (dados.data[0].percentualDesconto/100));
+
+                var dadosValor =
+                '<h5 id="dadosValor" >R$' + aux + '</h5>';
+            document.getElementById("totalFinal").innerHTML = dadosValor;
+
+                
+            }
+        }
+    });
+
+}
+/**function atribuiDesconto()
+{
+    //abrePopUp1();
+    alert("PUDIM...");
+    var nomeCumpom = document.formCupom.cupom.value;
+    console.log(nomeCumpom);
+    
+} */
+
 function validaCarrinhoVazio() {
 
     valorCarrinho = window.localStorage.getItem("valorTotal");

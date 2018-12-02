@@ -183,20 +183,21 @@ router.post('/finalizaCompra', function (req, res, next) {
 
 
 
-/*router.post('/deletaProduto', function (req, res, next) {
-    var input = req.body;
-    console.log(input);
+router.get('/cumpomDescomto', function (req, res, next) {
+    var input = req.query.porCento;
+    console.log((input));
     req.getConnection(function (err, connection) {
-        connection.query('DELETE FROM ProdutosComprados WHERE idProdutos = ? AND idCompras = ?', [input.idProdutos, input.idCompras], function (err, rows) {
+        connection.query('select percentualDesconto from DescontoCupom where sysdate() < dataFim and sysdate() > dataInicio and codigoCupom = ?' , input, function (err, rows) {
             if (err) {
-                res.json({ status: 'ERROR', data: err });
+                res.json({ status: 'ERROR', data: "err1" });
             }
-            res.json({ status: 'OK', data: "Excluido com sucesso" });
+            console.log(rows);
+            res.json({ status: 'OK', data: rows });
         });
         if (err)
-            res.json({ status: 'ERROR', data: err });
+            res.json({ status: 'ERROR', data: "err2 " });
     });
-});*/
+});
 
 router.get('/lerCarrinho', function (req, res, next) {
     if (req.session.logado) {

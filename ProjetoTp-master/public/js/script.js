@@ -301,8 +301,3 @@ function trocaPagina() {
     window.open("carrinho.html", "_self");
 }
 
-function atribuiDesconto()
-{
-    abrePopUp1();
-    
-}
