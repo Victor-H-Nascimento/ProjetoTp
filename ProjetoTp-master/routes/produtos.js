@@ -18,20 +18,40 @@ router.get('/lista', function (req, res, next) {
 // ORDER BY OPTION SELECIONADA PELO USUÁRIO
 router.get('/listaLoja', function (req, res, next) {
     var ordem = req.query.selection;
-    
     console.log(ordem);
 
-    req.getConnection(function (err, connection) {
+
+    if(ordem === "vendidos" ){
+
+
+        req.getConnection(function (err, connection) {
+        
+            connection.query("SELECT p.nome, ProdutosComprados.idProdutos, p.precoAtual,ImagensProdutos.idImagensProdutos, ImagensProdutos.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos ON p.idProdutos = ImagensProdutos.idProdutos INNER JOIN ProdutosComprados ON ProdutosComprados.idProdutos = p.idProdutos group by ProdutosComprados.idProdutos order by  sum(ProdutosComprados.quantidadeComprada) DESC" , function (err, rows) {
+                if (err)
+                    res.json({ status: 'ERRO', data: "TEste1" });
+                else
+                    res.json({ status: 'OK', data: rows });
+            });
+            if (err)
+                res.json({ status: 'ERRO', data: "TESTE2" });
+        });
+    }
+
+else{
+
+   req.getConnection(function (err, connection) {
         
         connection.query("SELECT p.nome, p.idProdutos, p.precoAtual,i.idImagensProdutos, i.caminhoImagem FROM Produtos as p INNER JOIN ImagensProdutos i ON p.idProdutos = i.idProdutos ORDER BY " + ordem, function (err, rows) {
             if (err)
-                res.json({ status: 'ERRO', data: "TEste" });
+                res.json({ status: 'ERRO', data: "TEste3" });
             else
                 res.json({ status: 'OK', data: rows });
         });
         if (err)
             res.json({ status: 'ERRO', data: "TESTE2" });
     });
+}
+
 });
 
 router.get('/lerProduto', function (req, res, next) {

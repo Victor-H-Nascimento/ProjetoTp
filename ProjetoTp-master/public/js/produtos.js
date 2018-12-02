@@ -50,7 +50,7 @@ function lerProduto() {
             url: '/produtos/lerProduto?id=' + param.get('id'),
             dataType: 'json',
             error: function (dados) {
-                alert('Erro: 1 ' + dados.data);
+                alert('Erro: 1  Ler Produtos' + dados.data);
             },
             success: function (dados) {
                 if (dados.status === 'ERRO')
@@ -404,13 +404,12 @@ function excluiProduto(idProduto, precoAtual) {
 
 function atualizaOrdem() {
     var selecao = document.getElementById("ordenar").options[document.getElementById("ordenar").options.selectedIndex].value;
-    
 
     $.ajax({
         url: '/produtos/listaLoja?selection=' + selecao,
         dataType: 'json',
         error: function (dados) {
-            alert('Erro: 1 ' + dados.data);
+            alert('Erro: 1  Lista Loja' + dados.data);
         },
         success: function (dados) {
             if (dados.status === 'ERRO')
