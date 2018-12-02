@@ -1,5 +1,13 @@
 function exibeProdutos(produtos) {
-    for (var i = 0; i < produtos.length; i++) {
+    var qtde;
+    //verificação para exibir no maximo nove produtos na pagina inicial
+    if(produtos.length <= 9){
+        qtde = produtos.length;
+    }
+    else{
+        qtde = 9;
+    }
+    for (var i = 0; i < qtde; i++) {
         var produto = produtos[i];
         var dadosProdutos =
 
