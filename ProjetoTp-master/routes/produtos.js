@@ -79,7 +79,7 @@ router.post('/finalizaCompra', function (req, res, next) {
         //console.log(produtos);
         //console.log(dados);
         req.getConnection(function (err, connection) {
-            connection.query('INSERT INTO Compras SET valorTotal = ?, idUsuario = ?', [dados.valor, dados.id], function (err, rows) {
+            connection.query('INSERT INTO Compras SET valorDaCompra = ?, idUsuario = ?', [dados.valor, dados.id], function (err, rows) {
                 if (err)
                     res.json({ status: 'ERRO', data: "err" });
                 else{

@@ -228,8 +228,9 @@ router.get('/exibirHistoricoCompras', function (req, res, next) {
         var id = req.query.id;
         console.log(id);
         req.getConnection(function (err, connection) {
-            connection.query('SELECT * FROM Compras WHERE idUsuario = ' + id, function(err, rows) {
-                if(err)
+            //connection.query('SELECT * FROM Compras, ProdutosComprados WHERE Compras.idUsuario = ? and Compras.idCompras = ProdutosComprados.idCompras  ', id, function(err, rows) {
+            connection.query('SELECT * FROM Compras, ProdutosComprados, Produtos WHERE Compras.idUsuario = ? and Compras.idCompras = ProdutosComprados.idCompras and Produtos.idProdutos = ProdutosComprados.idProdutos ' ,id, function(err, rows) {  
+            if(err)
                     res.json({ status: 'ERRO', data: err});
                 res.json({ status: 'OK', data: rows });
             });
