@@ -22,6 +22,8 @@
     <script type="text/javascript" src="js/acesso.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     
 </head>
 
@@ -83,12 +85,15 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="loja.html">Loja</a></li>
                     <li class="active"><a href="carrinho.html">Carrinho</a></li>
-                    <li class="nav-item popup"><a href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
+                    <li class="nav-item popup"><a id="atribuiCupom" href="#" onclick="abrePopUp1();"> Cupom de Desconto</a>
                         <span class="popuptext" id="myPopUp1">
                             <form name="formCupom" class="centralizar" method="post">
                                 <input class="centralizar" type="text" name="cupom" placeholder="Digite o cupom"><br>
                              </form>
-                        </span></li>
+                             <input class="button10" type="button" name="botaoCupom" value="Receber Desconto" onClick="atribuiDesconto();">
+                        </span>
+                
+                        </li>
                     <li><a href="contatos.html">Contatos</a></li>
                     <li id="botaoLogin" class="nav-item popup"><a href="#" onclick="abrePopUp();"> Login</a>
                         <span class="popuptext" id="myPopup">

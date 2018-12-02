@@ -1685,3 +1685,13 @@ h4{
 #categoria-produto{
   color: black;
 }
+
+.button10{
+  background-color:#eeac11;
+  border:1px solid #d19809;
+  cursor:pointer;
+  color:#ffffff;
+  font-family:Arial;
+  padding:5px 31px;
+  text-decoration:none;
+}
