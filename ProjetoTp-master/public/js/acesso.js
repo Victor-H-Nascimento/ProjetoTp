@@ -219,7 +219,7 @@ function redefineSenhaNoBD() {
                                 if (dados.status === 'ERRO')
                                     alert('Erro: ' + dados.data);
                                 else {
-                                    alert(dados.data);
+                                    //alert(dados.data);
                                     window.location.href = '/perfil.html';
                                 }
                             }
@@ -346,7 +346,7 @@ function alteraDadosPessoaisNoBD() {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                alert(dados.data);
+                //alert(dados.data);
                 window.location = "perfil.html";
             }
         }
@@ -440,7 +440,7 @@ function alteraDadosEntregaNoBD() {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                alert(dados.data);
+                //alert(dados.data);
                 window.location = "perfil.html";
             }
         }
