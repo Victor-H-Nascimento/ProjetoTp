@@ -556,9 +556,11 @@ function historicoCompra(id) {
 }
 
 function exibeHistorico(dados) {
+    //console.log(dados);
     document.getElementById('perfilPagina').innerHTML = null;
     for(var i = 0; i < dados.length; i++){
-
+        console.log(i);
+        console.log(dados[i]);
         var date = new Date(dados[i].dataCompra);
         
         var hours = date.getHours() + 1;
@@ -583,7 +585,10 @@ function exibeHistorico(dados) {
 
         produtosHistoricoCompra(dados[i].idCompras);
        
-        var dadosHistoricoCompras = 
+        if(i == 0)
+        {
+            console.log("Entrou aqui 1 -> " + i)
+            var dadosHistoricoCompras = 
 
 '<div class="formataPerfil">' +
             '<div class="container-fluid">' +
@@ -596,7 +601,8 @@ function exibeHistorico(dados) {
                                     '<tr>' +
                                         
                                         '<th>Nota Fiscal</th>' +
-                                        '<th>Valor Total</th>' +
+                                        '<th>Valor Total Da Compra</th>' +
+                                        '<th>Valor Do Prduto</th>' +
                                         '<th>Data da Compra</th>' +
                                         '<th>Hora da Compra</th>' +
                                         '<th>Produto</th>' +
@@ -605,14 +611,20 @@ function exibeHistorico(dados) {
          
                                     '</tr>'+
                                 '</thead>' +
-                                '<tbody>' +
+                                '<tbody id="jacinto'+dados[i].idCompras+'">' +
                                 //inicio da Tabela
                                 '<tr>' +
 
+
                                  //Nº nota fiscal
                                 '<td>' +
-                                '<span>' + dados[i].notaFiscal +'</span>' + '</br>'+
+                                '<span>' + dados[i].idCompras +'</span>' + '</br>'+
                                 '</td>' +
+
+                                 //valor Total da Compra
+                                 '<td>' +
+                                 '<span>' +  + dados[i].valorDaCompra + +'</span>' + '</br>'+
+                                 '</td>' +
 
                                 //Valor total pago
                                 '<td>' +
@@ -630,7 +642,19 @@ function exibeHistorico(dados) {
                                 '</td>' +
 
                                  //Loop Produtos,Preco e Quantidade
-                                 
+                                 '<td>' +  
+                                '<span>' + dados[i].nome  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Preço
+                                '<td>' +  
+                                '<span>' + dados[i].precoAtual  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Quantidade
+                                '<td>' +  
+                                '<span>' + dados[i].quantidadeComprada  +'</span>' + '</br>'+
+                                '</td>' +
 
                                  '</tr>' + 
                                  //fim da Tabela
@@ -642,8 +666,151 @@ function exibeHistorico(dados) {
                 '</div>' +
             '</div>' +
         '</div>';
-
         document.getElementById('perfilPagina').innerHTML += dadosHistoricoCompras;
+        //console.log
+        }
+        
+        else{
+
+            if(dados[i-1].idCompras == dados[i].idCompras){
+                //console.log("dados[i-1].idCompras"+ dados[i-1].idCompras + "== dados[i].idCompras " + dados[i].idCompras)
+                //console.log("Entrou aqui 2 -> " + i)
+               var outroProduto = 
+               '<tbody id="jacinto'+dados[i].idCompras+'">' +
+                                //inicio da Tabela
+                                '<tr>' +
+
+                                 //Nº nota fiscal
+                                '<td>' +
+                                '<span>' + dados[i].idCompras +'</span>' + '</br>'+
+                                '</td>' +
+
+                                 //valor Total da Compra
+                                 '<td>' +
+                                 '<span>' +  dados[i].valorDaCompra + '</span>' + '</br>'+
+                                 '</td>' +
+
+                                //Valor total pago
+                                '<td>' +
+                                ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Data da Compra
+                                '<td>' +  
+                                '<span>' + days + "/" + months + "/" + years + '</span>' + '</br>'+
+                                '</td>' +
+
+                                //Hora da Compra
+                                '<td>' +  
+                                '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
+                                '</td>' +
+
+                                 //Loop Produtos,Preco e Quantidade
+                                 '<td>' +  
+                                '<span>' + dados[i].nome  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Preço
+                                '<td>' +  
+                                '<span>' + dados[i].precoAtual  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Quantidade
+                                '<td>' +  
+                                '<span>' + dados[i].quantidadeComprada  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                 '</tr>' + 
+                                 //fim da Tabela
+                                '</tbody>';
+
+            var aux = "jacinto"+(dados[i].idCompras);                    
+            document.getElementById(aux).innerHTML += outroProduto;                    
+            }
+
+            else{
+                console.log("Entrou aqui 3 -> " + i);
+                var dadosHistoricoCompras =  
+        '<div class="formataPerfil">' +
+            '<div class="container-fluid">' +
+                '<div class="row">' +
+                    '<div class="col-12 col-lg-8">' +
+
+                        '<div class="cart-table clearfix">' +
+                            '<table class="table table-responsive">' +
+                                '<thead>' +
+                                    '<tr>' +
+                                        
+                                        '<th>Nota Fiscal</th>' +
+                                        '<th>Valor Total Da Compra</th>' +
+                                        '<th>Valor Total</th>' +
+                                        '<th>Data da Compra</th>' +
+                                        '<th>Hora da Compra</th>' +
+                                        '<th>Produto</th>' +
+                                        '<th>Preço</th>' +
+                                        '<th>Quantidade</th>' +
+         
+                                    '</tr>'+
+                                '</thead>' +
+                                '<tbody id="jacinto'+dados[i].idCompras+'">' +
+                                //inicio da Tabela
+                                '<tr>' +
+
+                                 //Nº nota fiscal
+                                '<td>' +
+                                '<span>' + dados[i].idCompras +'</span>' + '</br>'+
+                                '</td>' +
+
+                                 //valor Total da Compra
+                                 '<td>' +
+                                 '<span>' + dados[i].valorDaCompra  +'</span>' + '</br>'+
+                                 '</td>' +
+
+                                //Valor total pago
+                                '<td>' +
+                                ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Data da Compra
+                                '<td>' +  
+                                '<span>' + days + "/" + months + "/" + years + '</span>' + '</br>'+
+                                '</td>' +
+
+                                //Hora da Compra
+                                '<td>' +  
+                                '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
+                                '</td>' +
+
+                                 //Loop Produtos,Preco e Quantidade
+                                 '<td>' +  
+                                '<span>' + dados[i].nome  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Preço
+                                '<td>' +  
+                                '<span>' + dados[i].precoAtual  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                //Quantidade
+                                '<td>' +  
+                                '<span>' + dados[i].quantidadeComprada  +'</span>' + '</br>'+
+                                '</td>' +
+
+                                 '</tr>' + 
+                                 //fim da Tabela
+                                '</tbody>' +
+                            '</table>' +
+                        '</div>'+
+                    '</div>' +
+
+                '</div>' +
+            '</div>' +
+        '</div>';
+        document.getElementById('perfilPagina').innerHTML += dadosHistoricoCompras;
+            }
+        }
+
+       
 
     }   
 }
