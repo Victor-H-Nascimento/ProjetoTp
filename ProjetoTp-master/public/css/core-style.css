@@ -1652,7 +1652,7 @@ h4{
 }
 
 .formulario{
-  margin-top: 15%;
+  margin-top: 10%;
   margin-left: 10%;
 }
 .textform{
@@ -1667,3 +1667,13 @@ h4{
   margin-left: 40%;
 }
 
+.facebook{
+  margin-top: 2%;
+  margin-left: 11%;
+}
+
+#logofb{
+  max-width: 20%;
+  min-width: 20%;
+  margin-left: 15%; 
+}
