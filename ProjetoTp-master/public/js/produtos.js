@@ -313,7 +313,6 @@ function exibeCarrinho() {
 
 function atribuiDesconto(){
     var valorTotal = window.localStorage.getItem("valorTotal");
-    alert("PUDIM...");
     var nomeCumpom = document.formCupom.cupom.value;
     console.log(nomeCumpom);
 
@@ -339,21 +338,15 @@ function atribuiDesconto(){
                 var dadosValor =
                 '<h5 id="dadosValor" >R$' + aux + '</h5>';
             document.getElementById("totalFinal").innerHTML = dadosValor;
-
+            
+            window.localStorage.setItem("valorTotal",aux);
                 
             }
         }
     });
 
 }
-/**function atribuiDesconto()
-{
-    //abrePopUp1();
-    alert("PUDIM...");
-    var nomeCumpom = document.formCupom.cupom.value;
-    console.log(nomeCumpom);
-    
-} */
+
 
 function validaCarrinhoVazio() {
 
