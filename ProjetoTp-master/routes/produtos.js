@@ -17,9 +17,9 @@ router.get('/lista', function (req, res, next) {
 
 // ORDER BY OPTION SELECIONADA PELO USUÁRIO
 router.get('/listaLoja', function (req, res, next) {
-    var ordem = req.body;
+    var ordem = req.query.selection;
     
-    console.log(ordem.text);
+    console.log(ordem);
 
     req.getConnection(function (err, connection) {
         

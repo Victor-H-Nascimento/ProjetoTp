@@ -367,7 +367,7 @@ function alterarDadosEntrega(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="rua" class="form-control" id="rua" value="' + dados.data[0].rua + '" placeholder="Rua" >' +
+                '<input type="text" name="rua" class="form-control" id="rua" value="' + dados.data[0].rua + '" placeholder="Rua" disabled>' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
@@ -379,15 +379,15 @@ function alterarDadosEntrega(id) {
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="bairro" class="form-control" id="bairro" value="' + dados.data[0].bairro + '" placeholder="Bairro" >' +
+                '<input type="text" name="bairro" class="form-control" id="bairro" value="' + dados.data[0].bairro + '" placeholder="Bairro" disabled>' +
                 '</div>' +
 
                 ' <div class="col-md-6 mb-3">' +
-                '<input type="text" name="cidade" class="form-control" id="cidade" value="' + dados.data[0].cidade + '" placeholder="Cidade" >' +
+                '<input type="text" name="cidade" class="form-control" id="cidade" value="' + dados.data[0].cidade + '" placeholder="Cidade" disabled>' +
                 '</div>' +
 
                 '<div class="col-md-6 mb-3">' +
-                '<input type="text" name="uf" class="form-control" id="uf" value="' + dados.data[0].estado + '" placeholder="UF" >' +
+                '<input type="text" name="uf" class="form-control" id="uf" value="' + dados.data[0].estado + '" placeholder="UF" disabled>' +
                 '</div>' +
 
                 '<input type="button" class="button formataPerfilButton" name="alteraDadosEntrega" value="Alterar" onClick="alteraDadosEntregaNoBD();"></input>' +
@@ -583,14 +583,14 @@ function exibeHistorico(dados) {
         }
            
 
-        produtosHistoricoCompra(dados[i].idCompras);
+        //produtosHistoricoCompra(dados[i].idCompras);
        
         if(i == 0)
         {
             console.log("Entrou aqui 1 -> " + i)
             var dadosHistoricoCompras = 
 
-'<div class="formataPerfil">' +
+        '<div class="formataPerfil">' +
             '<div class="container-fluid">' +
                 '<div class="row">' +
                     '<div class="col-12 col-lg-8">' +
@@ -640,6 +640,14 @@ function exibeHistorico(dados) {
                                 '<td>' +  
                                 '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
                                 '</td>' +
+
+                                '<td>' +  
+                                '<span>' + pegaProdutosHistoricoCompra(124); + '</span>' + '</br>'+
+                                '</td>' +
+
+
+
+
 
                                  //Loop Produtos,Preco e Quantidade
                                  '<td>' +  
@@ -815,7 +823,8 @@ function exibeHistorico(dados) {
     }   
 }
 
-function produtosHistoricoCompra(id) {
+function pegaProdutosHistoricoCompra(id) {
+    console.log('id do carrinho que gerou a NF: ' + id);
     $.ajax ({
         url: '/acesso/exibirProdutosComprados?id=' + id,
         dataType: 'json',
@@ -826,13 +835,101 @@ function produtosHistoricoCompra(id) {
             if (dados.status === 'SEMACESSO')
                 alert('Erro: 2 ' + dados.data);
             else {
-                return(dados.data);
+                //console.log(JSON.parse(dados.data));
+                return(exibeProdutosHistoricoCompra(dados.data));
             }
         }
     });
 }
 
+function exibeProdutosHistoricoCompra(dados) {
+    console.log('exibe produtos:' + dados);
 
+   // document.getElementById('perfilPagina').innerHTML = null;
+
+    for(var i = 0; i < dados.length; i++) {
+
+                    var infoProdutosComprados = 
+
+                    '<div class="formataPerfil">' +
+                        '<div class="container-fluid">' +
+                            '<div class="row">' +
+                                '<div class="col-12 col-lg-8">' +
+
+                                    '<div class="cart-table clearfix">' +
+                                        '<table class="table table-responsive">' +
+                                            '<thead>' +
+                                                '<tr>' +
+                                                    
+                                                    '<th>Produto</th>' +
+                                                    '<th>Quantidade</th>' +
+                                                    '<th>Valor</th>' +
+                     
+                                                '</tr>'+
+                                            '</thead>' +
+                                            '<tbody>' +
+                                            //inicio da Tabela
+                                            '<tr>' +
+
+                                             // Produto
+                                            '<td>' +
+                                                '<span>' + pegaNomeProduto(2); + '</span>' + '</br>'+
+                                            '</td>' +
+
+                                            // Quantidade do produto
+                                            '<td>' +
+                                                '<span>' +dados[i].quantidadeComprada+'</span>' + '</br>'+
+                                            '</td>' +
+
+                                            // Valor do produto
+                                            '<td>' +
+                                                '<span>'+ 'R$ ' +dados[i].valorUnitario+'</span>' + '</br>'+
+                                            '</td>' +
+
+                                             '</tr>' + 
+                                             //fim da Tabela
+                                            '</tbody>' +
+                                        '</table>' +
+                                    '</div>'+
+                                '</div>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+                    
+                    return infoProdutosComprados;
+                    //document.getElementById('perfilPagina').innerHTML += infoProdutosComprados;
+    }
+}
+
+function pegaNomeProduto(id) {
+    $.ajax ({
+        url: '/acesso/exibirNomeProduto?id=' + id,
+        dataType: 'json',
+        error: function (dados) {
+            alert('Erro em ler nome do produto ' + dados.data);
+        },
+        success: function (dados) {
+            if (dados.status === 'SEMACESSO')
+                alert('Erro: 2 ' + dados.data);
+            else {
+                console.log('pega nome ajax 2 :' + JSON.parse(dados.data.nome));
+                return(dados.data.nome);
+            }
+        }
+    });
+}
+
+function exibeNomeProduto(dados) {
+    console.log('exibe nome:' + dados);
+    //console.log('nomes dos produtos:' + dados);
+    for(var i = 0; i < dados.length; i++) {
+        var nomeProdutoExibe = 
+            dados[i].nome;
+            console.log(dados[i].nome);
+    }
+    console.log(nomeProdutoExibe);
+    return nomeProdutoExibe;
+}
 
 
 
