@@ -601,12 +601,12 @@ function exibeHistorico(dados) {
                                     '<tr>' +
                                         
                                         '<th>Nota Fiscal</th>' +
-                                        '<th>Valor Total Da Compra</th>' +
-                                        '<th>Valor Do Prduto</th>' +
+                                        '<th>Valor Total</th>' +
                                         '<th>Data da Compra</th>' +
                                         '<th>Hora da Compra</th>' +
                                         '<th>Produto</th>' +
-                                        '<th>Preço</th>' +
+                                        '<th>Subtotal</th>' +
+                                        '<th>Preço Unitário</th>' +
                                         '<th>Quantidade</th>' +
          
                                     '</tr>'+
@@ -623,13 +623,10 @@ function exibeHistorico(dados) {
 
                                  //valor Total da Compra
                                  '<td>' +
-                                 '<span>' +  + dados[i].valorDaCompra + +'</span>' + '</br>'+
+                                 '<span>' + 'R$ ' + dados[i].valorDaCompra + '</span>' + '</br>'+
                                  '</td>' +
 
-                                //Valor total pago
-                                '<td>' +
-                                ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
-                                '</td>' +
+                                
 
                                 //Data da Compra
                                 '<td>' +  
@@ -642,14 +639,19 @@ function exibeHistorico(dados) {
                                 '</td>' +
 
 
-                                 //Loop Produtos,Preco e Quantidade
+                                 //Nome Produto
                                  '<td>' +  
                                 '<span>' + dados[i].nome  +'</span>' + '</br>'+
                                 '</td>' +
 
+                                //Subtotal
+                                '<td>' +
+                                ' <span>'+ 'R$ ' +( dados[i].valorTotal * dados[i].quantidadeComprada) +'</span>' + '</br>'+
+                                '</td>' +
+                                
                                 //Preço
                                 '<td>' +  
-                                '<span>' + dados[i].precoAtual  +'</span>' + '</br>'+
+                                '<span>' + 'R$ ' + dados[i].precoAtual  +'</span>' + '</br>'+
                                 '</td>' +
 
                                 //Quantidade
@@ -683,27 +685,24 @@ function exibeHistorico(dados) {
 
                                  //Nº nota fiscal
                                 '<td>' +
-                                '<span>' + dados[i].idCompras +'</span>' + '</br>'+
+                                '<span>' + "" +'</span>' + '</br>'+
                                 '</td>' +
 
                                  //valor Total da Compra
                                  '<td>' +
-                                 '<span>' +  dados[i].valorDaCompra + '</span>' + '</br>'+
+                                 '<span>' +  "" + '</span>' + '</br>'+
                                  '</td>' +
 
-                                //Valor total pago
-                                '<td>' +
-                                ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
-                                '</td>' +
+                               
 
                                 //Data da Compra
                                 '<td>' +  
-                                '<span>' + days + "/" + months + "/" + years + '</span>' + '</br>'+
+                                '<span>' + "" + '</span>' + '</br>'+
                                 '</td>' +
 
                                 //Hora da Compra
                                 '<td>' +  
-                                '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
+                                '<span>' + "" + '</span>' + '</br>'+
                                 '</td>' +
 
                                  //Loop Produtos,Preco e Quantidade
@@ -711,9 +710,14 @@ function exibeHistorico(dados) {
                                 '<span>' + dados[i].nome  +'</span>' + '</br>'+
                                 '</td>' +
 
+                                 //Valor total pago
+                                 '<td>' +
+                                 ' <span>'+ 'R$ ' +(dados[i].valorTotal* dados[i].quantidadeComprada)+'</span>' + '</br>'+
+                                 '</td>' +
+
                                 //Preço
                                 '<td>' +  
-                                '<span>' + dados[i].precoAtual  +'</span>' + '</br>'+
+                                '<span>' + 'R$ ' +  dados[i].precoAtual  +'</span>' + '</br>'+
                                 '</td>' +
 
                                 //Quantidade
@@ -743,12 +747,12 @@ function exibeHistorico(dados) {
                                     '<tr>' +
                                         
                                         '<th>Nota Fiscal</th>' +
-                                        '<th>Valor Total Da Compra</th>' +
                                         '<th>Valor Total</th>' +
                                         '<th>Data da Compra</th>' +
                                         '<th>Hora da Compra</th>' +
                                         '<th>Produto</th>' +
-                                        '<th>Preço</th>' +
+                                        '<th>Subtotal</th>' +
+                                        '<th>Preço Unitário</th>' +
                                         '<th>Quantidade</th>' +
          
                                     '</tr>'+
@@ -764,14 +768,10 @@ function exibeHistorico(dados) {
 
                                  //valor Total da Compra
                                  '<td>' +
-                                 '<span>' + dados[i].valorDaCompra  +'</span>' + '</br>'+
+                                 '<span>' + 'R$ ' + dados[i].valorDaCompra  +'</span>' + '</br>'+
                                  '</td>' +
 
-                                //Valor total pago
-                                '<td>' +
-                                ' <span>'+ 'R$ ' +dados[i].valorTotal+'</span>' + '</br>'+
-                                '</td>' +
-
+                               
                                 //Data da Compra
                                 '<td>' +  
                                 '<span>' + days + "/" + months + "/" + years + '</span>' + '</br>'+
@@ -782,14 +782,19 @@ function exibeHistorico(dados) {
                                 '<span>' + hours + ":" + minutes + '</span>' + '</br>'+
                                 '</td>' +
 
-                                 //Loop Produtos,Preco e Quantidade
+                                 //Nome produto
                                  '<td>' +  
                                 '<span>' + dados[i].nome  +'</span>' + '</br>'+
                                 '</td>' +
+                                
+                                 //Valor total pago
+                                 '<td>' +
+                                 ' <span>'+ 'R$ ' +(dados[i].valorTotal * dados[i].quantidadeComprada)+'</span>' + '</br>'+
+                                 '</td>' +
 
                                 //Preço
                                 '<td>' +  
-                                '<span>' + dados[i].precoAtual  +'</span>' + '</br>'+
+                                '<span>' + 'R$ ' + dados[i].precoAtual  +'</span>' + '</br>'+
                                 '</td>' +
 
                                 //Quantidade
