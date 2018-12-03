@@ -317,7 +317,7 @@ function atribuiDesconto(){
     console.log(nomeCumpom);
 
     $.ajax({//idCarrinho para pegar o id do carrinho do usuario
-        url: '/produtos/cumpomDescomto?porCento= '+ nomeCumpom,
+        url: '/produtos/cupomDescontos?porCento= '+ nomeCumpom,
         dataType: 'json',
         error: function (dados) {
             alert('Erro ao inserir desconto ' + dados.data);
@@ -340,6 +340,7 @@ function atribuiDesconto(){
             document.getElementById("totalFinal").innerHTML = dadosValor;
             
             window.localStorage.setItem("valorTotal",aux);
+            window.localStorage.setItem("desconto",dados.data[0].percentualDesconto);
                 
             }
         }

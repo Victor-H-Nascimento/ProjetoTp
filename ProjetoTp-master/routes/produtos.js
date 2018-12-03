@@ -183,7 +183,7 @@ router.post('/finalizaCompra', function (req, res, next) {
 
 
 
-router.get('/cumpomDescomto', function (req, res, next) {
+router.get('/cupomDescontos', function (req, res, next) {
     var input = req.query.porCento;
     console.log((input));
     req.getConnection(function (err, connection) {

@@ -188,7 +188,7 @@ router.post('/salvarDadosPessoais', function (req, res, next) {
         req.getConnection(function (err, connection) {
             connection.query('UPDATE Usuarios SET usuario = ?, nome = ?, celular = ?, CPF = ?, email = ?, dataNascimento = ?  WHERE idUsuarios = ? ', [input.usuario,input.nome,input.celular,input.cpf,input.email,input.dataNascimento, input.id], function (err, rows) {                if (err)
                     res.json({ status: 'ERRO', data: err });
-                res.json({ status: 'OK', data: "Dados pessoais alteraos com sucesso!" });
+                res.json({ status: 'OK', data: "Dados pessoais alterados com sucesso!" });
             });
             if (err)
                 res.json({ status: 'ERRO', data: rows });
