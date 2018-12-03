@@ -104,7 +104,7 @@
                                 Senha: <br><input type="password" name="senha" required><br>
                                 <br>
                                 <div>
-                                    <input class="button" type="button" name="enviar" value="Login" onClick="loginUsuario();">
+                                    <input class="button" type="button" name="enviar" value="Login" onClick="loginUsuario(),abrePopUp();">
                                 </div>
                                 <br>
                                 <p>Ainda não tem conta?<br><span class="callCheckout" onclick="teste();">&nbsp;Cadastre-se</span></p>
@@ -115,11 +115,6 @@
                 </ul>
             </nav>
 
-
-            <!-- Button Group -->
-            <div class="amado-btn-group mt-30 mb-100">
-                <input class="button" type="button" name="enviar" value="Novidades">
-            </div>
 
             <!-- Cart Menu -->
             <div id="carrinhoTamanho" class="cart-fav-search mb-100">
@@ -134,7 +129,7 @@
         <div class="single-product-area section-padding-100 clearfix">
             <div class="container-fluid">
 
-                <div class="row" id="dadosProduto"><!--aqui recebe as informações dos produtos-->
+                <div class="row grow" id="dadosProduto"><!--aqui recebe as informações dos produtos-->
                 </div>
             </div>
         </div>

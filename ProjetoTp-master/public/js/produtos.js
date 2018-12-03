@@ -11,15 +11,24 @@ function exibeProdutos(produtos) {
         var produto = produtos[i];
         var dadosProdutos =
 
-            '<div class="single-products-catagory clearfix" id="' + produto.idImagensProdutos + '">' +
-            '<a href="detalheProduto.html?id=' + produto.idProdutos + '">' +
-            '<img src="' + produto.caminhoImagem + '">' +
-            '<div class="hover-content">' +
-            '<div class="line"></div>' +
-            '<p>R$' + produto.precoAtual + '</p>' +
-            '<h4>' + produto.nome + '</h4>' +
-            '</div>' +
-            '</a>' +
+            '<div class="single-products-catagory clearfix " id="' + produto.idImagensProdutos + '">' +
+            
+                '<a href="detalheProduto.html?id=' + produto.idProdutos + '">' +
+                
+                    '<img src="' + produto.caminhoImagem + '">' +
+                    
+                        '<div class="hover-content">' +
+                        
+                            '<div class="line"></div>' +
+                        
+                            '<p>R$' + produto.precoAtual + '</p>' +
+                            
+                            '<h4>' + produto.nome + '</h4>' +
+                        
+                        '</div>' +
+                
+                '</a>' +
+            
             '</div>';
 
         document.getElementById('result').innerHTML += dadosProdutos;

@@ -22,7 +22,7 @@ function loginUsuario() {
                 window.localStorage.nome = spl[0];
                 window.localStorage.usuario = dados.data.usuario;
                 window.localStorage.id = dados.data.idUsuarios;
-                alert('Logado com sucesso!');
+               // alert('Logado com sucesso!');
                 colocarUsuario();
                 verificaLogin();
             }
@@ -42,7 +42,7 @@ function logoutUsuario() {
         alert('Erro: ' + dados.data);
             else {
                 //alert(dados.data);
-                alert("Logout realizado com sucesso!");
+              //  alert("Logout realizado com sucesso!");
                 window.localStorage.clear();
                 window.sessionStorage.clear();
                 window.location.href = '/index.html';
