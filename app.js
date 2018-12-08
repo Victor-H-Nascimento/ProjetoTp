@@ -36,10 +36,10 @@ var mysql = require('mysql');
 app.use(
   connection(mysql, {
     host: 'sql10.freemysqlhosting.net', //servidor do banco mysql, se for local: localhost,
-    user: 'sql10263444', //usuario com permissao de conexao a base de dados
-    password: 'EtslXPiKK4', //senha de acesso ao banco
+    user: 'sql10269076', //usuario com permissao de conexao a base de dados
+    password: '2JzK16Pf9g', //senha de acesso ao banco
     port: 3306, //porta do mysql, normalmente 3306
-    database: 'sql10263444' //nome da base de dados (esquema)
+    database: 'sql10269076' //nome da base de dados (esquema)
   }, 'pool')
 );
 
